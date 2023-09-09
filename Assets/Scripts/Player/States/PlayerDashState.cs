@@ -27,15 +27,17 @@ public class PlayerDashState : PlayerBaseState
     {
         Vector3 dashDirection = _context.transform.forward.normalized;
         float duration = 0.2f;
+        _context.Anim.SetBool("isDash", true);
 
         while (duration > 0f)
         {
             _context.rigidBody.MovePosition(_context.transform.position + (dashDirection) * _context.DashSpeed * Time.deltaTime);
             duration -= Time.deltaTime;
 
-            await Task.Yield(); // Yield control back to the main thread briefly.
+            await Task.Yield();
         }
 
+        _context.Anim.SetBool("isDash", false);
         CheckChangeState();
     }
 

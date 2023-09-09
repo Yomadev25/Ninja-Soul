@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour, IDamageDealer
 {
+    [Header("Weapon Properties")]
     [SerializeField]
-    private LayerMask targetLayer;
+    private float _weaponLength;
     [SerializeField]
-    private float weaponLength;
+    private float _weaponDamage;
+
+    [Header("References")]
     [SerializeField]
-    private float weaponDamage;
+    private LayerMask _targetLayer;   
+    
+    [SerializeField]
+    private UnityEngine.VFX.VisualEffect _slashFx; //Don't forget to delete this line and use Effect Manager instead.
 
     bool canDealDamage;
     List<IDamageable> dealtTargets = new List<IDamageable>();
+
+    float damageAdjust;
 
     private void Start()
     {
@@ -25,7 +33,7 @@ public class Weapon : MonoBehaviour, IDamageDealer
         {
             RaycastHit hit;
 
-            if (Physics.Raycast(transform.position, -transform.up, out hit, weaponLength, targetLayer))
+            if (Physics.Raycast(transform.position, -transform.up, out hit, _weaponLength, _targetLayer))
             {
                 var target = hit.transform.GetComponent<IDamageable>();
                 var hitDir = hit.point - transform.position;
@@ -34,7 +42,7 @@ public class Weapon : MonoBehaviour, IDamageDealer
                 {
                     if (!dealtTargets.Contains(target))
                     {
-                        DealDamage(target, weaponDamage);
+                        DealDamage(target, _weaponDamage + damageAdjust);
                         dealtTargets.Add(target);
                     }
                 }            
@@ -44,24 +52,31 @@ public class Weapon : MonoBehaviour, IDamageDealer
 
     public void DealDamage(IDamageable target, float damage)
     {
-        Debug.Log($"Deal {damage} damages");
+        Debug.Log($"Dealing {damage} damages.");
         target.TakeDamage(damage);
     }
 
-    public void StartDealDamage(float damageAdjust = 0f)
+    public void StartDealDamage(float damageAdjust = 0f, Vector3 effectEuler = default)
     {
+        this.damageAdjust = damageAdjust;
+
         canDealDamage = true;
         dealtTargets.Clear();
+
+        Transform root = _slashFx.transform.parent;
+        root.localEulerAngles = effectEuler;
+        _slashFx.Play();
     }
 
     public void EndDealDamage()
     {
+        this.damageAdjust = 0f;
         canDealDamage = false;
     }
 
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawLine(transform.position, transform.position - transform.up * weaponLength);
+        Gizmos.DrawLine(transform.position, transform.position - transform.up * _weaponLength);
     }
 }
