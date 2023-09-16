@@ -75,12 +75,19 @@ public class PlayerStateMachine : MonoBehaviour
     private void Update()
     {
         Rotate();
-        CurrentState.Update();
+
+        if (CurrentState != null)
+        {
+            CurrentState.Update();
+        }
     }
 
     private void FixedUpdate()
     {
-        CurrentState.FixedUpdate();
+        if (CurrentState != null)
+        {
+            CurrentState.FixedUpdate();
+        }
     }
 
     private void GatherInput()

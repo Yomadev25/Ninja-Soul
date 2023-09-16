@@ -5,6 +5,12 @@ using UnityEngine.Events;
 
 public class EnemyManager : MonoBehaviour, IDamageable
 {
+    [Header("Enemy Profile")]
+    [SerializeField]
+    private Enemy _enemy;
+    [SerializeField]
+    private EnemyStateMachine _enemyStateMachine;
+
     [Header("Properties")]
     [SerializeField]
     private float _maxHp;
@@ -22,6 +28,10 @@ public class EnemyManager : MonoBehaviour, IDamageable
     private UnityEvent onHeal;
 
     bool isDie;
+
+    #region PUBLIC VARIABLES
+    public Enemy Enemy => _enemy;
+    #endregion
 
     private void Start()
     {
@@ -51,6 +61,7 @@ public class EnemyManager : MonoBehaviour, IDamageable
         if (isDie) return;
         isDie = true;
 
+        _enemyStateMachine.enabled = false;
         _anim.applyRootMotion = true;
         _anim.SetTrigger("Die");
 
