@@ -2,38 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using ModularMotion;
+using UnityEngine.Events;
 
 public class TransitionManager : Singleton<TransitionManager>
 {
-    [Header("Scene Transition HUD")]
+    [Header("Transition HUD")]
     [SerializeField]
-    private UIMotion _fadeIn;
-    [SerializeField]
-    private UIMotion _fadeOut;
+    private CanvasGroup _sceneTransition;
 
-    private void Start()
+    public void SceneFadeIn(float duration = 1f, UnityAction callback = null)
     {
-        SceneFadeIn();
+        _sceneTransition.alpha = 0f;
+        _sceneTransition.blocksRaycasts = true;
+
+        _sceneTransition.LeanAlpha(1, duration).setOnComplete(() => callback?.Invoke());
     }
 
-    public void SceneFadeIn()
+    public void SceneFadeOut(float duration = 1f, UnityAction callback = null)
     {
-        _fadeIn.Play();
+        _sceneTransition.alpha = 1f;
+        _sceneTransition.blocksRaycasts = false;
+
+        _sceneTransition.LeanAlpha(0, duration).setDelay(0.5f).setOnComplete(() => callback?.Invoke());
     }
 
-    public void SceneFadeOut()
+    public void NormalFadeIn(float duration = 1f, UnityAction callback = null)
     {
-        _fadeOut.Play();
+        
     }
 
-    public void NormalFadeIn()
+    public void NormalFadeOut(float duration = 1f, UnityAction callback = null)
     {
-
-    }
-
-    public void NormalFadeOut()
-    {
-
+        
     }
 }

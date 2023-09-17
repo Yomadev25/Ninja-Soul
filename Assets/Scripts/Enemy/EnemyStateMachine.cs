@@ -9,6 +9,11 @@ public class EnemyStateMachine : MonoBehaviour
     [Header("Properties")]
     [SerializeField]
     private Enemy _enemy;
+    [SerializeField]
+    private Weapon _weapon;
+    [SerializeField]
+    private float _delayPerCombo;
+    private float _currentCooldown;
 
     [Header("Field Of View")]
     [SerializeField]
@@ -36,10 +41,22 @@ public class EnemyStateMachine : MonoBehaviour
     public Enemy Enemy => _enemy;
     public NavMeshAgent NavMesh => _navMesh;
     public Animator Anim => _anim;
+
+    public bool IsReadyToCombat { get; set; }
+    public int ComboCount { get; set; }
     #endregion
 
 
     private void Start()
+    {
+        InitializeEnemy();
+
+        State = new EnemyStateFactory(this);
+        CurrentState = State.Idle();
+        CurrentState.Enter();
+    }
+
+    private void InitializeEnemy()
     {
         if (_enemy == null)
         {
@@ -47,9 +64,13 @@ public class EnemyStateMachine : MonoBehaviour
             return;
         }
 
-        State = new EnemyStateFactory(this);
-        CurrentState = State.Idle();
-        CurrentState.Enter();
+        _delayPerCombo = _enemy.delayPerCombo;
+        _currentCooldown = _delayPerCombo;
+
+        _viewRadius = _enemy.viewRadius;
+        _chaseRadius = _enemy.chaseRadius;
+        _combatRadius = _enemy.combatRadius;
+        _viewAngle = _enemy.viewAngle;
     }
 
     private void Update()
@@ -58,6 +79,8 @@ public class EnemyStateMachine : MonoBehaviour
         {
             CurrentState.Update();
         }
+
+        CombatCooldownHandler();
     }
 
     private void FixedUpdate()
@@ -68,6 +91,7 @@ public class EnemyStateMachine : MonoBehaviour
         }
     }
 
+    #region ENEMY VISUALIZATION
     public Transform GetVisibleTarget()
     {
         Collider[] targetInViewRadius = Physics.OverlapSphere(transform.position, _viewRadius, _targetLayer);
@@ -77,6 +101,11 @@ public class EnemyStateMachine : MonoBehaviour
             Transform target = collider.transform;
             Vector3 dirToTarget = (target.position - transform.position).normalized;
 
+            if (collider.transform.GetComponent<PlayerManager>().IsDie)
+            {
+                return null;
+            }
+                
             if (Vector3.Angle(transform.forward, dirToTarget) < _viewAngle / 2)
             {
                 return target;
@@ -92,7 +121,10 @@ public class EnemyStateMachine : MonoBehaviour
 
         foreach (Collider collider in targetInChaseRadius)
         {
-            return collider.transform;
+            if (collider.transform.GetComponent<PlayerManager>().IsDie)
+                return null;
+            else
+                return collider.transform;
         }
 
         return null;
@@ -104,7 +136,10 @@ public class EnemyStateMachine : MonoBehaviour
 
         foreach (Collider collider in targetInCombatRadius)
         {
-            return collider.transform;
+            if (collider.transform.GetComponent<PlayerManager>().IsDie)
+                return null;
+            else
+                return collider.transform;
         }
 
         return null;
@@ -119,22 +154,67 @@ public class EnemyStateMachine : MonoBehaviour
         return new Vector3(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), 0, Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
     }
 
+    public Vector3 TargetOffset(Transform target)
+    {
+        Vector3 position;
+        position = target.position;
+        return Vector3.MoveTowards(position, transform.position, .95f);
+    }
+    #endregion
+
+    #region COMBAT HANDLER
+
+    public void StartDealWeaponDamage()
+    {
+        float damageAdjust = _enemy.combos[ComboCount].damage;
+        _weapon.StartDealDamage(damageAdjust);
+    }
+
+    public void EndDealWeaponDamage()
+    {
+        _weapon.EndDealDamage();
+    }
+
+    private void CombatCooldownHandler()
+    {
+        if (_currentCooldown <= 0 && !IsReadyToCombat)
+        {
+            IsReadyToCombat = true;
+        }
+        else
+        {
+            _currentCooldown -= Time.deltaTime;
+        }
+    }
+
+    public void ResetCombatCooldown()
+    {
+        _currentCooldown = _delayPerCombo;
+        IsReadyToCombat = false;
+    }
+
+    #endregion
+
+    #region DEBUGING
     private void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(transform.position, _viewRadius);
+        if (_enemy == null) return;
 
-        Vector3 viewAngleA = DirFromAngle(-_viewAngle / 2, false);
-        Vector3 viewAngleB = DirFromAngle(_viewAngle / 2, false);
-        Gizmos.DrawLine(transform.position, transform.position + viewAngleA * _viewRadius);
-        Gizmos.DrawLine(transform.position, transform.position + viewAngleB * _viewRadius);
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, _enemy.viewRadius);
+
+        Vector3 viewAngleA = DirFromAngle(-_enemy.viewAngle / 2, false);
+        Vector3 viewAngleB = DirFromAngle(_enemy.viewAngle / 2, false);
+        Gizmos.DrawLine(transform.position, transform.position + viewAngleA * _enemy.viewRadius);
+        Gizmos.DrawLine(transform.position, transform.position + viewAngleB * _enemy.viewRadius);
 
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, _chaseRadius);
+        Gizmos.DrawWireSphere(transform.position, _enemy.chaseRadius);
 
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, _combatRadius);
+        Gizmos.DrawWireSphere(transform.position, _enemy.combatRadius);
     }
+    #endregion
 }
 
 public class EnemyStateFactory

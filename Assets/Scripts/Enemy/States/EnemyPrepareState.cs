@@ -49,7 +49,10 @@ public class EnemyPrepareState : EnemyBaseState
 
     private void CheckChangeState()
     {
-        //if combat cooldown <= 0 -> Combat State
+        if (_context.IsReadyToCombat)
+        {
+            ChangeState(_context.State.Combat());
+        }
         
         if (target == null)
         {

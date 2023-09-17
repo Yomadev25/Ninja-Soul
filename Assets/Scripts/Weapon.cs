@@ -64,8 +64,11 @@ public class Weapon : MonoBehaviour, IDamageDealer
         dealtTargets.Clear();
 
         Transform root = _slashFx.transform.parent;
-        root.localEulerAngles = effectEuler;
-        _slashFx.Play();
+        if (effectEuler != default)
+        {
+            root.localEulerAngles = effectEuler;
+            _slashFx.Play();
+        }
     }
 
     public void EndDealDamage()

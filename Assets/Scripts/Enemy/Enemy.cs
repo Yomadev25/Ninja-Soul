@@ -9,5 +9,11 @@ public class Enemy : ScriptableObject
 
     [Header("Field Of View")]
     public float viewRadius;
+    public float chaseRadius;
+    public float combatRadius;
     public float viewAngle;
+
+    [Header("Combat & Abilities")]
+    public float delayPerCombo;
+    public EnemyCombo[] combos;
 }

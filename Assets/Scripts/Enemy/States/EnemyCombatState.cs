@@ -10,11 +10,19 @@ public class EnemyCombatState : EnemyBaseState
     public override void Enter()
     {
         enemy = _context.Enemy;
+        _context.Anim.SetFloat("Speed", 0);
+
+        //if Want To Random Combo
+        int randomCombo = Random.Range(0, enemy.combos.Length);
+        _context.ComboCount = randomCombo;
+        //else Want To Set Combo
+
+        enemy.combos[_context.ComboCount].Execute(_context, this);
     }
 
     public override void Update()
     {
-        CheckChangeState();
+        
     }
 
     public override void FixedUpdate()
@@ -22,13 +30,14 @@ public class EnemyCombatState : EnemyBaseState
 
     }
 
-    private void CheckChangeState()
+    public void OnAttacked()
     {
-
+        ChangeState(_context.State.Chase());
     }
 
     public override void Exit()
     {
         enemy = null;
+        _context.ResetCombatCooldown();
     }
 }

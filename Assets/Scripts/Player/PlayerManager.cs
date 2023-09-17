@@ -23,7 +23,12 @@ public class PlayerManager : MonoBehaviour, IDamageable
     [SerializeField]
     private UnityEvent onHeal;
 
-    bool isDie;
+    #region MESSAGE FOR PUB/SUB
+    public const string MessageOnPlayerTookDamage = "Player Took Damage";
+    public const string MessageOnPlayerDied = "Player Died";
+    #endregion
+
+    public bool IsDie { get; set; }
 
     private void Start()
     {
@@ -44,16 +49,19 @@ public class PlayerManager : MonoBehaviour, IDamageable
         _anim.SetTrigger("Hit");
 
         onTakeDamage?.Invoke();
+        MessagingCenter.Send(this, MessageOnPlayerTookDamage);
     }
 
     private void Die()
     {
-        if (isDie) return;
+        if (IsDie) return;
 
-        isDie = true;
+        IsDie = true;
         _playerStateMachine.enabled = false;
 
         _anim.applyRootMotion = true;
         _anim.SetTrigger("Die");
+
+        MessagingCenter.Send(this, MessageOnPlayerDied);
     }
 }
