@@ -21,7 +21,7 @@ public class CameraShake : MonoBehaviour
 
     private void Awake()
     {
-        MessagingCenter.Subscribe<PlayerManager>(this, PlayerManager.MessageOnPlayerTookDamage, (sender) =>
+        MessagingCenter.Subscribe<PlayerManager>(this, PlayerManager.MessageOnHpChanged, (sender) =>
         {
             _shakeDuration = 0.2f;
         });
@@ -29,7 +29,7 @@ public class CameraShake : MonoBehaviour
 
     private void OnDestroy()
     {
-        MessagingCenter.Unsubscribe<PlayerManager>(this, PlayerManager.MessageOnPlayerTookDamage);
+        MessagingCenter.Unsubscribe<PlayerManager>(this, PlayerManager.MessageOnHpChanged);
     }
 
     void Start()

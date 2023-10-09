@@ -65,6 +65,11 @@ public class EnemyManager : MonoBehaviour, IDamageable
         _anim.applyRootMotion = true;
         _anim.SetTrigger("Die");
 
+        if (EffectManager.Instance != null)
+        {
+            EffectManager.Instance.Spawn("Soul", this.transform.position, Quaternion.identity);
+        }
+
         Destroy(this.gameObject, 4f);
     }
 }

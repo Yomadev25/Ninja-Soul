@@ -10,6 +10,8 @@ public class PlayerManager : MonoBehaviour, IDamageable
     private float _maxHp;
     [SerializeField]
     private float _hp;
+    [SerializeField]
+    private float _soul;
 
     [Header("References")]
     [SerializeField]
@@ -22,17 +24,46 @@ public class PlayerManager : MonoBehaviour, IDamageable
     private UnityEvent onTakeDamage;
     [SerializeField]
     private UnityEvent onHeal;
+    [SerializeField]
+    private UnityEvent onGetSoul;
+
+    #region PUBLIC VARIABLES
+
+    public float maxHp => _maxHp;
+    public float hp => _hp;
+    public float soul => _soul;
+
+    #endregion
 
     #region MESSAGE FOR PUB/SUB
-    public const string MessageOnPlayerTookDamage = "Player Took Damage";
+
+    public const string MessageOnHpChanged = "Hp Changed";
+    public const string MessageOnSoulChanged = "Soul Changed";
     public const string MessageOnPlayerDied = "Player Died";
+
     #endregion
 
     public bool IsDie { get; set; }
 
-    private void Start()
+    private void Awake()
     {
         _hp = _maxHp;
+
+        MessagingCenter.Subscribe<HudLoader>(this, HudLoader.MessageOnHudLoaded, (sender) =>
+        {
+            InitPlayerHUD();
+        });
+    }
+
+    private void OnDestroy()
+    {
+        MessagingCenter.Unsubscribe<HudLoader>(this, HudLoader.MessageOnHudLoaded);
+    }
+
+    private void InitPlayerHUD()
+    {
+        MessagingCenter.Send(this, MessageOnHpChanged);
+        MessagingCenter.Send(this, MessageOnSoulChanged);
     }
 
     private void Update()
@@ -49,7 +80,16 @@ public class PlayerManager : MonoBehaviour, IDamageable
         _anim.SetTrigger("Hit");
 
         onTakeDamage?.Invoke();
-        MessagingCenter.Send(this, MessageOnPlayerTookDamage);
+        MessagingCenter.Send(this, MessageOnHpChanged);
+    }
+
+    public void GetSoul(float soul)
+    {
+        _soul += soul;
+        if (_soul > 100) _soul = 100;
+
+        onGetSoul?.Invoke();
+        MessagingCenter.Send(this, MessageOnSoulChanged);
     }
 
     private void Die()
