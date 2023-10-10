@@ -12,6 +12,8 @@ public class PlayerManager : MonoBehaviour, IDamageable
     private float _hp;
     [SerializeField]
     private float _soul;
+    [SerializeField]
+    private bool _soulBerserk;
 
     [Header("References")]
     [SerializeField]
@@ -26,12 +28,17 @@ public class PlayerManager : MonoBehaviour, IDamageable
     private UnityEvent onHeal;
     [SerializeField]
     private UnityEvent onGetSoul;
+    [SerializeField]
+    private UnityEvent onStartSoulBerserk;
+    [SerializeField]
+    private UnityEvent onEndedSoulBerserk;
 
     #region PUBLIC VARIABLES
 
     public float maxHp => _maxHp;
     public float hp => _hp;
     public float soul => _soul;
+    public bool soulBerserk => _soulBerserk;
 
     #endregion
 
@@ -85,11 +92,41 @@ public class PlayerManager : MonoBehaviour, IDamageable
 
     public void GetSoul(float soul)
     {
-        _soul += soul;
+        if (!_soulBerserk)
+        {
+            _soul += soul;
+        }    
         if (_soul > 100) _soul = 100;
 
         onGetSoul?.Invoke();
         MessagingCenter.Send(this, MessageOnSoulChanged);
+    }
+
+    public void ActivateSoulBerserk()
+    {
+        StartCoroutine(SoulBerserkCoroutine());
+    }
+
+    IEnumerator SoulBerserkCoroutine()
+    {
+        _soulBerserk = true;
+        onStartSoulBerserk?.Invoke();
+
+        while (_soul > 0)
+        {
+            _soul -= Time.deltaTime * 5;
+            MessagingCenter.Send(this, MessageOnSoulChanged);
+
+            yield return null;
+        }
+        if (_soul < 0) _soul = 0;
+
+        _soulBerserk = false;
+        LeanTween.value(1, 0, 0.5f).setEaseInSine().setOnUpdate((value) =>
+        {
+            _playerStateMachine.soulVolume.weight = value;
+        });
+        onEndedSoulBerserk?.Invoke();
     }
 
     private void Die()

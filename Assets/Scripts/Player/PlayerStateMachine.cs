@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 
 public class PlayerStateMachine : MonoBehaviour
 {
@@ -28,9 +29,16 @@ public class PlayerStateMachine : MonoBehaviour
     private InputActionReference _dashInput;
     [SerializeField]
     private InputActionReference _combatInput;
+    [SerializeField]
+    private InputActionReference _soulInput;
 
+    [Header("Effects")]
+    [SerializeField]
+    private Volume _soulVolume;
 
     [Header("References")]
+    [SerializeField]
+    private PlayerManager _playerManager;
     [SerializeField]
     private Rigidbody _rigidBody;
     [SerializeField]
@@ -40,6 +48,7 @@ public class PlayerStateMachine : MonoBehaviour
     #region PUBLIC REFERENCES
     public PlayerBaseState CurrentState { get; set; }
     public PlayerStateFactory State { get; set; }
+    public PlayerManager playerManager => _playerManager;
 
     public Rigidbody rigidBody => _rigidBody;
     public Animator Anim => _anim;
@@ -58,6 +67,9 @@ public class PlayerStateMachine : MonoBehaviour
     public bool PressedSprint { get; set; }
     public bool PressedDash { get; set; }
     public bool PressedCombat { get; set; }
+    public bool PressedSoul { get; set; }
+
+    public Volume soulVolume => _soulVolume;
     public Coroutine DashCoroutine { get; set; }
     #endregion
 
@@ -163,6 +175,23 @@ public class PlayerStateMachine : MonoBehaviour
         {
             Debug.LogErrorFormat("{0} isn't exist in {1}.", nameof(InputActionReference), this.name);
         }
+
+        if (_soulInput != null)
+        {
+            _soulInput.action.started += (ctx) =>
+            {
+                PressedSoul = true;
+            };
+
+            _soulInput.action.canceled += (ctx) =>
+            {
+                PressedSoul = false;
+            };
+        }
+        else
+        {
+            Debug.LogErrorFormat("{0} isn't exist in {1}.", nameof(InputActionReference), this.name);
+        }
     }
 
     private void Rotate()
@@ -172,6 +201,11 @@ public class PlayerStateMachine : MonoBehaviour
 
         var rot = Quaternion.LookRotation(Isometric.ToIso(AxisInput), Vector3.up);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, rot, _rotateSpeed * Time.deltaTime);
+    }
+
+    public bool SoulReady()
+    {
+        return _playerManager.soul == 100;
     }
 }
 
@@ -213,5 +247,10 @@ public class PlayerStateFactory
     public PlayerCombatState Combat()
     {
         return new PlayerCombatState(_context);
+    }
+
+    public PlayerSoulState Soul()
+    {
+        return new PlayerSoulState(_context);
     }
 }

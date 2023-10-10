@@ -8,15 +8,17 @@ public class EffectManager : Singleton<EffectManager>
     [SerializeField]
     private Effect[] effects;
     
-    public void Spawn(string name, Vector3 position, Quaternion rotation)
+    public GameObject Spawn(string name, Vector3 position, Quaternion rotation)
     {
         foreach (Effect effect in effects)
         {
             if (name == effect.name)
             {
-                Instantiate(effect.effect, position, rotation);
+                return Instantiate(effect.effect, position, rotation);
             }
         }
+
+        return null;
     }
 }
 

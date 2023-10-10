@@ -63,6 +63,7 @@ public class Weapon : MonoBehaviour, IDamageDealer
         canDealDamage = true;
         dealtTargets.Clear();
 
+        if (_slashFx == null) return;
         Transform root = _slashFx.transform.parent;
         if (effectEuler != default)
         {

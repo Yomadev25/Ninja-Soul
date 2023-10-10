@@ -24,7 +24,7 @@ public class EquipmentFactory : MonoBehaviour
     public void StartDealWeaponDamage()
     {
         int currentCombo = _playerStateMachine.ComboCount;
-        float damageAdjust = _playerStateMachine.ComboFactory.Combos[currentCombo].damage;
+        float damageAdjust = _playerStateMachine.ComboFactory.Combos[currentCombo].damage * (_playerStateMachine.playerManager.soulBerserk? 2f : 1f);
 
         _weapon.StartDealDamage(damageAdjust, _playerStateMachine.ComboFactory.Combos[currentCombo].eulerAngle);
     }

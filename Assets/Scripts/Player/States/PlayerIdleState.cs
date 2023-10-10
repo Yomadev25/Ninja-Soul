@@ -38,6 +38,10 @@ public class PlayerIdleState : PlayerBaseState
         {
             ChangeState(_context.State.Combat());
         }
+        else if (_context.PressedSoul && _context.SoulReady())
+        {
+            ChangeState(_context.State.Soul());
+        }
     }
 
     public override void Exit()

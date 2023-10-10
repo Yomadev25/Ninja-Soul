@@ -21,7 +21,7 @@ public class PlayerRunState : PlayerBaseState
 
     public override void FixedUpdate()
     {
-        _context.rigidBody.MovePosition(_context.transform.position + (Isometric.ToIso(_context.AxisInput) * _context.AxisInput.normalized.magnitude) * _context.MoveSpeed * Time.deltaTime);
+        _context.rigidBody.MovePosition(_context.transform.position + (Isometric.ToIso(_context.AxisInput) * _context.AxisInput.normalized.magnitude) * (_context.MoveSpeed * (_context.playerManager.soulBerserk? 1.2f : 1f)) * Time.deltaTime);
     }
 
     private void CheckChangeState()
@@ -41,6 +41,10 @@ public class PlayerRunState : PlayerBaseState
         else if (_context.PressedCombat)
         {
             ChangeState(_context.State.Combat());
+        }
+        else if (_context.PressedSoul && _context.SoulReady())
+        {
+            ChangeState(_context.State.Soul());
         }
     }
 

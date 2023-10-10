@@ -31,6 +31,7 @@ public class EnemyManager : MonoBehaviour, IDamageable
 
     #region PUBLIC VARIABLES
     public Enemy Enemy => _enemy;
+    public EnemyStateMachine stateMachine => _enemyStateMachine;
     #endregion
 
     private void Start()
