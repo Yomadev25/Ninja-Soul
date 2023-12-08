@@ -3,7 +3,22 @@ guid: fa9e6b3705677f74ea1be2c504e1acd4
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Canvas
+    second: {fileID: 2100000, guid: af6d58c02aed2294e97e0b4139bc2449, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Paper
+    second: {fileID: 2100000, guid: df99927071e9f264cac1691f3eaa410d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Scroll
+    second: {fileID: 2100000, guid: e632b736f15b29145ac0852be964e8d2, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

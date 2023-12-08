@@ -3,7 +3,27 @@ guid: 2e2229d037da42e459d65861ffc0b6fa
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Spear shaft
+    second: {fileID: 2100000, guid: b563141ab7ca24b45b9832d01475e5d1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tip of spear
+    second: {fileID: 2100000, guid: 0d9c7e9c66dae8240b03b0a01951e8fa, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tip of stick
+    second: {fileID: 2100000, guid: 2257de003b1aaa04fb68cd58b68898ab, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Woods
+    second: {fileID: 2100000, guid: bfc6f593c050bd64b9eac84619c1740f, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

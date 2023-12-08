@@ -3,7 +3,17 @@ guid: 1d43b2f3c48772d48a7af55a65e799e1
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Glo
+    second: {fileID: 2100000, guid: 86188f84c7187714dace1de57bd3c8f7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Li
+    second: {fileID: 2100000, guid: 324e792af510cd344bd5f4f53e5d1d76, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

@@ -3,7 +3,17 @@ guid: 7dddaf0d5b093f645a12e2a22d49a467
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pallet
+    second: {fileID: 2100000, guid: a8f4904d9bdc36b4e92f03bc8c6168e0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stroke
+    second: {fileID: 2100000, guid: 61b1de83788a6b041b5b95605bf1e489, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

@@ -3,7 +3,22 @@ guid: 13c5793fe3c8f3447bd961fa43e9927c
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Antlers
+    second: {fileID: 2100000, guid: eed74c970e826a743955d7131a450c10, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Chair
+    second: {fileID: 2100000, guid: 7bb90aaf08f922f40ab0c02c03e1cef6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Chair legs
+    second: {fileID: 2100000, guid: 3b023900a99c7f34db743e0b110f4158, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

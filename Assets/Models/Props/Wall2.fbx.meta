@@ -1,9 +1,24 @@
 fileFormatVersion: 2
-guid: d2768a159c485144b8956ff00d50b25b
+guid: 9dceafbb3655dd740ac9107d75c5690f
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Harden Wood
+    second: {fileID: 2100000, guid: f726d08ba6f1a4c40aabf7bb1a6ed0bd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Paper
+    second: {fileID: 2100000, guid: b19ebf896b79b9644a21bcc23a373213, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wooden
+    second: {fileID: 2100000, guid: 8efe9bff8d0fbe146829b5488319e14b, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

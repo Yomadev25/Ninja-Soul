@@ -1,9 +1,19 @@
 fileFormatVersion: 2
-guid: a260094e50466f945ad60c8d1098d1d1
+guid: 4dcc5f8fc7d86064e9d29346b818b211
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pallet
+    second: {fileID: 2100000, guid: 996aceb99547314488f256c2e503610c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stroke
+    second: {fileID: 2100000, guid: 92d86c885fc131c44bfe8e01445cd959, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

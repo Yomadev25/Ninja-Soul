@@ -3,7 +3,22 @@ guid: 947a1ba0a25a8ce46b9ea7c0b6d7fb24
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tip of stick
+    second: {fileID: 2100000, guid: 8eb79b99905ac834cb62026eff656bd3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tip of wood
+    second: {fileID: 2100000, guid: f0826b048b77fd14ebc7db999c239036, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Woods
+    second: {fileID: 2100000, guid: 2abc0241e5b363040946159159e18e1a, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
