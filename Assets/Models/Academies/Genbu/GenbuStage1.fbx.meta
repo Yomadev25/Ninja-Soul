@@ -3,7 +3,22 @@ guid: e1fbf8e406d18b546bf0bd5f5eb30a29
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ground2
+    second: {fileID: 2100000, guid: b3081004bb255ed49a3877b532438e29, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: House
+    second: {fileID: 2100000, guid: 2e5172fba348920478f821b81bd842ac, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: RockStage
+    second: {fileID: 2100000, guid: bc8a556a9a190ad4eb4adfb0f1c03773, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
