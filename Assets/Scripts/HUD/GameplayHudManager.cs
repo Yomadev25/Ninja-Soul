@@ -7,7 +7,9 @@ public class GameplayHudManager : MonoBehaviour
 {
     [Header("Player Dialog")]
     [SerializeField]
-    private GameObject _hpTemplate;
+    private Image _hpTemplate;
+    [SerializeField]
+    private Sprite _hpSprite;
     [SerializeField]
     private Transform _hpIconRoot;
     [SerializeField]
@@ -42,11 +44,14 @@ public class GameplayHudManager : MonoBehaviour
 
         for (int i = 0; i < maxHp; i++)
         {
+            Image hpIcon = Instantiate(_hpTemplate, _hpIconRoot);
+
             if (i < hp)
             {
-                GameObject GO = Instantiate(_hpTemplate, _hpIconRoot);
-                GO.SetActive(true);
+                hpIcon.sprite = _hpSprite;
             }
+
+            hpIcon.gameObject.SetActive(true);
         }
     }
 

@@ -1991,7 +1991,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: adc63a16443d6204786d30a30d18a7e6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 01b1f5e7552a7eb42890d139f90f5390, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2098,7 +2098,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8555e944501e4c84280caa8349b84b56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hpTemplate: {fileID: 524583164}
+  _hpTemplate: {fileID: 524583166}
+  _hpSprite: {fileID: 21300000, guid: adc63a16443d6204786d30a30d18a7e6, type: 3}
   _hpIconRoot: {fileID: 1395011581}
   _maxHpIcon: 10
   _soulGaugeFill: {fileID: 1073483874}
@@ -4687,8 +4688,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 116.77, y: 31.531}
-  m_SizeDelta: {x: 906.46, y: 63.0611}
+  m_AnchoredPosition: {x: 107.01627, y: 31.531}
+  m_SizeDelta: {x: 886.9526, y: 63.0611}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1395011582
 MonoBehaviour:
@@ -4711,7 +4712,7 @@ MonoBehaviour:
   m_Spacing: -3.41
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 1
-  m_ChildControlWidth: 0
+  m_ChildControlWidth: 1
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
