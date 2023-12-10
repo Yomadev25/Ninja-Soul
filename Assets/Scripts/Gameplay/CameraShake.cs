@@ -62,4 +62,9 @@ public class CameraShake : MonoBehaviour
             noiseProfile.m_FrequencyGain = originalFrequency;
         }
     }
+
+    public void InstantShake(float duration)
+    {
+        _shakeDuration = duration;
+    }
 }

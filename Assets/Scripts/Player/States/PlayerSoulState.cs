@@ -6,6 +6,7 @@ public class PlayerSoulState : PlayerBaseState
 {
     float timePassed;
     float clipSpeed;
+    public const string MessageOnEnterSoulBerserk = "On Enter Soul Berserk";
 
     public PlayerSoulState(PlayerStateMachine ctx) : base(ctx) { }
 
@@ -18,6 +19,8 @@ public class PlayerSoulState : PlayerBaseState
         {
             _context.soulVolume.weight = value;
         });
+
+        MessagingCenter.Send(this, MessageOnEnterSoulBerserk);
     }
 
     public override void Update()
