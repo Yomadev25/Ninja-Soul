@@ -2919,7 +2919,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ce4f7dd2530d9c44a615f6e27f6732a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 3
+  _speed: 2
   _sprintSpeed: 6
   _rotateSpeed: 600
   _dashSpeed: 30
@@ -4270,6 +4270,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6087461214063186955}
     m_Modifications:
+    - target: {fileID: 2076227475660970454, guid: c63f8f45ebe46c3448fca988fcc6f3d9,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2076227477524788203, guid: c63f8f45ebe46c3448fca988fcc6f3d9,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2784966884539660558, guid: c63f8f45ebe46c3448fca988fcc6f3d9,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3932893801435490376, guid: c63f8f45ebe46c3448fca988fcc6f3d9,
         type: 3}
       propertyPath: m_RootOrder
@@ -4323,6 +4338,11 @@ PrefabInstance:
     - target: {fileID: 3932893801435490376, guid: c63f8f45ebe46c3448fca988fcc6f3d9,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4977605435091408941, guid: c63f8f45ebe46c3448fca988fcc6f3d9,
+        type: 3}
+      propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4977605435091408941, guid: c63f8f45ebe46c3448fca988fcc6f3d9,
@@ -4391,7 +4411,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
