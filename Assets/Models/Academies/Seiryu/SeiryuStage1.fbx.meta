@@ -3,7 +3,52 @@ guid: e552a6e06b71f4e48b7359b991017dd9
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ground
+    second: {fileID: 2100000, guid: 023a0c19f9b2414489bc939368a7ca3a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: House1
+    second: {fileID: 2100000, guid: 01471cbba8fe24249be9ecfdef745925, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: House2
+    second: {fileID: 2100000, guid: 4f2694a9f2acb7546853db08368f7685, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: House3
+    second: {fileID: 2100000, guid: 9a75c444e803c994c96269463bb215ec, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material
+    second: {fileID: 2100000, guid: d4cad845de33c414289bdb529114ae14, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.001
+    second: {fileID: 2100000, guid: e4d526febfb419c4380cc9e666b0f7e2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Rock
+    second: {fileID: 2100000, guid: 8940e4bf51d458249a84e45fbfeb248d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bridge
+    second: {fileID: 2100000, guid: 2c5b53873789eae41a6518b647406863, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bridge0
+    second: {fileID: 2100000, guid: 08808e4114ea62e4fa6698443e4f3b79, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
