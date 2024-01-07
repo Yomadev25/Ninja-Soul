@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     {
         MessagingCenter.Subscribe<PlayerManager>(this, PlayerManager.MessageOnPlayerDied, (sender) =>
         {
-            Invoke(nameof(RestartLevel), 1.5f);
+            Invoke(nameof(RestartLevel), 5f);
         });
     }
 

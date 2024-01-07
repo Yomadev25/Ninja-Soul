@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class GameplayHudManager : MonoBehaviour
 {
+    [SerializeField]
+    private Animator _animator;
+
     [Header("Player Dialog")]
     [SerializeField]
     private Image _hpTemplate;
@@ -28,11 +31,18 @@ public class GameplayHudManager : MonoBehaviour
         {
             UpdateSoulGauge(sender.soul);
         });
+
+        MessagingCenter.Subscribe<PlayerManager>(this, PlayerManager.MessageOnPlayerDied, (sender) =>
+        {
+            Eliminated();
+        });
     }
 
     private void OnDestroy()
     {
         MessagingCenter.Unsubscribe<PlayerManager>(this, PlayerManager.MessageOnHpChanged);
+        MessagingCenter.Unsubscribe<PlayerManager>(this, PlayerManager.MessageOnSoulChanged);
+        MessagingCenter.Unsubscribe<PlayerManager>(this, PlayerManager.MessageOnPlayerDied);
     }
 
     private void UpdateHpIcon(int maxHp, int hp)
@@ -58,5 +68,10 @@ public class GameplayHudManager : MonoBehaviour
     private void UpdateSoulGauge(float value)
     {
         _soulGaugeFill.fillAmount = value / 100;
+    }
+
+    private void Eliminated()
+    {
+        _animator.SetTrigger("Eliminated");
     }
 }

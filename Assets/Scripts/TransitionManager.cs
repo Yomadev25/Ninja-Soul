@@ -15,6 +15,10 @@ public class TransitionManager : Singleton<TransitionManager>
         _sceneTransition.alpha = 0f;
         _sceneTransition.blocksRaycasts = true;
 
+        if (LeanTween.isTweening(_sceneTransition.gameObject))
+        {
+            LeanTween.cancel(_sceneTransition.gameObject);
+        }
         _sceneTransition.LeanAlpha(1, duration).setOnComplete(() => callback?.Invoke());
     }
 
@@ -23,6 +27,10 @@ public class TransitionManager : Singleton<TransitionManager>
         _sceneTransition.alpha = 1f;
         _sceneTransition.blocksRaycasts = false;
 
+        if (LeanTween.isTweening(_sceneTransition.gameObject))
+        {
+            LeanTween.cancel(_sceneTransition.gameObject);
+        }
         _sceneTransition.LeanAlpha(0, duration).setDelay(0.5f).setOnComplete(() => callback?.Invoke());
     }
 
