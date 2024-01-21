@@ -5,6 +5,8 @@ using UnityEngine.Events;
 
 public class EnemyManager : MonoBehaviour, IDamageable
 {
+    public const string MessageOnEnemyDead = "On Enemy Dead";
+
     [Header("Enemy Profile")]
     [SerializeField]
     private Enemy _enemy;
@@ -71,6 +73,7 @@ public class EnemyManager : MonoBehaviour, IDamageable
             EffectManager.Instance.Spawn("Soul", this.transform.position, Quaternion.identity);
         }
 
+        MessagingCenter.Send(this, MessageOnEnemyDead);
         Destroy(this.gameObject, 4f);
     }
 }

@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 767b2bda976d2494a893bf3913a764f2, type: 3}
+  m_Name: Event_00
+  m_EditorClassIdentifier: 
+  title: Eliminate all ninjas
+  type: 0
+  eliminateEvents:
+  - Event: {fileID: 0}
+    enemy: {fileID: 11400000, guid: 89287cc063a3ac04f9c4d6075a4270b2, type: 2}
+    targetCount: 3
+    count: 0
+  - Event: {fileID: 0}
+    enemy: {fileID: 11400000, guid: 3a0fd6ac219c6af4cba5ac8b8e45c9ab, type: 2}
+    targetCount: 3
+    count: 0
