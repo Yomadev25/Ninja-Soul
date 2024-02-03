@@ -8,6 +8,7 @@ public class EventManager : Singleton<EventManager>
 {
     public const string MessageActivateEvent = "Activate Event";
     public const string MessageOnUpdateEvent = "On Update Event Progress";
+    public const string MessageOnArchievedEvent = "On Archieved Event";
 
     private List<Event> _events = new List<Event>();
     private List<EliminateEvent> _eliminateEvents = new List<EliminateEvent>();
@@ -89,13 +90,14 @@ public class EventManager : Singleton<EventManager>
 
     }
 
-    private void ArchieveEvent(Event _event)
+    public void ArchieveEvent(Event _event)
     {
         if (_events.Contains(_event))
         {
             _events.Remove(_event);
         }
 
+        MessagingCenter.Send(this, MessageOnArchievedEvent, _event);
         MessagingCenter.Send(this, MessageOnUpdateEvent);
     }
 }

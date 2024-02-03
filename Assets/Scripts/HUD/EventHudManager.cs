@@ -17,17 +17,37 @@ public class EventHudManager : MonoBehaviour
     [SerializeField]
     private TMP_Text _eventObjective;
 
+    [Header("Event Pop-up")]
+    [SerializeField]
+    private CanvasGroup _eventPopup;
+    [SerializeField]
+    private TMP_Text _eventPopupName;
+    [SerializeField]
+    private TMP_Text _eventPopupObjective;
+
     private void Awake()
     {
+        MessagingCenter.Subscribe<EventManager, Event>(this, EventManager.MessageActivateEvent, (sender, @event) =>
+        {
+            EventPopup(@event);
+        });
+
         MessagingCenter.Subscribe<EventManager>(this, EventManager.MessageOnUpdateEvent, (sender) =>
         {
             UpdateEventList(sender);
+        });
+
+        MessagingCenter.Subscribe<EventManager, Event>(this, EventManager.MessageOnArchievedEvent, (sender, @event) =>
+        {
+            EventPopup(@event, true);
         });
     }
 
     private void OnDestroy()
     {
+        MessagingCenter.Unsubscribe<EventManager, Event>(this, EventManager.MessageActivateEvent);
         MessagingCenter.Unsubscribe<EventManager>(this, EventManager.MessageOnUpdateEvent);
+        MessagingCenter.Unsubscribe<EventManager, Event>(this, EventManager.MessageOnArchievedEvent);
     }
 
     private void UpdateEventList(EventManager eventManager)
@@ -54,7 +74,8 @@ public class EventHudManager : MonoBehaviour
                     break;
                 case Event.EventType.Collect:
                     break;
-                case Event.EventType.Destination:
+                case Event.EventType.Custom:
+                    _eventObjective.text = @event.description;
                     break;
                 default:
                     break;
@@ -63,5 +84,42 @@ public class EventHudManager : MonoBehaviour
             GameObject item = Instantiate(_eventTemplate, _eventRoot);
             item.SetActive(true);
         }
+    }
+
+    private void EventPopup(Event @event, bool isComplete = false)
+    {
+        string name = "";
+        if (isComplete)
+        {
+            name = "COMPLETED";
+        }
+        else
+        {
+            switch (@event.type)
+            {
+                case Event.EventType.Eliminate:
+                    name = "AMBUSHED";
+                    break;
+                case Event.EventType.Collect:
+                    name = "MISSION";
+                    break;
+                case Event.EventType.Custom:
+                    name = "MISSION";
+                    break;
+                default:
+                    name = "MISSION";
+                    break;
+            }
+        }
+
+        _eventPopupName.text = name;
+        _eventPopupObjective.text = @event.title;
+
+        LeanTween.cancel(_eventPopup.gameObject);
+        _eventPopup.alpha = 0;
+        _eventPopup.LeanAlpha(1, 1).setOnComplete(() =>
+        {
+            _eventPopup.LeanAlpha(0, 1).setDelay(1.5f);
+        });
     }
 }

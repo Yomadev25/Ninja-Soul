@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class GameplayHudManager : MonoBehaviour
 {
+    public const string MessageWantToRestart = "Want To Restart";
+    public const string MessageWantToExitLevel = "Want To Exit Level";
+
     [SerializeField]
     private Animator _animator;
 
@@ -19,6 +22,12 @@ public class GameplayHudManager : MonoBehaviour
     private int _maxHpIcon;
     [SerializeField]
     private Image _soulGaugeFill;
+
+    [Header("Clear Dialog")]
+    [SerializeField]
+    private Button _restartButton;
+    [SerializeField]
+    private Button _exitButton;
 
     private void Awake()
     {
@@ -36,6 +45,11 @@ public class GameplayHudManager : MonoBehaviour
         {
             Eliminated();
         });
+
+        MessagingCenter.Subscribe<GameManager>(this, GameManager.MessageOnLevelCompleted, (sender) =>
+        {
+            LevelClear();
+        });
     }
 
     private void OnDestroy()
@@ -43,6 +57,13 @@ public class GameplayHudManager : MonoBehaviour
         MessagingCenter.Unsubscribe<PlayerManager>(this, PlayerManager.MessageOnHpChanged);
         MessagingCenter.Unsubscribe<PlayerManager>(this, PlayerManager.MessageOnSoulChanged);
         MessagingCenter.Unsubscribe<PlayerManager>(this, PlayerManager.MessageOnPlayerDied);
+        MessagingCenter.Unsubscribe<GameManager>(this, GameManager.MessageOnLevelCompleted);
+    }
+
+    private void Start()
+    {
+        _restartButton.onClick.AddListener(() => MessagingCenter.Send(this, MessageWantToRestart));
+        _exitButton.onClick.AddListener(() => MessagingCenter.Send(this, MessageWantToExitLevel));
     }
 
     private void UpdateHpIcon(int maxHp, int hp)
@@ -73,5 +94,10 @@ public class GameplayHudManager : MonoBehaviour
     private void Eliminated()
     {
         _animator.SetTrigger("Eliminated");
+    }
+
+    private void LevelClear()
+    {
+        _animator.SetTrigger("Clear");
     }
 }

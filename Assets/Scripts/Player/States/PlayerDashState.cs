@@ -26,7 +26,9 @@ public class PlayerDashState : PlayerBaseState
     private async Task DashAsync()
     {
         Vector3 dashDirection = _context.transform.forward.normalized;
-        float duration = 0.2f;
+        float duration = 0.8f;
+        _context.Anim.applyRootMotion = true;
+        _context.Anim.SetTrigger("Dash");
         _context.Anim.SetBool("isDash", true);
 
         while (duration > 0f)
@@ -38,6 +40,7 @@ public class PlayerDashState : PlayerBaseState
         }
 
         _context.Anim.SetBool("isDash", false);
+        _context.Anim.applyRootMotion = false;
         CheckChangeState();
     }
 

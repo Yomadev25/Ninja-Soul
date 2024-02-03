@@ -9,11 +9,13 @@ public class Event : ScriptableObject
     {
         Eliminate,
         Collect,
-        Destination,
+        Custom,
     }
 
     public string title;
     public EventType type;
+    [TextArea(5, 10)]
+    public string description;
 
     [Header("Eliminate Condition")]
     public EliminateEvent[] eliminateEvents;
