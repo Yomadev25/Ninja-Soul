@@ -74,9 +74,12 @@ public class EventManager : Singleton<EventManager>
                 }
             }
 
-            Debug.Log(completedTask);
             if (completedTask >= _event.eliminateEvents.Length)
+            {
                 ArchieveEvent(_event);
+                CheckEliminateEvent(enemy);
+                break;
+            }
         }
     }
 
@@ -93,7 +96,7 @@ public class EventManager : Singleton<EventManager>
     public void ArchieveEvent(Event _event)
     {
         if (_events.Contains(_event))
-        {
+        {          
             _events.Remove(_event);
         }
 

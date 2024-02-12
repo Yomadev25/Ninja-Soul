@@ -50,6 +50,7 @@ public class PlayerRunState : PlayerBaseState
 
     public override void Exit()
     {
-
+        _context.MoveSpeed = 0;
+        _context.Anim.SetFloat("Speed", 0);
     }
 }

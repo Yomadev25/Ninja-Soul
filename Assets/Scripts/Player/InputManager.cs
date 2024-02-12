@@ -71,6 +71,24 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""67fe3115-6679-48fc-a9cb-7a6eaa7a6804"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Select Weapon"",
+                    ""type"": ""Button"",
+                    ""id"": ""01073fe4-0ae9-4770-8421-82697fb4417d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -172,6 +190,28 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
                     ""action"": ""Soul"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d3e26579-4fd4-457d-a181-1917cfd9d510"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b0497f70-7a2f-4dac-9391-de8a246a8b5d"",
+                    ""path"": ""<Keyboard>/leftCtrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Select Weapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -185,6 +225,8 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
         m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
         m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
         m_Player_Soul = m_Player.FindAction("Soul", throwIfNotFound: true);
+        m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
+        m_Player_SelectWeapon = m_Player.FindAction("Select Weapon", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -249,6 +291,8 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Dash;
     private readonly InputAction m_Player_Attack;
     private readonly InputAction m_Player_Soul;
+    private readonly InputAction m_Player_Pause;
+    private readonly InputAction m_Player_SelectWeapon;
     public struct PlayerActions
     {
         private @InputManager m_Wrapper;
@@ -258,6 +302,8 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
         public InputAction @Dash => m_Wrapper.m_Player_Dash;
         public InputAction @Attack => m_Wrapper.m_Player_Attack;
         public InputAction @Soul => m_Wrapper.m_Player_Soul;
+        public InputAction @Pause => m_Wrapper.m_Player_Pause;
+        public InputAction @SelectWeapon => m_Wrapper.m_Player_SelectWeapon;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -282,6 +328,12 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
                 @Soul.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSoul;
                 @Soul.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSoul;
                 @Soul.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSoul;
+                @Pause.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
+                @SelectWeapon.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectWeapon;
+                @SelectWeapon.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectWeapon;
+                @SelectWeapon.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectWeapon;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -301,6 +353,12 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
                 @Soul.started += instance.OnSoul;
                 @Soul.performed += instance.OnSoul;
                 @Soul.canceled += instance.OnSoul;
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
+                @SelectWeapon.started += instance.OnSelectWeapon;
+                @SelectWeapon.performed += instance.OnSelectWeapon;
+                @SelectWeapon.canceled += instance.OnSelectWeapon;
             }
         }
     }
@@ -312,5 +370,7 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
         void OnDash(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
         void OnSoul(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
+        void OnSelectWeapon(InputAction.CallbackContext context);
     }
 }

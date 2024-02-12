@@ -22,6 +22,8 @@ public class GameplayHudManager : MonoBehaviour
     private int _maxHpIcon;
     [SerializeField]
     private Image _soulGaugeFill;
+    [SerializeField]
+    private CanvasGroup[] _weaponSlots;
 
     [Header("Clear Dialog")]
     [SerializeField]
@@ -41,6 +43,26 @@ public class GameplayHudManager : MonoBehaviour
             UpdateSoulGauge(sender.soul);
         });
 
+        MessagingCenter.Subscribe<GameManager>(this, GameManager.MessageWantToSelectWeapon, (sender) =>
+        {
+            InitWeaponSelectionDialog();
+        });
+
+        MessagingCenter.Subscribe<GameManager>(this, GameManager.MessageWantToDisposeWeapon, (sender) =>
+        {
+            DisposeWeaponSelectionDialog();
+        });
+
+        MessagingCenter.Subscribe<ComboFactory, ComboGroup[]>(this, ComboFactory.MessageSendComboData, (sender, combo) =>
+        {
+            UpdateWeaponList(combo);
+        });
+
+        MessagingCenter.Subscribe<WeaponDialog, WeaponDialog.Clans>(this, WeaponDialog.MessageWantToChangeWeapon, (sender, clan) =>
+        {
+            UpdateActivatedWeapon((int)clan);
+        });
+
         MessagingCenter.Subscribe<PlayerManager>(this, PlayerManager.MessageOnPlayerDied, (sender) =>
         {
             Eliminated();
@@ -56,6 +78,10 @@ public class GameplayHudManager : MonoBehaviour
     {
         MessagingCenter.Unsubscribe<PlayerManager>(this, PlayerManager.MessageOnHpChanged);
         MessagingCenter.Unsubscribe<PlayerManager>(this, PlayerManager.MessageOnSoulChanged);
+        MessagingCenter.Unsubscribe<GameManager>(this, GameManager.MessageWantToSelectWeapon);
+        MessagingCenter.Unsubscribe<GameManager>(this, GameManager.MessageWantToDisposeWeapon);
+        MessagingCenter.Unsubscribe<ComboFactory, ComboGroup>(this, ComboFactory.MessageSendComboData);
+        MessagingCenter.Unsubscribe<WeaponDialog, WeaponDialog.Clans>(this, WeaponDialog.MessageWantToChangeWeapon);
         MessagingCenter.Unsubscribe<PlayerManager>(this, PlayerManager.MessageOnPlayerDied);
         MessagingCenter.Unsubscribe<GameManager>(this, GameManager.MessageOnLevelCompleted);
     }
@@ -89,6 +115,32 @@ public class GameplayHudManager : MonoBehaviour
     private void UpdateSoulGauge(float value)
     {
         _soulGaugeFill.fillAmount = value / 100;
+    }
+
+    private void UpdateWeaponList(ComboGroup[] comboGroup)
+    {
+        for (int i = 0; i < _weaponSlots.Length; i++)
+        {
+            _weaponSlots[i].alpha = comboGroup[i].isUnlocked? 1 : 0.3f;
+        }
+    }
+
+    private void UpdateActivatedWeapon(int index)
+    {
+        _weaponSlots[index].transform.SetSiblingIndex(_weaponSlots[index].transform.parent.childCount - 1);
+        if (index != 0)
+            _weaponSlots[0].transform.SetSiblingIndex(_weaponSlots[index].transform.parent.childCount - 2);
+    }
+
+    private void InitWeaponSelectionDialog()
+    {
+        _animator.SetTrigger("Weapon");
+        _animator.SetBool("isSelectWeapon", false);
+    }
+
+    private void DisposeWeaponSelectionDialog()
+    {
+        _animator.SetBool("isSelectWeapon", true);
     }
 
     private void Eliminated()

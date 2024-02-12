@@ -6,14 +6,15 @@ public class Weapon : MonoBehaviour, IDamageDealer
 {
     [Header("Weapon Properties")]
     [SerializeField]
+    private string _weaponName;
+    [SerializeField]
     private float _weaponLength;
     [SerializeField]
     private float _weaponDamage;
 
     [Header("References")]
     [SerializeField]
-    private LayerMask _targetLayer;   
-    
+    private LayerMask _targetLayer;
     [SerializeField]
     private UnityEngine.VFX.VisualEffect _slashFx; //Don't forget to delete this line and use Effect Manager instead.
 
@@ -21,6 +22,8 @@ public class Weapon : MonoBehaviour, IDamageDealer
     List<IDamageable> dealtTargets = new List<IDamageable>();
 
     float damageAdjust;
+
+    public string WeaponName => _weaponName;
 
     private void Start()
     {

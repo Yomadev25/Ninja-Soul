@@ -43,12 +43,15 @@ public class PlayerStateMachine : MonoBehaviour
     private Rigidbody _rigidBody;
     [SerializeField]
     private Animator _anim;
+    [SerializeField]
+    private PlayerEquipment _playerEquipment;
     
 
     #region PUBLIC REFERENCES
     public PlayerBaseState CurrentState { get; set; }
     public PlayerStateFactory State { get; set; }
     public PlayerManager playerManager => _playerManager;
+    public PlayerEquipment playerEquipment => _playerEquipment;
 
     public Rigidbody rigidBody => _rigidBody;
     public Animator Anim => _anim;
@@ -72,7 +75,6 @@ public class PlayerStateMachine : MonoBehaviour
     public Volume soulVolume => _soulVolume;
     public Coroutine DashCoroutine { get; set; }
     #endregion
-
 
     private void Start()
     {
@@ -163,6 +165,7 @@ public class PlayerStateMachine : MonoBehaviour
         {
             _combatInput.action.started += (ctx) =>
             {
+                if (UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject()) return;
                 PressedCombat = true;
             };
 

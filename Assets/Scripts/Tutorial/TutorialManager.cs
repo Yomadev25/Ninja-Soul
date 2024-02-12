@@ -26,7 +26,6 @@ public class TutorialManager : MonoBehaviour
         MessagingCenter.Subscribe<SoulTutorial>(this, SoulTutorial.MessageOnTutorialComplete, (sender) =>
         {
             _soulTutorial.gameObject.SetActive(false);
-            GameManager.instance.LevelComplete();
         });
     }
 
