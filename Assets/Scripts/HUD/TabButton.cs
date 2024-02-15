@@ -64,7 +64,16 @@ public class TabButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     public void SetBackground(Sprite sprite)
     {
-        _background.sprite = sprite;
+        if (sprite != null)
+        {
+            _background.color = Color.white;
+            _background.sprite = sprite;
+        }
+        else
+        {
+            _background.color = new Color(0, 0, 0, 0);
+            _background.sprite = sprite;
+        }
     }
 
     public void Select()

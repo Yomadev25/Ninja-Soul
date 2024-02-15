@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public const string MessageOnChangedGameState = "On Changed Game State";
     public const string MessageWantToSelectWeapon = "Want To Select Weapon";
     public const string MessageWantToDisposeWeapon = "Want To Dispose Weapon";
+    public const string MessageWantToPause = "Want To Pause";
     public const string MessageOnLevelCompleted = "On Level Completed";
 
     public enum GameState
@@ -45,6 +46,11 @@ public class GameManager : MonoBehaviour
             Invoke(nameof(RestartLevel), 5f);
         });
 
+        MessagingCenter.Subscribe<PauseHudManager>(this, PauseHudManager.MessageWantToResume, (sender) =>
+        {
+            Resume();
+        });
+
         MessagingCenter.Subscribe<GameplayHudManager>(this, GameplayHudManager.MessageWantToRestart, (sender) =>
         {
             RestartLevel();
@@ -67,9 +73,25 @@ public class GameManager : MonoBehaviour
     {
         MessagingCenter.Unsubscribe<WeaponDialog, WeaponDialog.Clans>(this, WeaponDialog.MessageWantToChangeWeapon);
         MessagingCenter.Unsubscribe<PlayerManager>(this, PlayerManager.MessageOnPlayerDied);
+        MessagingCenter.Unsubscribe<PauseHudManager>(this, PauseHudManager.MessageWantToResume);
         MessagingCenter.Unsubscribe<GameplayHudManager>(this, GameplayHudManager.MessageWantToRestart);
         MessagingCenter.Unsubscribe<GameplayHudManager>(this, GameplayHudManager.MessageWantToExitLevel);
         MessagingCenter.Unsubscribe<SoulTutorial>(this, SoulTutorial.MessageOnTutorialComplete);
+
+        _weaponSelectionInput.action.performed -= (ctx) =>
+        {
+            InitWeaponSelection();
+        };
+
+        _weaponSelectionInput.action.canceled -= (ctx) =>
+        {
+            DisposeWeaponSelection();
+        };
+
+        _pauseInput.action.started -= (ctx) =>
+        {
+            Pause();
+        };
     }
 
     private void Start()
@@ -122,12 +144,16 @@ public class GameManager : MonoBehaviour
 
     private void Pause()
     {
+        if (_currentGameState != GameState.GAMEPLAY) return;
+        ChangeGameState(GameState.PAUSE);
 
+        MessagingCenter.Send(this, MessageWantToPause);
     }
 
     private void Resume()
     {
-
+        if (_currentGameState != GameState.PAUSE) return;
+        ChangeGameState(GameState.GAMEPLAY);
     }
 
     private void RestartLevel()

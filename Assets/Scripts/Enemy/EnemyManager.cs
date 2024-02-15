@@ -63,9 +63,12 @@ public class EnemyManager : MonoBehaviour, IDamageable
     {
         if (isDie) return;
         isDie = true;
-
+        
+        _enemyStateMachine.CurrentState = _enemyStateMachine.State.Idle();
+        _enemyStateMachine.CurrentState.Enter();
         _enemyStateMachine.enabled = false;
-        _anim.applyRootMotion = true;
+
+        _anim.applyRootMotion = false;
         _anim.SetTrigger("Die");
 
         if (EffectManager.Instance != null)

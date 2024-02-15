@@ -37,8 +37,7 @@ public class TabGroup : MonoBehaviour
         {
             if (_selectedButton == null || button != _selectedButton)
             {
-                if (_idleSprite != null)
-                    button.SetBackground(_idleSprite);
+                button.SetBackground(_idleSprite);
             }         
         }
     }
@@ -46,9 +45,7 @@ public class TabGroup : MonoBehaviour
     public void OnTabEnter(TabButton button)
     {
         ResetTabs();
-
-        if (_hoverSprite != null)
-            button.SetBackground(_hoverSprite);
+        button.SetBackground(_hoverSprite);
     }
 
     public void OnTabExit(TabButton button)
@@ -68,8 +65,7 @@ public class TabGroup : MonoBehaviour
         
         ResetTabs();
 
-        if(_activeSprite != null)
-            button.SetBackground(_activeSprite);
+        button.SetBackground(_activeSprite);
 
         int index = button.transform.GetSiblingIndex();
         for (int i = 0; i < _panels.Length; i++)
