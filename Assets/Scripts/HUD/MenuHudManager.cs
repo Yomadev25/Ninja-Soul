@@ -9,6 +9,18 @@ using UnityEngine.SceneManagement;
 
 public class MenuHudManager : MonoBehaviour
 {
+    public enum Page
+    {
+        TITLE,
+        SAVE,
+        OPTIONS,
+        CREDIT
+    }
+
+    [SerializeField]
+    private CanvasGroup[] _huds;
+    private Page _currentPage = Page.TITLE;
+
     [Header("Title HUD")]
     [SerializeField]
     private Button _newGameButton;
@@ -47,12 +59,30 @@ public class MenuHudManager : MonoBehaviour
 
         _newGameButton.onClick.AddListener(NewGame);
         _continueButton.interactable = SaveManager.Instance.GetSaveFiles().Count > 0;
-        //_continueButton.onClick.AddListener();
+        _continueButton.onClick.AddListener(() => ChangePage(Page.SAVE));
         //_optionsButton.onClick.AddListener();
         //_creditButton.onClick.AddListener();
         _exitButton.onClick.AddListener(Exit);
 
+        ChangePage(_currentPage);
         FetchSaveList();
+    }
+
+    private void ChangePage(Page page)
+    {
+        if (page == _currentPage) return;
+        foreach (CanvasGroup canvas in _huds)
+        {
+            canvas.LeanAlpha(0, 0.5f);
+            canvas.interactable = false;
+            canvas.blocksRaycasts = false;
+        }
+
+        _huds[(int)page].LeanAlpha(1, 0.5f);
+        _huds[(int)page].interactable = true;
+        _huds[(int)page].blocksRaycasts = true;
+
+        _currentPage = page;
     }
 
     private void FetchSaveList()
