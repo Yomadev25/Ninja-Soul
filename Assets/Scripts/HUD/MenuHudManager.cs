@@ -6,6 +6,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.Animations;
+using UnityEngine.EventSystems;
 
 public class MenuHudManager : MonoBehaviour
 {
@@ -20,6 +22,8 @@ public class MenuHudManager : MonoBehaviour
     [SerializeField]
     private CanvasGroup[] _huds;
     private Page _currentPage = Page.TITLE;
+    [SerializeField]
+    private EventSystem _eventSystem;
 
     [Header("Title HUD")]
     [SerializeField]
@@ -34,6 +38,8 @@ public class MenuHudManager : MonoBehaviour
     private Button _exitButton;
     [SerializeField]
     private TMP_Text _versionText;
+    [SerializeField]
+    private Animator _anim;
     
     [Header("Save HUD")]
     [SerializeField]
@@ -53,7 +59,7 @@ public class MenuHudManager : MonoBehaviour
     [SerializeField]
     private TMP_Text _saveTimeText;
 
-    void Start()
+    IEnumerator Start()
     {
         _versionText.text = $"v {Application.version}";
 
@@ -62,10 +68,13 @@ public class MenuHudManager : MonoBehaviour
         _continueButton.onClick.AddListener(() => ChangePage(Page.SAVE));
         //_optionsButton.onClick.AddListener();
         //_creditButton.onClick.AddListener();
-        _exitButton.onClick.AddListener(Exit);
+        _exitButton.onClick.AddListener(Exit);        
 
         ChangePage(_currentPage);
         FetchSaveList();
+
+        yield return new WaitForSeconds(6.4f);
+        _anim.enabled = false;
     }
 
     private void ChangePage(Page page)
@@ -81,6 +90,22 @@ public class MenuHudManager : MonoBehaviour
         _huds[(int)page].LeanAlpha(1, 0.5f);
         _huds[(int)page].interactable = true;
         _huds[(int)page].blocksRaycasts = true;
+
+        switch (page)
+        {
+            case Page.TITLE:
+                _eventSystem.firstSelectedGameObject = _newGameButton.gameObject;
+                break;
+            case Page.SAVE:
+                _eventSystem.firstSelectedGameObject = _saveRoot.GetChild(0).gameObject;
+                break;
+            case Page.OPTIONS:
+                break;
+            case Page.CREDIT:
+                break;
+            default:
+                break;
+        }
 
         _currentPage = page;
     }
