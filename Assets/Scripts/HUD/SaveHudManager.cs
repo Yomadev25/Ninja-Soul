@@ -63,13 +63,14 @@ public class SaveHudManager : MonoBehaviour
                 button.onClick.RemoveAllListeners();
                 int id = i;
                 button.onClick.AddListener(() =>
-                {
+                {                    
                     switch (_currentState)
                     {
                         case State.NONE:
                             break;
                         case State.SAVE:
-                            Save(PlayerData.Instance.GetPlayerData());
+                            if (id == 0) break;
+                            Save(PlayerData.Instance.GetPlayerData(), id);
                             break;
                         case State.LOAD:
                             Load(player, id);
@@ -88,13 +89,32 @@ public class SaveHudManager : MonoBehaviour
                 _saveTimeText.text = "--:--";
 
                 GameObject GO = Instantiate(_saveSlot, _saveRoot);
+                Button button = GO.GetComponent<Button>();
+                button.onClick.RemoveAllListeners();
+                int id = i;
+                button.onClick.AddListener(() =>
+                {
+                    switch (_currentState)
+                    {
+                        case State.NONE:
+                            break;
+                        case State.SAVE:
+                            Save(PlayerData.Instance.GetPlayerData(), id);
+                            break;
+                        case State.LOAD:
+                            break;
+                        default:
+                            break;
+                    }
+                });
                 GO.SetActive(true);
             }
         }
     }
 
-    private void Save(Player player)
+    private void Save(Player player, int id)
     {
+        player.id = id;
         player.lastDate = DateTime.Now;
 
         SaveManager.Instance.Save(player);
