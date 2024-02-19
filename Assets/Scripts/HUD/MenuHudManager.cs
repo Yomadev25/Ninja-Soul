@@ -73,6 +73,7 @@ public class MenuHudManager : MonoBehaviour
         ChangePage(_currentPage);
         FetchSaveList();
 
+        TransitionManager.Instance.SceneFadeOut();
         yield return new WaitForSeconds(6.4f);
         _anim.enabled = false;
     }
@@ -98,6 +99,7 @@ public class MenuHudManager : MonoBehaviour
                 break;
             case Page.SAVE:
                 _eventSystem.firstSelectedGameObject = _saveRoot.GetChild(0).gameObject;
+                _saveRoot.GetChild(0).gameObject.GetComponent<Button>().Select();
                 break;
             case Page.OPTIONS:
                 break;

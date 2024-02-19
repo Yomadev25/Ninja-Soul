@@ -8,6 +8,10 @@ public class PlayerData : Singleton<PlayerData>
     [SerializeField]
     private Player _player;
 
+    [Header("Actions")]
+    public string scene;
+    public Vector3 spawnPoint;
+
     public void PlayerSetup(Player player)
     {
         _player = player;

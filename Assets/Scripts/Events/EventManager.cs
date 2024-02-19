@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EventManager : Singleton<EventManager>
 {
@@ -20,6 +21,8 @@ public class EventManager : Singleton<EventManager>
     {
         base.Awake();
 
+        SceneManager.sceneLoaded += OnInitScene;
+
         MessagingCenter.Subscribe<EnemyManager>(this, EnemyManager.MessageOnEnemyDead, (sender) =>
         {
             CheckEliminateEvent(sender);
@@ -28,7 +31,14 @@ public class EventManager : Singleton<EventManager>
 
     private void OnDestroy()
     {
+        SceneManager.sceneLoaded -= OnInitScene;
+
         MessagingCenter.Unsubscribe<EnemyManager>(this, EnemyManager.MessageOnEnemyDead);
+    }
+
+    private void OnInitScene(Scene s, LoadSceneMode e)
+    {
+        Invoke(nameof(UpdateEvent), 0.5f);      
     }
 
     public void ActivatedEvent(Event _event)
@@ -36,14 +46,17 @@ public class EventManager : Singleton<EventManager>
         if (!_events.Contains(_event))
         {
             _events.Add(_event);
-            foreach (EliminateEvent eliminateEvent in _event.eliminateEvents)
+            if (_event.type == Event.EventType.Eliminate)
             {
-                EliminateEvent instanceEvent = new EliminateEvent(_event, eliminateEvent.enemy, eliminateEvent.targetCount, eliminateEvent.count);
-                _eliminateEvents.Add(instanceEvent);
+                foreach (EliminateEvent eliminateEvent in _event.eliminateEvents)
+                {
+                    EliminateEvent instanceEvent = new EliminateEvent(_event, eliminateEvent.enemy, eliminateEvent.targetCount, eliminateEvent.count);
+                    _eliminateEvents.Add(instanceEvent);
+                }
             }
 
             MessagingCenter.Send(this, MessageActivateEvent, _event);
-            MessagingCenter.Send(this, MessageOnUpdateEvent);
+            UpdateEvent();
         }
     }
 
@@ -51,6 +64,7 @@ public class EventManager : Singleton<EventManager>
     {
         foreach (var _event in _events)
         {
+            if (_event.type != Event.EventType.Eliminate) continue;
             var eliminateEvents = _eliminateEvents.Where(x => x.Event == _event).ToArray();
             int completedTask = 0;
 
@@ -93,14 +107,25 @@ public class EventManager : Singleton<EventManager>
 
     }
 
+    private void UpdateEvent()
+    {
+        MessagingCenter.Send(this, MessageOnUpdateEvent);
+    }
+
     public void ArchieveEvent(Event _event)
     {
         if (_events.Contains(_event))
-        {          
+        {
+            EliminateEvent[] eliminateEvents = _eliminateEvents.Where(x => x.Event == _event).ToArray();
+            foreach (EliminateEvent eliminateEvent in eliminateEvents)
+            {
+                _eliminateEvents.Remove(eliminateEvent);
+            }
+            
             _events.Remove(_event);
         }
 
         MessagingCenter.Send(this, MessageOnArchievedEvent, _event);
-        MessagingCenter.Send(this, MessageOnUpdateEvent);
+        UpdateEvent();
     }
 }
