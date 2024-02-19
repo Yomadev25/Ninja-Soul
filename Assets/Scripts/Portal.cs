@@ -18,11 +18,11 @@ public class Portal : MonoBehaviour, IInteract
 
     public void DisableInteract()
     {
-        throw new System.NotImplementedException();
+        
     }
 
     public void EnableInteract()
     {
-        throw new System.NotImplementedException();
+        
     }
 }

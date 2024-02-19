@@ -28,6 +28,7 @@ public class GenbuHut : MonoBehaviour
     {
         MessagingCenter.Subscribe<EventManager, Event>(this, EventManager.MessageOnArchievedEvent, (sender, @event) =>
         {
+            if (@event != _event) return;
             GenbuManager.Instance.SetHut(id, true);
             _exitPortal.SetActive(true);
         });
