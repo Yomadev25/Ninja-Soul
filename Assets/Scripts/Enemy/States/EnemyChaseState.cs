@@ -14,6 +14,13 @@ public class EnemyChaseState : EnemyBaseState
     {
         enemy = _context.Enemy;
         _context.NavMesh.isStopped = false;
+
+        //if Want To Random Combo
+        int randomCombo = Random.Range(0, enemy.combos.Length);
+        _context.ComboCount = randomCombo;
+        //else Want To Set Combo
+
+        _context.SetCombatRadius(_context.Enemy.combos[_context.ComboCount].combatRange);
     }
 
     public override void Update()
@@ -43,7 +50,7 @@ public class EnemyChaseState : EnemyBaseState
         
         if (_context.GetCombatTarget() != null)
         {
-            ChangeState(_context.State.Prepare()); //Don't forget to change into Prepare State
+            ChangeState(_context.State.Prepare());
         }
     }
 

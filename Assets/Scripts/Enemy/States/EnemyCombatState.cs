@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 
 public class EnemyCombatState : EnemyBaseState
@@ -11,12 +12,6 @@ public class EnemyCombatState : EnemyBaseState
     {
         enemy = _context.Enemy;
         _context.Anim.SetFloat("Speed", 0);
-
-        //if Want To Random Combo
-        int randomCombo = Random.Range(0, enemy.combos.Length);
-        _context.ComboCount = randomCombo;
-        //else Want To Set Combo
-
         enemy.combos[_context.ComboCount].Execute(_context, this);
     }
 
@@ -37,7 +32,8 @@ public class EnemyCombatState : EnemyBaseState
 
     public override void Exit()
     {
-        enemy = null;
-        _context.ResetCombatCooldown();
+        _context.Anim.applyRootMotion = false;
+        _context.ResetCombatCooldown(enemy.combos[_context.ComboCount].cooldown);
+        enemy = null;     
     }
 }

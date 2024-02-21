@@ -69,7 +69,6 @@ public class EnemyStateMachine : MonoBehaviour
 
         _viewRadius = _enemy.viewRadius;
         _chaseRadius = _enemy.chaseRadius;
-        _combatRadius = _enemy.combatRadius;
         _viewAngle = _enemy.viewAngle;
     }
 
@@ -187,8 +186,18 @@ public class EnemyStateMachine : MonoBehaviour
         }
     }
 
-    public void ResetCombatCooldown()
+    public void SetCombatRadius(float range)
     {
+        _combatRadius = range;
+    }
+
+    public void ResetCombatCooldown(float cooldown = 0)
+    {
+        if (cooldown != 0)
+        {
+            _delayPerCombo = cooldown;
+        }
+
         _currentCooldown = _delayPerCombo;
         IsReadyToCombat = false;
     }
@@ -212,7 +221,7 @@ public class EnemyStateMachine : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, _enemy.chaseRadius);
 
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, _enemy.combatRadius);
+        Gizmos.DrawWireSphere(transform.position, _combatRadius);
     }
     #endregion
 }

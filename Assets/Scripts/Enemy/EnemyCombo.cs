@@ -10,7 +10,8 @@ public class EnemyCombo : ScriptableObject
 
     [Header("Properties")]
     public float cooldown;
-    public float damage;
+    public int damage;
+    public float combatRange;
 
     public virtual async void Execute(EnemyStateMachine context, EnemyCombatState state)
     {

@@ -1199,7 +1199,7 @@ MonoBehaviour:
   _delayPerCombo: 0
   _viewRadius: 0
   _chaseRadius: 0
-  _combatRadius: 0
+  _combatRadius: 2
   _viewAngle: 0
   _targetLayer:
     serializedVersion: 2
@@ -3048,6 +3048,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc9c4301cb68d334dbc6f5310f0ca09f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _weaponName: 
   _weaponLength: 1.7
   _weaponDamage: 0
   _targetLayer:
