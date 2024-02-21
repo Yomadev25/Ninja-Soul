@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -25,6 +26,14 @@ public class GameplayHudManager : MonoBehaviour
     [SerializeField]
     private CanvasGroup[] _weaponSlots;
 
+    [Header("Boss HP")]
+    [SerializeField]
+    private CanvasGroup _bossHp;
+    [SerializeField]
+    private Image _bossHpFill;
+    [SerializeField]
+    private TMP_Text _bossNameText;
+
     [Header("Clear Dialog")]
     [SerializeField]
     private Button _restartButton;
@@ -41,6 +50,14 @@ public class GameplayHudManager : MonoBehaviour
         MessagingCenter.Subscribe<PlayerManager>(this, PlayerManager.MessageOnSoulChanged, (sender) =>
         {
             UpdateSoulGauge(sender.soul);
+        });
+
+        MessagingCenter.Subscribe<EnemyManager>(this, EnemyManager.MessageOnUpdateHp, (sender) =>
+        {
+            if (sender.Enemy.level == Enemy.Level.BOSS || sender.Enemy.level == Enemy.Level.MINI_BOSS)
+            {
+                UpdateBossHp(sender.Enemy.name.ToLower(), sender.maxHp, sender.hp);
+            }
         });
 
         MessagingCenter.Subscribe<GameManager>(this, GameManager.MessageWantToSelectWeapon, (sender) =>
@@ -78,6 +95,7 @@ public class GameplayHudManager : MonoBehaviour
     {
         MessagingCenter.Unsubscribe<PlayerManager>(this, PlayerManager.MessageOnHpChanged);
         MessagingCenter.Unsubscribe<PlayerManager>(this, PlayerManager.MessageOnSoulChanged);
+        MessagingCenter.Unsubscribe<EnemyManager>(this, EnemyManager.MessageOnUpdateHp);
         MessagingCenter.Unsubscribe<GameManager>(this, GameManager.MessageWantToSelectWeapon);
         MessagingCenter.Unsubscribe<GameManager>(this, GameManager.MessageWantToDisposeWeapon);
         MessagingCenter.Unsubscribe<ComboFactory, ComboGroup>(this, ComboFactory.MessageSendComboData);
@@ -109,6 +127,21 @@ public class GameplayHudManager : MonoBehaviour
             }
 
             hpIcon.gameObject.SetActive(true);
+        }
+    }
+
+    private void UpdateBossHp(string name, float maxHp, float hp)
+    {
+        _bossNameText.text = name;
+        if (_bossHp.alpha == 0)
+        {
+            _bossHp.LeanAlpha(1f, 0.5f);
+        }
+        
+        _bossHpFill.fillAmount = hp / maxHp;
+        if (hp <= 0)
+        {
+            _bossHp.LeanAlpha(0f, 0.5f);
         }
     }
 

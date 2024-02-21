@@ -3,6 +3,7 @@ using Cinemachine;
 
 public class CameraShake : MonoBehaviour
 {
+    public static CameraShake instance;
     [SerializeField]
     private CinemachineVirtualCamera _cam;
 
@@ -21,6 +22,8 @@ public class CameraShake : MonoBehaviour
 
     private void Awake()
     {
+        instance = this;
+
         MessagingCenter.Subscribe<PlayerManager>(this, PlayerManager.MessageOnHpChanged, (sender) =>
         {
             _shakeDuration = 0.2f;

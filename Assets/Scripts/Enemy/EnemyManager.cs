@@ -5,6 +5,7 @@ using UnityEngine.Events;
 
 public class EnemyManager : MonoBehaviour, IDamageable
 {
+    public const string MessageOnUpdateHp = "On Update Hp";
     public const string MessageOnEnemyDead = "On Enemy Dead";
 
     [Header("Enemy Profile")]
@@ -34,11 +35,14 @@ public class EnemyManager : MonoBehaviour, IDamageable
     #region PUBLIC VARIABLES
     public Enemy Enemy => _enemy;
     public EnemyStateMachine stateMachine => _enemyStateMachine;
+    public float hp => _hp;
+    public float maxHp => _maxHp;
     #endregion
 
     private void Start()
     {
         _hp = _maxHp;
+        MessagingCenter.Send(this, MessageOnUpdateHp);
     }
 
     private void Update()
@@ -57,6 +61,7 @@ public class EnemyManager : MonoBehaviour, IDamageable
         _anim.SetTrigger("Hit");
 
         onTakeDamage?.Invoke();
+        MessagingCenter.Send(this, MessageOnUpdateHp);
     }
 
     private void Die()
