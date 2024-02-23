@@ -51,6 +51,7 @@ public class PlayerManager : MonoBehaviour, IDamageable
     #endregion
 
     public bool IsDie { get; set; }
+    private bool _isDash;
 
     private void Awake()
     {
@@ -60,11 +61,23 @@ public class PlayerManager : MonoBehaviour, IDamageable
         {
             InitPlayerHUD();
         });
+
+        MessagingCenter.Subscribe<PlayerDashState>(this, PlayerDashState.MessageOnDashStart, (sender) =>
+        {
+            _isDash = true;
+        });
+
+        MessagingCenter.Subscribe<PlayerDashState>(this, PlayerDashState.MessageOnDashEnd, (sender) =>
+        {
+            _isDash = false;
+        });
     }
 
     private void OnDestroy()
     {
         MessagingCenter.Unsubscribe<HudLoader>(this, HudLoader.MessageOnHudLoaded);
+        MessagingCenter.Unsubscribe<PlayerDashState>(this, PlayerDashState.MessageOnDashStart);
+        MessagingCenter.Unsubscribe<PlayerDashState>(this, PlayerDashState.MessageOnDashEnd);
     }
 
     private void InitPlayerHUD()
@@ -83,6 +96,8 @@ public class PlayerManager : MonoBehaviour, IDamageable
 
     public void TakeDamage(float damage)
     {
+        if (_isDash) return;
+
         _hp -= damage;
         _anim.SetTrigger("Hit");
 

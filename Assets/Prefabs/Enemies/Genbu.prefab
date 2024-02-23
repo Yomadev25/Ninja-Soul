@@ -5129,7 +5129,7 @@ SkinnedMeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1035494642451026302}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -9016,6 +9016,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _event: {fileID: 11400000, guid: 228c6d5c68a0e854abd990c877ebd26a, type: 2}
+  _punchHand: {fileID: 4237938954407038260}
   _handRock: {fileID: 7643404252359489808}
   _rockPrefab: {fileID: 7643404251566287809, guid: c627c742514ee5f418fee444fe87c100,
     type: 3}

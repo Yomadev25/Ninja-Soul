@@ -31,6 +31,8 @@ public class MenuHudManager : MonoBehaviour
     [SerializeField]
     private Button _continueButton;
     [SerializeField]
+    private CanvasGroup _continueCanvasGroup;
+    [SerializeField]
     private Button _optionsButton;
     [SerializeField]
     private Button _creditButton;
@@ -64,11 +66,13 @@ public class MenuHudManager : MonoBehaviour
         _versionText.text = $"v {Application.version}";
 
         _newGameButton.onClick.AddListener(NewGame);
-        _continueButton.interactable = SaveManager.Instance.GetSaveFiles().Count > 0;
+        bool usedToPlay = SaveManager.Instance.GetSaveFiles().Count > 0;
+        _continueButton.interactable = usedToPlay;
+        _continueCanvasGroup.alpha = usedToPlay? 1 : 0.5f;
         _continueButton.onClick.AddListener(() => ChangePage(Page.SAVE));
         //_optionsButton.onClick.AddListener();
         //_creditButton.onClick.AddListener();
-        _exitButton.onClick.AddListener(Exit);        
+        _exitButton.onClick.AddListener(Exit);
 
         ChangePage(_currentPage);
         FetchSaveList();
@@ -147,7 +151,7 @@ public class MenuHudManager : MonoBehaviour
 
     private void NewGame()
     {
-        Player player = new Player(0, false, false, false, false, false, false, false, false, DateTime.Now, DateTime.Now);
+        Player player = new Player(0, true, false, false, false, false, false, false, false, false, DateTime.Now, DateTime.Now);
 
         SaveManager.Instance.Save(player);
         PlayerData.Instance.PlayerSetup(SaveManager.Instance.Load(player.id));

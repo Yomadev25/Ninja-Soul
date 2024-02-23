@@ -10,6 +10,14 @@ public class EnemyCombatState : EnemyBaseState
 
     public override void Enter()
     {
+        MessagingCenter.Subscribe<EnemyManager>(this, EnemyManager.MessageOnEnemyDead, (sender) =>
+        {
+            if (sender.stateMachine == _context)
+            {
+                ChangeState(_context.State.Idle());
+            }
+        });
+
         enemy = _context.Enemy;
         _context.Anim.SetFloat("Speed", 0);
         enemy.combos[_context.ComboCount].Execute(_context, this);
@@ -27,6 +35,7 @@ public class EnemyCombatState : EnemyBaseState
 
     public void OnAttacked()
     {
+        if (_context.CurrentState != this) return;
         ChangeState(_context.State.Chase());
     }
 
@@ -34,6 +43,8 @@ public class EnemyCombatState : EnemyBaseState
     {
         _context.Anim.applyRootMotion = false;
         _context.ResetCombatCooldown(enemy.combos[_context.ComboCount].cooldown);
-        enemy = null;     
+        enemy = null;
+
+        MessagingCenter.Unsubscribe<EnemyManager>(this, EnemyManager.MessageOnEnemyDead);
     }
 }

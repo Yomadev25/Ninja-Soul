@@ -76,6 +76,7 @@ public class EnemyStateMachine : MonoBehaviour
     {
         if (CurrentState != null)
         {
+            Debug.Log(CurrentState.ToString());
             CurrentState.Update();
         }
 

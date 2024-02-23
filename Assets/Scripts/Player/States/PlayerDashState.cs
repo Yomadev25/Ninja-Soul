@@ -5,12 +5,17 @@ using System.Threading.Tasks;
 
 public class PlayerDashState : PlayerBaseState
 {
+    public const string MessageOnDashStart = "Dash Start";
+    public const string MessageOnDashEnd = "Dash End";
+
     public PlayerDashState(PlayerStateMachine ctx) : base(ctx) { }
 
     public override void Enter()
     {
         _context.CanRotate = false;
         _context.Anim.applyRootMotion = true;
+        MessagingCenter.Send(this, MessageOnDashStart);
+
         DashAsync();     
     }
 
@@ -59,5 +64,6 @@ public class PlayerDashState : PlayerBaseState
     {
         _context.CanRotate = true;
         _context.Anim.applyRootMotion = false;
+        MessagingCenter.Send(this, MessageOnDashEnd);
     }
 }

@@ -4,11 +4,16 @@ using System.Net;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
-{    
+{
+    public const string MessageOnProjectileSpawned = "Projectile Spawned";
+    public const string MessageOnProjectileWillDestroy = "Projectile Will Destroy";
+
     [SerializeField]
     private float _height;
     [SerializeField]
     private float _speed;
+    [SerializeField]
+    private GameObject _destroyFx;
 
     [SerializeField]
     private Vector3 _startPoint;
@@ -18,10 +23,11 @@ public class Projectile : MonoBehaviour
     private Vector3 _control;
 
     private float time;
+    private bool isDestroying;
 
     public void Start()
     {
-        _control = Vector3.Lerp(_startPoint, _endPoint, 0.5f) + (Vector3.up * _height);
+        _control = Vector3.Lerp(_startPoint, _endPoint, 0.5f) + (Vector3.up * _height);        
     }
 
     private void Update()
@@ -33,8 +39,16 @@ public class Projectile : MonoBehaviour
         transform.position = Evaluate(time);
         transform.forward = Evaluate(time + 0.001f) - transform.position;
 
-        if (time >= 1)
+        if (time >= 1 && !isDestroying)
         {
+            isDestroying = true;
+
+            if (_destroyFx != null)
+            {
+                Instantiate(_destroyFx, transform.position, Quaternion.identity);
+            }
+
+            MessagingCenter.Send(this, MessageOnProjectileWillDestroy);
             Destroy(gameObject);
         }
     }
@@ -43,6 +57,8 @@ public class Projectile : MonoBehaviour
     {
         _startPoint = startPoint;
         _endPoint = endPoint;
+
+        MessagingCenter.Send(this, MessageOnProjectileSpawned, _endPoint);
     }
 
     private Vector3 Evaluate(float t)
@@ -69,6 +85,13 @@ public class Projectile : MonoBehaviour
         {
             PlayerManager player = other.GetComponent<PlayerManager>();
             player.TakeDamage(1);
+
+            if (_destroyFx != null)
+            {
+                Instantiate(_destroyFx, transform.position, Quaternion.identity);
+            }
+
+            MessagingCenter.Send(this, MessageOnProjectileWillDestroy);
             Destroy(gameObject);
         }
     }

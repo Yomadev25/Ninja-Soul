@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 
 public class ControllerTutorial : MonoBehaviour
 {
+    public const string MessageOnActivateDestination = "Activate Destination";
     public const string MessageOnTutorialComplete = "On Tutorial Complete";
 
     [SerializeField]
@@ -100,6 +101,7 @@ public class ControllerTutorial : MonoBehaviour
         }
 
         _destinations[_currentDestination].gameObject.SetActive(true);
+        MessagingCenter.Send(this, MessageOnActivateDestination, _destinations[_currentDestination].transform);
     }
 
     private void Complete()

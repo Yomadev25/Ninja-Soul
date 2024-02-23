@@ -17783,6 +17783,7 @@ MonoBehaviour:
   _eventSystem: {fileID: 217195531}
   _newGameButton: {fileID: 1574546514}
   _continueButton: {fileID: 1709568864}
+  _continueCanvasGroup: {fileID: 1709568867}
   _optionsButton: {fileID: 403879693}
   _creditButton: {fileID: 1784952397}
   _exitButton: {fileID: 2139902309}
@@ -20533,6 +20534,7 @@ GameObject:
   - component: {fileID: 1709568866}
   - component: {fileID: 1709568865}
   - component: {fileID: 1709568864}
+  - component: {fileID: 1709568867}
   m_Layer: 5
   m_Name: (button) Continue
   m_TagString: Untagged
@@ -20643,6 +20645,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1709568862}
   m_CullTransparentMesh: 1
+--- !u!225 &1709568867
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709568862}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1001 &1726607952
 PrefabInstance:
   m_ObjectHideFlags: 0

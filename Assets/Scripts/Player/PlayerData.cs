@@ -24,6 +24,7 @@ public class PlayerData : Singleton<PlayerData>
 public class Player
 {
     public int id;
+    public bool tutorial;
 
     public bool genbu;
     public bool suzaku;
@@ -38,9 +39,10 @@ public class Player
     public DateTime startDate;
     public DateTime lastDate;
 
-    public Player(int id, bool genbu, bool suzaku, bool seiryu, bool byakko, bool knuckles, bool sickles, bool jevalin, bool sword, DateTime startDate, DateTime lastDate)
+    public Player(int id, bool tutorial, bool genbu, bool suzaku, bool seiryu, bool byakko, bool knuckles, bool sickles, bool jevalin, bool sword, DateTime startDate, DateTime lastDate)
     {
         this.id = id;
+        this.tutorial = tutorial;
         this.genbu = genbu;
         this.suzaku = suzaku;
         this.seiryu = seiryu;
@@ -56,6 +58,7 @@ public class Player
     public Player(Player player)
     {
         id = player.id;
+        tutorial = player.tutorial;
         genbu = player.genbu;
         suzaku = player.suzaku;
         seiryu = player.seiryu;
