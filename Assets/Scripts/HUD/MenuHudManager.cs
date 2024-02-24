@@ -155,7 +155,8 @@ public class MenuHudManager : MonoBehaviour
 
         SaveManager.Instance.Save(player);
         PlayerData.Instance.PlayerSetup(SaveManager.Instance.Load(player.id));
-        StartGame();
+        TransitionManager.Instance.SceneFadeIn(1, () =>
+            SceneManager.LoadScene("Intro"));
     }
 
     private void ContinueGame(Player player)

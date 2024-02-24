@@ -128,4 +128,12 @@ public class EventManager : Singleton<EventManager>
         MessagingCenter.Send(this, MessageOnArchievedEvent, _event);
         UpdateEvent();
     }
+
+    public void ClearAllEvents()
+    {
+        _events.Clear();
+        _eliminateEvents.Clear();
+
+        UpdateEvent();
+    }
 }

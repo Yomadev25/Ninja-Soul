@@ -32,9 +32,35 @@ public class SaveHudManager : MonoBehaviour
     [SerializeField]
     private TMP_Text _saveTimeText;
 
+    [Header("Etc")]
+    [SerializeField]
+    private Button _backToHikari;
+    [SerializeField]
+    private Button _backToMenu;
+
     private void Start()
     {
         FetchSaveList();
+       
+        _backToHikari.onClick.AddListener(() =>
+        {
+            TransitionManager.Instance.SceneFadeIn(1, () =>
+            {
+                EventManager.Instance.ClearAllEvents();
+                SceneManager.LoadScene("Hikari");
+            });
+        });
+        if (SceneManager.GetActiveScene().name == "Hikari")
+            _backToHikari.gameObject.SetActive(false);
+
+        _backToMenu.onClick.AddListener(() =>
+        {
+            TransitionManager.Instance.SceneFadeIn(1, () =>
+            {
+                EventManager.Instance.ClearAllEvents();
+                SceneManager.LoadScene("Menu");
+            });
+        });
     }
 
     private void FetchSaveList()

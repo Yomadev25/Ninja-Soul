@@ -50,6 +50,7 @@ public class Genbu : MonoBehaviour
     private void OnDestroy()
     {
         MessagingCenter.Unsubscribe<Genbu_Throw>(this, Genbu_Throw.MessagePrepareRock);
+        MessagingCenter.Unsubscribe<EnemyManager>(this, EnemyManager.MessageOnUpdateHp);
     }
 
     private void Start()
