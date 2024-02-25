@@ -40,6 +40,9 @@ public class ComboFactory : MonoBehaviour
 public class ComboGroup
 {
     public string name;
+    [TextArea(5, 10)]
+    public string description;
+    public Sprite icon;
     public GameObject weaponObject;
     public Weapon weapon;
     public Combo[] combos;

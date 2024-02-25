@@ -47,6 +47,20 @@ public class WeaponDialog : MonoBehaviour
         {
             _weaponButtons[i].interactable = comboGroup[i].isUnlocked;
             _weaponButtons[i].blocksRaycasts = comboGroup[i].isUnlocked;
+
+            GameObject lockIcon = _weaponButtons[i].transform.Find("Lock").gameObject;
+            GameObject weaponIcon = _weaponButtons[i].transform.Find("(image) weapon").gameObject;
+
+            if (comboGroup[i].isUnlocked)
+            {
+                lockIcon.SetActive(false);
+                weaponIcon.SetActive(true);
+            }
+            else
+            {
+                lockIcon.SetActive(true);
+                weaponIcon.SetActive(false);
+            }
         }
     }
 

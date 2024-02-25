@@ -155,6 +155,20 @@ public class GameplayHudManager : MonoBehaviour
         for (int i = 0; i < _weaponSlots.Length; i++)
         {
             _weaponSlots[i].alpha = comboGroup[i].isUnlocked? 1 : 0.3f;
+
+            GameObject lockIcon = _weaponSlots[i].transform.Find("Lock").gameObject;
+            GameObject weaponIcon = _weaponSlots[i].transform.Find("(image) weapon").gameObject;
+
+            if (comboGroup[i].isUnlocked)
+            {
+                lockIcon.SetActive(false);
+                weaponIcon.SetActive(true);
+            }
+            else
+            {
+                lockIcon.SetActive(true);
+                weaponIcon.SetActive(false);
+            }
         }
     }
 

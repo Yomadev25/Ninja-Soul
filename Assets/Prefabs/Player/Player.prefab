@@ -686,6 +686,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _comboGroups:
   - name: Chokuto
+    description: "A traditional Japanese sword that has\ngarnered legendary status
+      for\nits exquisite craftsmanship,\ndeadly efficiency and cultural \nsignificance."
+    icon: {fileID: 21300000, guid: 5567653ac4da3d74c8ca38ab99ca7d38, type: 3}
     weaponObject: {fileID: 5531337172451200327}
     weapon: {fileID: 1441179425}
     combos:
@@ -693,7 +696,9 @@ MonoBehaviour:
     - {fileID: 11400000, guid: a7b780d71e38bc247916af3377c95b06, type: 2}
     - {fileID: 11400000, guid: c309284416a49e74aa43237043402333, type: 2}
     isUnlocked: 1
-  - name: Sickles
+  - name: Knuckles
+    description: 
+    icon: {fileID: 21300000, guid: 7024dfbd5182b4b46b4e7b71ebdc4033, type: 3}
     weaponObject: {fileID: 0}
     weapon: {fileID: 0}
     combos:
@@ -701,7 +706,9 @@ MonoBehaviour:
     - {fileID: 11400000, guid: a7b780d71e38bc247916af3377c95b06, type: 2}
     - {fileID: 11400000, guid: c309284416a49e74aa43237043402333, type: 2}
     isUnlocked: 0
-  - name: Knuckles
+  - name: Sickles
+    description: 
+    icon: {fileID: 21300000, guid: 065dc8e558f5e0e47a60dd89ba102d89, type: 3}
     weaponObject: {fileID: 0}
     weapon: {fileID: 0}
     combos:
@@ -710,6 +717,8 @@ MonoBehaviour:
     - {fileID: 11400000, guid: c309284416a49e74aa43237043402333, type: 2}
     isUnlocked: 0
   - name: Sword
+    description: 
+    icon: {fileID: 21300000, guid: 933abd4e6cd2d9441ad7ca81d3257ae0, type: 3}
     weaponObject: {fileID: 7292802136985862741}
     weapon: {fileID: 1436006478}
     combos:
@@ -718,6 +727,8 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 368be72f37895b542ad948b66b3e4043, type: 2}
     isUnlocked: 1
   - name: Javelin
+    description: 
+    icon: {fileID: 21300000, guid: f8be679561e1b024a8d62f40f1152589, type: 3}
     weaponObject: {fileID: 0}
     weapon: {fileID: 0}
     combos:
@@ -916,7 +927,7 @@ Transform:
   m_GameObject: {fileID: 7292802136985862741}
   m_LocalRotation: {x: -0.519012, y: 0.5126904, z: 0.53968644, w: -0.42013547}
   m_LocalPosition: {x: -0.136, y: 0.069, z: 0.011}
-  m_LocalScale: {x: 0.08859717, y: 0.08859723, z: 0.08859715}
+  m_LocalScale: {x: 7, y: 7, z: 7}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1436006477}
@@ -930,7 +941,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7292802136985862741}
-  m_Mesh: {fileID: 8385836491182413749, guid: 7be7ca9942406614ab1d86d4a446f1c2, type: 3}
+  m_Mesh: {fileID: 8385836491182413749, guid: c37b47259cae15e4ab5a5bcdc2b5889f, type: 3}
 --- !u!23 &4125196748188264564
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -951,11 +962,12 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 4617261584420657576, guid: 7be7ca9942406614ab1d86d4a446f1c2, type: 3}
-  - {fileID: 6266564598021066221, guid: 7be7ca9942406614ab1d86d4a446f1c2, type: 3}
-  - {fileID: -3846018093981099296, guid: 7be7ca9942406614ab1d86d4a446f1c2, type: 3}
-  - {fileID: -6629797300637803691, guid: 7be7ca9942406614ab1d86d4a446f1c2, type: 3}
-  - {fileID: -6922793697723135513, guid: 7be7ca9942406614ab1d86d4a446f1c2, type: 3}
+  - {fileID: 2100000, guid: 08368cb01ce52384192fbeda2fb1bf09, type: 2}
+  - {fileID: 2100000, guid: 56f99cdfe745f2d4e8e2c2c6c39e66c9, type: 2}
+  - {fileID: 2100000, guid: 3c6d1338a003c484bade48971f849a92, type: 2}
+  - {fileID: 2100000, guid: 5441ebe7d5f1b684786ad3538d7a6598, type: 2}
+  - {fileID: 2100000, guid: cd80d1ef322ada249a277a95d0b09808, type: 2}
+  - {fileID: 2100000, guid: a23a05dea9b30fa439738bf828690545, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
