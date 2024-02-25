@@ -11,6 +11,7 @@ public class Minimap : MonoBehaviour
     private Camera _mapCamera;
     [SerializeField]
     private float _mapOrthographicSize;
+    public string mapName;
 
     private Transform _target;
 
@@ -23,6 +24,7 @@ public class Minimap : MonoBehaviour
 
         if (_mapCamera)
         {
+            _mapCamera.SetReplacementShader(Shader.Find("Unlit/Color"), "RenderType");
             MessagingCenter.Send(this, MessageInitMapCamera, _mapCamera);
         }
     }

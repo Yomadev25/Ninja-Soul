@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class MinimapHud : MonoBehaviour
@@ -13,6 +14,8 @@ public class MinimapHud : MonoBehaviour
     private RawImage _mapImage;
     [SerializeField]
     private RectTransform _playerIconMapRectTransform;
+    [SerializeField]
+    private TMP_Text _mapNameText;
 
     [Header("Icons")]
     [SerializeField]
@@ -24,11 +27,21 @@ public class MinimapHud : MonoBehaviour
     private Transform _playerTransform;
     private List<(Interact interactivePosition, RectTransform markerRectTransform)> _currentMapInteractiveObjects = new();
 
+    [Header("Zooming")]
+    [SerializeField]
+    private float _zoomSpeed = 0.1f;
+    [SerializeField]
+    private float _maxZoom = 10f;
+    private Vector3 _initialScale;
+
     private void Awake()
     {
+        _initialScale = _mapImage.rectTransform.localScale;
+
         MessagingCenter.Subscribe<Minimap, Camera>(this, Minimap.MessageInitMapCamera, (sender, camera) =>
         {
             InitMapCamera(camera);
+            _mapNameText.text = sender.mapName;
         });
 
         /*MessagingCenter.Subscribe<Interact>(this, Interact.MessageOnDestroyInteractive, (sender) =>
@@ -53,6 +66,11 @@ public class MinimapHud : MonoBehaviour
     {
         if (_mapCamera == null) return;
         FollowPlayerTargetInMap();
+
+        if (Input.mouseScrollDelta.y != 0)
+        {
+            OnScroll(Input.mouseScrollDelta.y);
+        }
     }
 
     private void InitPlayerTransform(Transform playerTransform) => _playerTransform = playerTransform;
@@ -118,6 +136,20 @@ public class MinimapHud : MonoBehaviour
         offset = offset / (_mapCamera.orthographicSize) * (_mapMarkerParentRectTransform.rect.height / 2);
 
         _playerIconMapRectTransform.anchoredPosition = new Vector2(offset.x, offset.z);
-        _playerIconMapRectTransform.localRotation = Quaternion.AngleAxis(_playerTransform.eulerAngles.y, Vector3.back);
+    }
+
+    public void OnScroll(float scrollDelta)
+    {
+        var delta = Vector3.one * (scrollDelta * _zoomSpeed);
+        var desiredScale = _mapImage.rectTransform.localScale + delta;
+        desiredScale = ClampDesiredScale(desiredScale);
+        _mapImage.rectTransform.localScale = desiredScale;
+    }
+
+    private Vector3 ClampDesiredScale(Vector3 desiredScale)
+    {
+        desiredScale = Vector3.Max(_initialScale, desiredScale);
+        desiredScale = Vector3.Min(_initialScale * _maxZoom, desiredScale);
+        return desiredScale;
     }
 }
