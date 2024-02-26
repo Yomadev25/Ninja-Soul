@@ -80,7 +80,7 @@ public class WeaponHud : MonoBehaviour
         {
             Destroy(model.gameObject);
         }
-        GameObject Go = Instantiate(combo.weaponObject, _modelTransform);
+        GameObject Go = Instantiate(Resources.Load("Weapon Inspect/" + combo.name) as GameObject, _modelTransform);
         Go.layer = LayerMask.NameToLayer("Inspect");
 
         foreach (Transform item in Go.transform)
