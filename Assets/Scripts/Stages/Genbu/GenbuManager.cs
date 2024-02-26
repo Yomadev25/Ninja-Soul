@@ -17,7 +17,7 @@ public class GenbuManager : Singleton<GenbuManager>
     protected override void Awake()
     {
         base.Awake();
-        SceneManager.sceneLoaded += SceneLoaded;
+        SceneManager.sceneLoaded += SceneLoaded;        
     }
 
     private void OnDestroy()

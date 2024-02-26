@@ -66,6 +66,16 @@ public class GameManager : MonoBehaviour
         {
             LevelComplete();
         });
+
+        MessagingCenter.Subscribe<Genbu>(this, Genbu.MessageClearGenbuStage, (sender) =>
+        {
+            LevelComplete();
+        });
+
+        MessagingCenter.Subscribe<Seiryu>(this, Seiryu.MessageClearSeiryuStage, (sender) =>
+        {
+            LevelComplete();
+        });
         #endregion
     }
 
@@ -77,6 +87,8 @@ public class GameManager : MonoBehaviour
         MessagingCenter.Unsubscribe<GameplayHudManager>(this, GameplayHudManager.MessageWantToRestart);
         MessagingCenter.Unsubscribe<GameplayHudManager>(this, GameplayHudManager.MessageWantToExitLevel);
         MessagingCenter.Unsubscribe<SoulTutorial>(this, SoulTutorial.MessageOnTutorialComplete);
+        MessagingCenter.Unsubscribe<Genbu>(this, Genbu.MessageClearGenbuStage);
+        MessagingCenter.Unsubscribe<Seiryu>(this, Seiryu.MessageClearSeiryuStage);
 
         _weaponSelectionInput.action.performed -= (ctx) =>
         {

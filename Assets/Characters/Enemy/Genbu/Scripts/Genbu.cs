@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Genbu : MonoBehaviour
 {
+    public const string MessageClearGenbuStage = "Clear Genbu Stage";
+
     [SerializeField]
     private Event _event;
 
@@ -45,12 +47,21 @@ public class Genbu : MonoBehaviour
                 _phase = 3;
             }
         });
+
+        MessagingCenter.Subscribe<EventManager, Event>(this, EventManager.MessageOnArchievedEvent, (sender, @event) =>
+        {
+            if (@event == _event)
+            {
+                MessagingCenter.Send(this, MessageClearGenbuStage);
+            }
+        });
     }
 
     private void OnDestroy()
     {
         MessagingCenter.Unsubscribe<Genbu_Throw>(this, Genbu_Throw.MessagePrepareRock);
         MessagingCenter.Unsubscribe<EnemyManager>(this, EnemyManager.MessageOnUpdateHp);
+        MessagingCenter.Unsubscribe<EventManager, Event>(this, EventManager.MessageOnArchievedEvent);
     }
 
     private void Start()
