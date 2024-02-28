@@ -177,6 +177,12 @@ public class PlayerStateMachine : MonoBehaviour
         CanRotate = true;
 
         GatherInput();
+
+        Vector3 spawnPoint = PlayerData.Instance.spawnPoint;
+        if (spawnPoint != default)
+        {
+            transform.position = spawnPoint;
+        }
     }
 
     private void Update()

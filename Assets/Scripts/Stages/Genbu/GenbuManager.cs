@@ -51,7 +51,7 @@ public class GenbuManager : Singleton<GenbuManager>
     private void InitStage()
     {
         if (SceneManager.GetActiveScene().name != "Genbu_1") return;
-        EventManager.Instance.ActivatedEvent(_events[0]);
+        EventManager.Instance.ActivateEvent(_events[0]);
     }
 
     public void SetHut(int id, bool isClear)

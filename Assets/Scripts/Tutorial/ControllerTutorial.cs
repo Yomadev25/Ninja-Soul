@@ -73,7 +73,7 @@ public class ControllerTutorial : MonoBehaviour
         if (_isCompleted) return;
 
         _isActivated = true;
-        EventManager.Instance.ActivatedEvent(_event);
+        EventManager.Instance.ActivateEvent(_event);
         UpdateDestination();
     }
 

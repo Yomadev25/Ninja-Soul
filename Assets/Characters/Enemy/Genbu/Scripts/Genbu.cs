@@ -66,7 +66,7 @@ public class Genbu : MonoBehaviour
 
     private void Start()
     {
-        EventManager.Instance.ActivatedEvent(_event);
+        EventManager.Instance.ActivateEvent(_event);
     }
 
     public void Punch()

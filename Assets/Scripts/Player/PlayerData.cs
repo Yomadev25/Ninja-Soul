@@ -17,6 +17,11 @@ public class PlayerData : Singleton<PlayerData>
         _player = player;
     }
 
+    public void SetSpawnPoint(Vector3 point)
+    {
+        spawnPoint = point;
+    }
+
     public Player GetPlayerData() => _player;
 }
 

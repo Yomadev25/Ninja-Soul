@@ -49,7 +49,7 @@ public class SoulTutorial : MonoBehaviour
         if (_isActivated) return;
 
         _isActivated = true;
-        EventManager.Instance.ActivatedEvent(_event);
+        EventManager.Instance.ActivateEvent(_event);
 
         foreach (GameObject enemy in _enemies)
         {

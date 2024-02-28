@@ -41,7 +41,7 @@ public class EventManager : Singleton<EventManager>
         Invoke(nameof(UpdateEvent), 0.5f);      
     }
 
-    public void ActivatedEvent(Event _event)
+    public void ActivateEvent(Event _event)
     {
         if (!_events.Contains(_event))
         {

@@ -36,7 +36,7 @@ public class Seiryu : MonoBehaviour
 
     private void Start()
     {
-        EventManager.Instance.ActivatedEvent(_event);
+        EventManager.Instance.ActivateEvent(_event);
     }
 
     public void DashAttack()

@@ -59,7 +59,7 @@ public class CombatTutorial : MonoBehaviour
         if (_isActivated) return;
 
         _isActivated = true;
-        EventManager.Instance.ActivatedEvent(_scarecrowEvent);
+        EventManager.Instance.ActivateEvent(_scarecrowEvent);
 
         foreach (GameObject scarecrow in _scarecrows)
         {
@@ -69,7 +69,7 @@ public class CombatTutorial : MonoBehaviour
 
     private void ActivateEventPhaseTwo()
     {
-        EventManager.Instance.ActivatedEvent(_enemyEvent);
+        EventManager.Instance.ActivateEvent(_enemyEvent);
 
         foreach (GameObject enemy in _enemies)
         {

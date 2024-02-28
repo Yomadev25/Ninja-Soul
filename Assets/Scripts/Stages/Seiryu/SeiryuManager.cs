@@ -5,16 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class SeiryuManager : Singleton<SeiryuManager>
 {
+    public int stage;
     [SerializeField]
     private Transform[] _checkPoints;
-
-    [Header("Boss")]
-    [SerializeField]
-    private GameObject _seiryuLeader;
-
-    private bool stage1;
-    private bool stage2;
-    private bool stage3;
 
     protected override void Awake()
     {
@@ -43,30 +36,15 @@ public class SeiryuManager : Singleton<SeiryuManager>
         }
     }
 
-    public void InitStage(int stage)
+    private void InitStage(int stage)
     {
-        switch (stage)
-        {
-            case 1:
-                if (stage1 == true) return;
-                stage1 = true;
-                break;
-            case 2:
-                if (stage2 == true) return;
-                stage2 = true;
-                break;
-            case 3:
-                if (stage3 == true) return;
-                SpawnBoss();
-                stage3 = true;
-                break;
-            default:
-                break;
-        }
-    }
+        PlayerData.Instance.SetSpawnPoint(_checkPoints[(int)stage].position);
+        this.stage = stage;
 
-    private void SpawnBoss()
-    {
-        _seiryuLeader.SetActive(true);
+        var stageTriggers = FindObjectsOfType<SeiryuTrigger>();
+        foreach (SeiryuTrigger trigger in stageTriggers)
+        {
+            trigger.UpdateStage();
+        }
     }
 }

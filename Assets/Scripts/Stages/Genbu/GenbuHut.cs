@@ -52,7 +52,7 @@ public class GenbuHut : MonoBehaviour
                 break;
             case Type.Manager:
                 TransitionManager.Instance.SceneFadeOut();
-                EventManager.Instance.ActivatedEvent(_event);
+                EventManager.Instance.ActivateEvent(_event);
                 break;
             default:
                 break;
