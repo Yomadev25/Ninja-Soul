@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 228770987e325f64f97dd0df8a59efde, type: 3}
+  m_Name: Genbu Knuckle III
+  m_EditorClassIdentifier: 
+  name: Genbu Knuckle III
+  level: 0
+  viewRadius: 7
+  chaseRadius: 9
+  viewAngle: 120
+  delayPerCombo: 0
+  combos:
+  - {fileID: 11400000, guid: 73b50b15ee63bdb408bbb46edf341d63, type: 2}
+  - {fileID: 11400000, guid: a029ec216a988884281b588276765849, type: 2}
