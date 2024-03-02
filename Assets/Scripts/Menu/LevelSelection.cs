@@ -26,6 +26,40 @@ public class LevelSelection : MonoBehaviour
         _seiryuButton.onClick.AddListener(() => Play("Seiryu_1"));
         _suzakuButton.onClick.AddListener(() => Play("Suzaku_1"));
         _byakkoButton.onClick.AddListener(() => Play("Byakko_1"));
+
+        Player data = PlayerData.Instance.GetPlayerData();
+        if (data.genbu)
+        {
+            _genbuButton.interactable = false;
+            foreach (Transform item in _genbuButton.transform)
+            {
+                item.gameObject.SetActive(false);
+            }
+        }
+        if (data.seiryu)
+        {
+            _seiryuButton.interactable = false;
+            foreach (Transform item in _seiryuButton.transform)
+            {
+                item.gameObject.SetActive(false);
+            }
+        }
+        if (data.suzaku)
+        {
+            _suzakuButton.interactable = false;
+            foreach (Transform item in _suzakuButton.transform)
+            {
+                item.gameObject.SetActive(false);
+            }
+        }
+        if (data.byakko)
+        {
+            _byakkoButton.interactable = false;
+            foreach (Transform item in _byakkoButton.transform)
+            {
+                item.gameObject.SetActive(false);
+            }
+        }
     }
 
     private void Play(string name)
