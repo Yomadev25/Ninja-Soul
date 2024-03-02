@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class SeiryuManager : Singleton<SeiryuManager>
 {
+    [SerializeField]
+    private StageCriteria _stageCriteria;
+
     public int stage;
     [SerializeField]
     private Transform[] _checkPoints;
@@ -38,6 +41,7 @@ public class SeiryuManager : Singleton<SeiryuManager>
 
     private void InitStage(int stage)
     {
+        StageManager.Instance.InitCriteria(_stageCriteria);
         PlayerData.Instance.SetSpawnPoint(_checkPoints[(int)stage].position);
         this.stage = stage;
 

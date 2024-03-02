@@ -60,6 +60,8 @@ public class LevelSelection : MonoBehaviour
                 item.gameObject.SetActive(false);
             }
         }
+
+        StageManager.Instance.ResetCreteria();
     }
 
     private void Play(string name)

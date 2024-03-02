@@ -5,6 +5,8 @@ using UnityEngine;
 public class TutorialManager : MonoBehaviour
 {
     [SerializeField]
+    private StageCriteria _stageCriteria;
+    [SerializeField]
     private ControllerTutorial _controllerTutorial;
     [SerializeField]
     private CombatTutorial _combatTutorial;
@@ -39,6 +41,8 @@ public class TutorialManager : MonoBehaviour
     private void Start()
     {
         _controllerTutorial.gameObject.SetActive(true);
+        StageManager.Instance.ResetCreteria();
+        StageManager.Instance.InitCriteria(_stageCriteria);
     }
 
     private void ActivateCombatTutorial()

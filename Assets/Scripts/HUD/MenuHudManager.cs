@@ -128,8 +128,8 @@ public class MenuHudManager : MonoBehaviour
                 TimeSpan duration = player.lastDate - player.startDate;
 
                 _saveNameText.text = i == 0? "AUTOSAVE" : "SLOT " + player.id;
-                _playTimeText.text = $"{duration.TotalHours.ToString("00")}.{duration.TotalMinutes.ToString("00")}.{duration.TotalSeconds.ToString("00")}";
-                _saveDateText.text = $"{player.lastDate.ToString("dd / MM / yyyy")}";
+                _playTimeText.text = _playTimeText.text = string.Format("{0:00}:{1:00}:{2:00}", duration.Hours, duration.Minutes, duration.Seconds);
+                _saveDateText.text = $"{player.lastDate.ToString("dd - MM - yyyy")}";
                 _saveTimeText.text = $"{player.lastDate.ToString("hh:mm tt")}";
 
                 GameObject GO = Instantiate(_saveSlot, _saveRoot);
