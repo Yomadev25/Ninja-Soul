@@ -9,4 +9,9 @@ public class GenbuPortal : MonoBehaviour
     {
         gameObject.SetActive(GenbuManager.Instance.clearAllHuts);
     }
+
+    private void Start()
+    {
+        PlayerData.Instance.SetSpawnPoint(default);
+    }
 }

@@ -15,6 +15,7 @@ public class GenbuHut : MonoBehaviour
     public int id;
     public Type type;
     public string scene;
+    public Vector3 destination;
 
     [Header("Hut Properties")]
     [SerializeField]
@@ -30,6 +31,7 @@ public class GenbuHut : MonoBehaviour
         {
             if (@event != _event) return;
             GenbuManager.Instance.SetHut(id, true);
+            PlayerData.Instance.SetSpawnPoint(destination);
             _exitPortal.SetActive(true);
         });
     }
@@ -60,8 +62,8 @@ public class GenbuHut : MonoBehaviour
     }
 
     public void BackToGenbu()
-    {
-        TransitionManager.Instance.SceneFadeIn(1, () =>
+    {       
+        TransitionManager.Instance.SceneFadeIn(0.5f, () =>
                 SceneManager.LoadScene("Genbu_1"));
     }
 
@@ -70,7 +72,8 @@ public class GenbuHut : MonoBehaviour
         if (type != Type.Portal) return;
         if (other.CompareTag("Player"))
         {
-            TransitionManager.Instance.SceneFadeIn(1, () =>
+            PlayerData.Instance.SetSpawnPoint(default);
+            TransitionManager.Instance.SceneFadeIn(0.5f, () =>
                 SceneManager.LoadScene(scene));
         }
     }

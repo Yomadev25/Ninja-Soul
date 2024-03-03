@@ -5,6 +5,9 @@ using UnityEngine.Events;
 
 public class Interact : MonoBehaviour
 {
+    public const string MessageOnActiveInteract = "On Active Interact";
+    public const string MessageOnDisableInteract = "On Disable Interact";
+
     public enum InteractType
     {
         PressButton,
@@ -52,7 +55,11 @@ public class Interact : MonoBehaviour
             if (_interactType == InteractType.PressButton)
             {
                 if (_target != null)
-                    _target.EnableInteract();
+                {
+                    _target.EnableInteract();                    
+                }
+
+                MessagingCenter.Send(this, MessageOnActiveInteract);
                 _canInteract = true;
             }
             else if (_interactType == InteractType.Instant)
@@ -67,7 +74,11 @@ public class Interact : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             if (_target != null)
-                _target.DisableInteract();
+            {
+                _target.DisableInteract();              
+            }
+
+            MessagingCenter.Send(this, MessageOnDisableInteract);
             _canInteract = false;
         }
     }

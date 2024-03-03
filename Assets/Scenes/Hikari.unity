@@ -1532,7 +1532,7 @@ MonoBehaviour:
   m_ShowCameraFrustum: 1
   m_IgnoreTimeScale: 0
   m_WorldUpOverride: {fileID: 0}
-  m_UpdateMethod: 2
+  m_UpdateMethod: 0
   m_BlendUpdateMethod: 1
   m_DefaultBlend:
     m_Style: 1
@@ -4172,11 +4172,6 @@ PrefabInstance:
       propertyPath: onStartSoulBerserk.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 632076870}
-    - target: {fileID: 6711091053219272812, guid: ffaf9087334dbdf458a1b29865497603,
-        type: 3}
-      propertyPath: _comboGroups.Array.data[2].isUnlocked
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6711091053219272820, guid: ffaf9087334dbdf458a1b29865497603,
         type: 3}
       propertyPath: m_RootOrder

@@ -61,12 +61,12 @@ public class LevelSelection : MonoBehaviour
             }
         }
 
-        StageManager.Instance.ResetCreteria();
+        StageManager.Instance.ResetCreteria();        
     }
 
     private void Play(string name)
     {
-        TransitionManager.Instance.SceneFadeIn(1f, () =>
+        TransitionManager.Instance.SceneFadeIn(0.5f, () =>
         {
             SceneManager.LoadScene(name);
         });

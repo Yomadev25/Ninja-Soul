@@ -10,7 +10,7 @@ public class Portal : MonoBehaviour, IInteract
 
     public void Interact()
     {
-        TransitionManager.Instance.SceneFadeIn(1f, () =>
+        TransitionManager.Instance.SceneFadeIn(0.5f, () =>
         {
             SceneManager.LoadScene(_scene);
         });

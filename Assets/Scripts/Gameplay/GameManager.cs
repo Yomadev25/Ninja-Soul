@@ -170,17 +170,23 @@ public class GameManager : MonoBehaviour
 
     private void RestartLevel()
     {
-        TransitionManager.Instance.SceneFadeIn(1f, () => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex));
+        PlayerData.Instance.hp = 10;
+        PlayerData.Instance.soul = 0;
+        TransitionManager.Instance.SceneFadeIn(0.5f, () => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex));
     }
 
     private void ExitLevel()
     {
-        TransitionManager.Instance.SceneFadeIn(1f, () => SceneManager.LoadScene("Hikari"));
+        PlayerData.Instance.hp = 10;
+        PlayerData.Instance.soul = 0;
+        TransitionManager.Instance.SceneFadeIn(0.5f, () => SceneManager.LoadScene("Hikari"));
     }
 
     private void LevelComplete()
     {
         ChangeGameState(GameState.CLEAR);
+        PlayerData.Instance.hp = 10;
+        PlayerData.Instance.soul = 0;
         MessagingCenter.Send(this, MessageOnLevelCompleted);
     }
 }

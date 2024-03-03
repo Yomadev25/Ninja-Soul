@@ -44,7 +44,7 @@ public class SaveHudManager : MonoBehaviour
        
         _backToHikari.onClick.AddListener(() =>
         {
-            TransitionManager.Instance.SceneFadeIn(1, () =>
+            TransitionManager.Instance.SceneFadeIn(0.5f, () =>
             {
                 EventManager.Instance.ClearAllEvents();
                 SceneManager.LoadScene("Hikari");
@@ -55,7 +55,7 @@ public class SaveHudManager : MonoBehaviour
 
         _backToMenu.onClick.AddListener(() =>
         {
-            TransitionManager.Instance.SceneFadeIn(1, () =>
+            TransitionManager.Instance.SceneFadeIn(0.5f, () =>
             {
                 EventManager.Instance.ClearAllEvents();
                 SceneManager.LoadScene("Menu");
@@ -151,7 +151,7 @@ public class SaveHudManager : MonoBehaviour
     {
         player.id = id;
         PlayerData.Instance.PlayerSetup(player);
-        TransitionManager.Instance.SceneFadeIn(1, () =>
+        TransitionManager.Instance.SceneFadeIn(0.5f, () =>
             SceneManager.LoadScene("Hikari"));
     }
 

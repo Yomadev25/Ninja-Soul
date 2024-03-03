@@ -9,8 +9,29 @@ public class PlayerData : Singleton<PlayerData>
     private Player _player;
 
     [Header("Actions")]
-    public string scene;
+    public float hp;
+    public float soul;
     public Vector3 spawnPoint;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        MessagingCenter.Subscribe<PlayerManager>(this, PlayerManager.MessageOnHpChanged, (sender) =>
+        {
+            hp = sender.hp;
+        });
+
+        MessagingCenter.Subscribe<PlayerManager>(this, PlayerManager.MessageOnSoulChanged, (sender) =>
+        {
+            soul = sender.soul;
+        });
+    }
+
+    private void OnDestroy()
+    {
+        MessagingCenter.Unsubscribe<PlayerManager>(this, PlayerManager.MessageOnHpChanged);
+        MessagingCenter.Unsubscribe<PlayerManager>(this, PlayerManager.MessageOnSoulChanged);
+    }
 
     public void PlayerSetup(Player player)
     {

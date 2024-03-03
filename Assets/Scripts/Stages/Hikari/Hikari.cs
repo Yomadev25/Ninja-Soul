@@ -12,7 +12,7 @@ public class Hikari : MonoBehaviour
 
     public void GoToTutorial()
     {
-        TransitionManager.Instance.SceneFadeIn(1, () =>
+        TransitionManager.Instance.SceneFadeIn(0.5f, () =>
             SceneManager.LoadScene("Tutorial"));
     }
 }

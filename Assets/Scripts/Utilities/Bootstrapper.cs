@@ -6,5 +6,6 @@ public static class Bootstrapper
     public static void Execute()
     {
         Object.DontDestroyOnLoad(Object.Instantiate(Resources.Load("Systems/Transition Manager")));
+        Object.DontDestroyOnLoad(Object.Instantiate(Resources.Load("Systems/Player Data")));
     }
 }

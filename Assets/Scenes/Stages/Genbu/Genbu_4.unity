@@ -539,7 +539,7 @@ Transform:
   m_Children:
   - {fileID: 160250246}
   m_Father: {fileID: 1606013172}
-  m_RootOrder: 13
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: -1.579, z: 0}
 --- !u!1001 &53613638
 PrefabInstance:
@@ -1486,7 +1486,7 @@ Transform:
   m_Children:
   - {fileID: 640345693}
   m_Father: {fileID: 1606013172}
-  m_RootOrder: 8
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 10.708, z: 0}
 --- !u!1001 &221953564
 PrefabInstance:
@@ -4422,7 +4422,7 @@ Transform:
   m_Children:
   - {fileID: 1272764928}
   m_Father: {fileID: 1606013172}
-  m_RootOrder: 10
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: -24.214, z: 0}
 --- !u!1001 &400448711
 PrefabInstance:
@@ -5125,6 +5125,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _events:
   - {fileID: 11400000, guid: b2a1fb5b23771ab458876e32f978b420, type: 2}
+  _stageCriteria:
+    enemyCount: 0
+    deathCount: 0
+    time: 0
   huts:
   - id: 0
     isClear: 0
@@ -5182,7 +5186,7 @@ Transform:
   m_Children:
   - {fileID: 1159738296}
   m_Father: {fileID: 1606013172}
-  m_RootOrder: 12
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: -25.117, z: 0}
 --- !u!1001 &500764336
 PrefabInstance:
@@ -6329,7 +6333,7 @@ Transform:
   - {fileID: 1189958292}
   - {fileID: 762591191}
   m_Father: {fileID: 1606013172}
-  m_RootOrder: 29
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &562866603
 GameObject:
@@ -6367,7 +6371,7 @@ MonoBehaviour:
   m_ShowCameraFrustum: 1
   m_IgnoreTimeScale: 0
   m_WorldUpOverride: {fileID: 0}
-  m_UpdateMethod: 2
+  m_UpdateMethod: 0
   m_BlendUpdateMethod: 1
   m_DefaultBlend:
     m_Style: 1
@@ -12529,7 +12533,7 @@ Transform:
   m_Children:
   - {fileID: 834369784}
   m_Father: {fileID: 1606013172}
-  m_RootOrder: 11
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 15.64, z: 0}
 --- !u!1001 &1146494618
 PrefabInstance:
@@ -13264,7 +13268,7 @@ Transform:
   m_Children:
   - {fileID: 1471400496}
   m_Father: {fileID: 1606013172}
-  m_RootOrder: 9
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: -4.959, z: 0}
 --- !u!1001 &1250974097
 PrefabInstance:
@@ -17348,36 +17352,35 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1250974098}
-  - {fileID: 1930862701}
-  - {fileID: 1520758464}
-  - {fileID: 44386399}
-  - {fileID: 821991689}
-  - {fileID: 616445505}
-  - {fileID: 1882833034}
-  - {fileID: 1670408237}
   - {fileID: 194303473}
   - {fileID: 1210473669}
+  - {fileID: 1250974098}
   - {fileID: 382293576}
   - {fileID: 1139518756}
   - {fileID: 500059632}
   - {fileID: 46287109}
+  - {fileID: 44386399}
+  - {fileID: 1930862701}
+  - {fileID: 556171810}
+  - {fileID: 1520758464}
   - {fileID: 33041525}
   - {fileID: 1093162780}
-  - {fileID: 1562671046}
+  - {fileID: 821991689}
   - {fileID: 2096861355}
   - {fileID: 692927418}
   - {fileID: 1762571202}
-  - {fileID: 1758013159}
+  - {fileID: 616445505}
   - {fileID: 306771320}
   - {fileID: 1274113616}
+  - {fileID: 1562671046}
   - {fileID: 263315169}
   - {fileID: 523025139}
   - {fileID: 1467077173}
   - {fileID: 447469037}
   - {fileID: 2023555614}
+  - {fileID: 1882833034}
   - {fileID: 342597584}
-  - {fileID: 556171810}
+  - {fileID: 1758013159}
   - {fileID: 80628507}
   - {fileID: 1062011625}
   - {fileID: 1950896669}
@@ -17386,6 +17389,7 @@ Transform:
   - {fileID: 67762414}
   - {fileID: 1376819531}
   - {fileID: 1788967275}
+  - {fileID: 1670408237}
   - {fileID: 293892167}
   - {fileID: 1900514523}
   - {fileID: 2119531020}

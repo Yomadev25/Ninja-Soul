@@ -155,7 +155,7 @@ public class MenuHudManager : MonoBehaviour
 
         SaveManager.Instance.Save(player);
         PlayerData.Instance.PlayerSetup(SaveManager.Instance.Load(player.id));
-        TransitionManager.Instance.SceneFadeIn(1, () =>
+        TransitionManager.Instance.SceneFadeIn(0.5f, () =>
             SceneManager.LoadScene("Intro"));
     }
 
@@ -167,12 +167,12 @@ public class MenuHudManager : MonoBehaviour
 
     private void StartGame()
     {
-        TransitionManager.Instance.SceneFadeIn(1, () =>
+        TransitionManager.Instance.SceneFadeIn(0.5f, () =>
             SceneManager.LoadScene("Hikari"));
     }
 
     private void Exit()
     {
-        TransitionManager.Instance.SceneFadeIn(1, () => Application.Quit());
+        TransitionManager.Instance.SceneFadeIn(0.5f, () => Application.Quit());
     }
 }

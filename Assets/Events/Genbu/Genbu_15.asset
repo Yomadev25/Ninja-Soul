@@ -10,9 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 767b2bda976d2494a893bf3913a764f2, type: 3}
-  m_Name: Genbu_00
+  m_Name: Genbu_15
   m_EditorClassIdentifier: 
-  title: Defeat enemies in every hut
-  type: 2
-  description: Eliminates all enemies
-  eliminateEvents: []
+  title: Defeat enemies
+  type: 0
+  description: 
+  eliminateEvents:
+  - Event: {fileID: 0}
+    enemy: {fileID: 11400000, guid: fc58a113c87176e4282b65723f779023, type: 2}
+    targetCount: 1
+    count: 0

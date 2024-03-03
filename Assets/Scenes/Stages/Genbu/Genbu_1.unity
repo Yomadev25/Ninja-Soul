@@ -566,6 +566,7 @@ MonoBehaviour:
   id: 2
   type: 0
   scene: Genbu_1_3
+  destination: {x: 0, y: 0, z: 0}
   _event: {fileID: 0}
   _exitPortal: {fileID: 0}
 --- !u!65 &118719187
@@ -1231,6 +1232,7 @@ MonoBehaviour:
   id: 0
   type: 0
   scene: Genbu_1_1
+  destination: {x: 0, y: 0, z: 0}
   _event: {fileID: 0}
   _exitPortal: {fileID: 0}
 --- !u!1 &318150966
@@ -1317,6 +1319,7 @@ MonoBehaviour:
   id: 4
   type: 0
   scene: Genbu_1_5
+  destination: {x: 0, y: 0, z: 0}
   _event: {fileID: 0}
   _exitPortal: {fileID: 0}
 --- !u!65 &333533527
@@ -4738,6 +4741,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _events:
   - {fileID: 11400000, guid: b2a1fb5b23771ab458876e32f978b420, type: 2}
+  _stageCriteria:
+    enemyCount: 0
+    deathCount: 0
+    time: 0
   huts:
   - id: 0
     isClear: 0
@@ -7062,6 +7069,7 @@ MonoBehaviour:
   id: 3
   type: 0
   scene: Genbu_1_4
+  destination: {x: 0, y: 0, z: 0}
   _event: {fileID: 0}
   _exitPortal: {fileID: 0}
 --- !u!65 &1816937564
@@ -7518,7 +7526,7 @@ MonoBehaviour:
   m_ShowCameraFrustum: 1
   m_IgnoreTimeScale: 0
   m_WorldUpOverride: {fileID: 0}
-  m_UpdateMethod: 2
+  m_UpdateMethod: 0
   m_BlendUpdateMethod: 1
   m_DefaultBlend:
     m_Style: 1
@@ -8163,6 +8171,7 @@ MonoBehaviour:
   id: 1
   type: 0
   scene: Genbu_1_2
+  destination: {x: 0, y: 0, z: 0}
   _event: {fileID: 0}
   _exitPortal: {fileID: 0}
 --- !u!65 &2059517179

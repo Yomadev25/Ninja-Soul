@@ -12,11 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 767b2bda976d2494a893bf3913a764f2, type: 3}
   m_Name: Genbu_10
   m_EditorClassIdentifier: 
-  title: Defeat enemies
-  type: 0
-  description: 
-  eliminateEvents:
-  - Event: {fileID: 0}
-    enemy: {fileID: 11400000, guid: 3a0fd6ac219c6af4cba5ac8b8e45c9ab, type: 2}
-    targetCount: 3
-    count: 0
+  title: Defeat enemies in every hut
+  type: 2
+  description: Eliminates all enemies
+  eliminateEvents: []

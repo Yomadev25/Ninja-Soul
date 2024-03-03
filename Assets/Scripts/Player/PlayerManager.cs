@@ -55,7 +55,15 @@ public class PlayerManager : MonoBehaviour, IDamageable
 
     private void Awake()
     {
-        _hp = _maxHp;
+        if (PlayerData.Instance == null)
+        {
+            _hp = _maxHp;
+        }
+        else
+        {
+            _hp = PlayerData.Instance.hp;
+            _soul = PlayerData.Instance.soul;
+        }
 
         MessagingCenter.Subscribe<HudLoader>(this, HudLoader.MessageOnHudLoaded, (sender) =>
         {
@@ -154,6 +162,7 @@ public class PlayerManager : MonoBehaviour, IDamageable
         _anim.applyRootMotion = true;
         _anim.SetTrigger("Die");
 
+        PlayerData.Instance.hp = _maxHp;
         MessagingCenter.Send(this, MessageOnPlayerDied);
     }
 }

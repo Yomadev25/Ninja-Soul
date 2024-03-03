@@ -62,9 +62,9 @@ public class Intro : MonoBehaviour
     {
         if (isCompleting) return;
         isCompleting = true;
-        TransitionManager.Instance.SceneFadeIn(1f, () =>
+        TransitionManager.Instance.SceneFadeIn(0.5f, () =>
         {
-            SceneManager.LoadScene("Hikari");
+            SceneManager.LoadScene("Tutorial");
         });
     }
 }
