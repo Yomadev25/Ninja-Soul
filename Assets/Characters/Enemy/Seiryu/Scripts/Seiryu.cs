@@ -16,8 +16,26 @@ public class Seiryu : MonoBehaviour
     [SerializeField]
     private GameObject _stormPrefab;
 
+    private int _phase = 1;
+
     private void Awake()
     {
+        MessagingCenter.Subscribe<EnemyManager>(this, EnemyManager.MessageOnUpdateHp, (sender) =>
+        {
+            if (sender.gameObject != gameObject) return;
+
+            if ((sender.hp / sender.maxHp) <= 0.5f)
+            {
+                if (_phase == 2) return;
+                _phase = 2;
+            }
+            else if ((sender.hp / sender.maxHp) <= 0.2f)
+            {
+                if (_phase == 3) return;
+                _phase = 3;
+            }
+        });
+
         MessagingCenter.Subscribe<EventManager, Event>(this, EventManager.MessageOnArchievedEvent, (sender, @event) =>
         {
             if (@event == _event)
@@ -29,7 +47,6 @@ public class Seiryu : MonoBehaviour
 
     private void OnDestroy()
     {
-        MessagingCenter.Unsubscribe<Genbu_Throw>(this, Genbu_Throw.MessagePrepareRock);
         MessagingCenter.Unsubscribe<EnemyManager>(this, EnemyManager.MessageOnUpdateHp);
         MessagingCenter.Unsubscribe<EventManager, Event>(this, EventManager.MessageOnArchievedEvent);
     }
