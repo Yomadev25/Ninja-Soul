@@ -61,8 +61,16 @@ public class PlayerManager : MonoBehaviour, IDamageable
         }
         else
         {
-            _hp = PlayerData.Instance.hp;
-            _soul = PlayerData.Instance.soul;
+            if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "Hikari")
+            {
+                _hp = _maxHp;
+                _soul = 0f;
+            }
+            else
+            {
+                _hp = PlayerData.Instance.hp;
+                _soul = PlayerData.Instance.soul;
+            }
         }
 
         MessagingCenter.Subscribe<HudLoader>(this, HudLoader.MessageOnHudLoaded, (sender) =>
@@ -79,6 +87,11 @@ public class PlayerManager : MonoBehaviour, IDamageable
         {
             _isDash = false;
         });
+
+        MessagingCenter.Subscribe<CombatTutorial>(this, CombatTutorial.MessageOnTutorialComplete, (sender) =>
+        {
+            _soul = 100f;
+        });
     }
 
     private void OnDestroy()
@@ -86,6 +99,7 @@ public class PlayerManager : MonoBehaviour, IDamageable
         MessagingCenter.Unsubscribe<HudLoader>(this, HudLoader.MessageOnHudLoaded);
         MessagingCenter.Unsubscribe<PlayerDashState>(this, PlayerDashState.MessageOnDashStart);
         MessagingCenter.Unsubscribe<PlayerDashState>(this, PlayerDashState.MessageOnDashEnd);
+        MessagingCenter.Unsubscribe<CombatTutorial>(this, CombatTutorial.MessageOnTutorialComplete);
     }
 
     private void InitPlayerHUD()
@@ -137,7 +151,7 @@ public class PlayerManager : MonoBehaviour, IDamageable
 
         while (_soul > 0)
         {
-            _soul -= Time.deltaTime * 5;
+            _soul -= Time.deltaTime * 8f;
             MessagingCenter.Send(this, MessageOnSoulChanged);
 
             yield return null;

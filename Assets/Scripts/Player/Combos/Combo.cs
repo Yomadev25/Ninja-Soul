@@ -13,7 +13,4 @@ public class Combo : ScriptableObject
 
     public AnimatorOverrideController animation;
     public float damage;
-
-    [Header("Effect Offset")]
-    public Vector3 eulerAngle;
 }

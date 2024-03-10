@@ -25,7 +25,7 @@ public class PlayerCombatState : PlayerBaseState
         _context.Anim.applyRootMotion = true;
         timePassed = 0f;
 
-        comboGroup = _context.ComboFactory.ComboGroups.First(x => x.name == _context.playerEquipment.weapon.WeaponName);
+        comboGroup = _context.ComboFactory.ComboGroups.First(x => x.name == _context.playerEquipment.weapons[0].WeaponName);
         var comboAnim = comboGroup.combos[comboCount].animation;
         _context.Anim.runtimeAnimatorController = comboAnim;
         _context.Anim.Play("Attack", 1, 0);

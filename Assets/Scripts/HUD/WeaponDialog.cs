@@ -21,6 +21,8 @@ public class WeaponDialog : MonoBehaviour
 
     private void Awake()
     {
+        SelectWeapon(PlayerData.Instance.weapon);
+
         for (int i = 0; i < _weaponButtons.Length; i++)
         {
             int index = i;

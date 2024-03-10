@@ -1,16 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.Burst.Intrinsics;
 using UnityEngine;
 
 public class PlayerEquipment : MonoBehaviour
 {
     [SerializeField]
-    private Weapon _weapon;
+    private Weapon[] _weapons;
     [SerializeField]
     private PlayerStateMachine _playerStateMachine;
 
-    public Weapon weapon => _weapon;
+    public Weapon[] weapons => _weapons;
 
     private void Awake()
     {
@@ -19,12 +20,19 @@ public class PlayerEquipment : MonoBehaviour
             ComboGroup comboGroup = _playerStateMachine.ComboFactory.ComboGroups[(int)clan];
             foreach (var combo in _playerStateMachine.ComboFactory.ComboGroups)
             {
-                if (combo.weaponObject != null)
-                    combo.weaponObject.SetActive(false);
+                foreach (GameObject weaponObject in combo.weaponObjects)
+                {
+                    weaponObject.SetActive(false);
+                }
             }
 
-            _weapon = comboGroup.weapon;
-            comboGroup.weaponObject.SetActive(true);
+            _weapons = comboGroup.weapons;
+            foreach (GameObject weaponObject in comboGroup.weaponObjects)
+            {
+                weaponObject.SetActive(true);
+            }
+
+            _playerStateMachine.Anim.runtimeAnimatorController = comboGroup.combos[0].animation;
         });
     }
 
@@ -35,7 +43,7 @@ public class PlayerEquipment : MonoBehaviour
 
     void Start()
     {
-        if (_weapon == null)
+        if (_weapons.Length == 0)
         {
             Debug.LogError("This character doesn't equip weapon");
         }
@@ -48,14 +56,20 @@ public class PlayerEquipment : MonoBehaviour
     public void StartDealWeaponDamage()
     {
         int currentCombo = _playerStateMachine.ComboCount;
-        var comboGroup = _playerStateMachine.ComboFactory.ComboGroups.First(x => x.name == _weapon.WeaponName);
+        var comboGroup = _playerStateMachine.ComboFactory.ComboGroups.First(x => x.name == _weapons[0].WeaponName);
         float damageAdjust = comboGroup.combos[currentCombo].damage * (_playerStateMachine.playerManager.soulBerserk? 2f : 1f);
 
-        _weapon.StartDealDamage(damageAdjust, comboGroup.combos[currentCombo].eulerAngle);
+        foreach (Weapon weapon in _weapons)
+        {
+            weapon.StartDealDamage(damageAdjust);
+        }
     }
 
     public void EndDealWeaponDamage()
     {
-        _weapon.EndDealDamage();
+        foreach (Weapon weapon in _weapons)
+        {
+            weapon.EndDealDamage();
+        }
     }
 }

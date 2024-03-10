@@ -15,8 +15,6 @@ public class Weapon : MonoBehaviour, IDamageDealer
     [Header("References")]
     [SerializeField]
     private LayerMask _targetLayer;
-    [SerializeField]
-    private UnityEngine.VFX.VisualEffect _slashFx; //Don't forget to delete this line and use Effect Manager instead.
 
     bool canDealDamage;
     List<IDamageable> dealtTargets = new List<IDamageable>();
@@ -59,20 +57,12 @@ public class Weapon : MonoBehaviour, IDamageDealer
         target.TakeDamage(damage);
     }
 
-    public void StartDealDamage(float damageAdjust = 0f, Vector3 effectEuler = default)
+    public void StartDealDamage(float damageAdjust = 0f)
     {
         this.damageAdjust = damageAdjust;
 
         canDealDamage = true;
         dealtTargets.Clear();
-
-        if (_slashFx == null) return;
-        Transform root = _slashFx.transform.parent;
-        if (effectEuler != default)
-        {
-            root.localEulerAngles = effectEuler;
-            _slashFx.Play();
-        }
     }
 
     public void EndDealDamage()

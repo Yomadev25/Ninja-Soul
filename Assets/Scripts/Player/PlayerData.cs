@@ -11,6 +11,7 @@ public class PlayerData : Singleton<PlayerData>
     [Header("Actions")]
     public float hp;
     public float soul;
+    public int weapon;
     public Vector3 spawnPoint;
 
     protected override void Awake()
@@ -25,12 +26,18 @@ public class PlayerData : Singleton<PlayerData>
         {
             soul = sender.soul;
         });
+
+        MessagingCenter.Subscribe<WeaponDialog, WeaponDialog.Clans>(this, WeaponDialog.MessageWantToChangeWeapon, (sender, clan) =>
+        {
+            weapon = (int)clan;
+        });
     }
 
     private void OnDestroy()
     {
         MessagingCenter.Unsubscribe<PlayerManager>(this, PlayerManager.MessageOnHpChanged);
         MessagingCenter.Unsubscribe<PlayerManager>(this, PlayerManager.MessageOnSoulChanged);
+        MessagingCenter.Unsubscribe<WeaponDialog, WeaponDialog.Clans>(this, WeaponDialog.MessageWantToChangeWeapon);
     }
 
     public void PlayerSetup(Player player)
