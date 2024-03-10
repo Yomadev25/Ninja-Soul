@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -64,16 +65,21 @@ public class GameManager : MonoBehaviour
         #region STAGE CLEAR EVENT
         MessagingCenter.Subscribe<SoulTutorial>(this, SoulTutorial.MessageOnTutorialComplete, (sender) =>
         {
+            PlayerData.Instance.GetPlayerData().tutorial = true;
             LevelComplete();
         });
 
         MessagingCenter.Subscribe<Genbu>(this, Genbu.MessageClearGenbuStage, (sender) =>
         {
+            PlayerData.Instance.GetPlayerData().genbu = true;
+            PlayerData.Instance.GetPlayerData().knuckles = true;
             LevelComplete();
         });
 
         MessagingCenter.Subscribe<Seiryu>(this, Seiryu.MessageClearSeiryuStage, (sender) =>
         {
+            PlayerData.Instance.GetPlayerData().seiryu = true;
+            PlayerData.Instance.GetPlayerData().jevalin = true;
             LevelComplete();
         });
         #endregion
@@ -187,6 +193,12 @@ public class GameManager : MonoBehaviour
         ChangeGameState(GameState.CLEAR);
         PlayerData.Instance.hp = 10;
         PlayerData.Instance.soul = 0;
+
+        Player player = PlayerData.Instance.GetPlayerData();
+        player.id = 0;
+        player.lastDate = DateTime.Now;
+        SaveManager.Instance.Save(player);
+
         MessagingCenter.Send(this, MessageOnLevelCompleted);
     }
 }

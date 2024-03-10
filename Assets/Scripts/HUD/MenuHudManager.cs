@@ -99,10 +99,8 @@ public class MenuHudManager : MonoBehaviour
         switch (page)
         {
             case Page.TITLE:
-                _eventSystem.firstSelectedGameObject = _newGameButton.gameObject;
                 break;
             case Page.SAVE:
-                _eventSystem.firstSelectedGameObject = _saveRoot.GetChild(0).gameObject;
                 _saveRoot.GetChild(0).gameObject.GetComponent<Button>().Select();
                 break;
             case Page.OPTIONS:
@@ -151,7 +149,7 @@ public class MenuHudManager : MonoBehaviour
 
     private void NewGame()
     {
-        Player player = new Player(0, true, false, false, false, false, false, false, false, false, DateTime.Now, DateTime.Now);
+        Player player = new Player(0, false, false, false, false, false, false, false, false, false, DateTime.Now, DateTime.Now);
 
         SaveManager.Instance.Save(player);
         PlayerData.Instance.PlayerSetup(SaveManager.Instance.Load(player.id));

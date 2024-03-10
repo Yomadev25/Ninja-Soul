@@ -17377,7 +17377,6 @@ MonoBehaviour:
   _targetLayer:
     serializedVersion: 2
     m_Bits: 128
-  _slashFx: {fileID: 0}
 --- !u!4 &1422871281
 Transform:
   m_ObjectHideFlags: 0
@@ -22283,7 +22282,6 @@ MonoBehaviour:
   _targetLayer:
     serializedVersion: 2
     m_Bits: 128
-  _slashFx: {fileID: 0}
 --- !u!1001 &1852253013
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27437,6 +27435,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player Data
+      objectReference: {fileID: 0}
+    - target: {fileID: 5336905993494160881, guid: 425a0c88867f1814da524fe063b40fb4,
+        type: 3}
+      propertyPath: isProduction
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5336905993494160886, guid: 425a0c88867f1814da524fe063b40fb4,
         type: 3}

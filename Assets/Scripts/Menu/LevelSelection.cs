@@ -31,6 +31,7 @@ public class LevelSelection : MonoBehaviour
         if (data.genbu)
         {
             _genbuButton.interactable = false;
+            _genbuButton.image.raycastTarget = false;
             foreach (Transform item in _genbuButton.transform)
             {
                 item.gameObject.SetActive(false);
@@ -39,6 +40,7 @@ public class LevelSelection : MonoBehaviour
         if (data.seiryu)
         {
             _seiryuButton.interactable = false;
+            _seiryuButton.image.raycastTarget = false;
             foreach (Transform item in _seiryuButton.transform)
             {
                 item.gameObject.SetActive(false);
@@ -47,6 +49,7 @@ public class LevelSelection : MonoBehaviour
         if (data.suzaku)
         {
             _suzakuButton.interactable = false;
+            _suzakuButton.image.raycastTarget = false;
             foreach (Transform item in _suzakuButton.transform)
             {
                 item.gameObject.SetActive(false);
@@ -55,6 +58,7 @@ public class LevelSelection : MonoBehaviour
         if (data.byakko)
         {
             _byakkoButton.interactable = false;
+            _byakkoButton.image.raycastTarget = false;
             foreach (Transform item in _byakkoButton.transform)
             {
                 item.gameObject.SetActive(false);

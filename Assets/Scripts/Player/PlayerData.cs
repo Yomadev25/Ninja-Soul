@@ -14,6 +14,9 @@ public class PlayerData : Singleton<PlayerData>
     public int weapon;
     public Vector3 spawnPoint;
 
+    [Header("Environment")]
+    public bool isProduction;
+
     protected override void Awake()
     {
         base.Awake();

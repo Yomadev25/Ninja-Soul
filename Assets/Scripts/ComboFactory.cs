@@ -31,6 +31,30 @@ public class ComboFactory : MonoBehaviour
 
     private void Awake()
     {
+        foreach (ComboGroup comboGroup in _comboGroups)
+        {
+            comboGroup.isUnlocked = false;
+        }
+        _comboGroups[0].isUnlocked = true;
+
+        Player player = PlayerData.Instance.GetPlayerData();
+        if (player.knuckles)
+        {
+            UnlockWeapon("Knuckles");
+        }
+        if (player.sword)
+        {
+            UnlockWeapon("Sword");
+        }
+        if (player.jevalin)
+        {
+            UnlockWeapon("Javelin");
+        }
+        if (player.sickles)
+        {
+            UnlockWeapon("Sickles");
+        }
+
         MessagingCenter.Subscribe<GameManager>(this, GameManager.MessageWantToSelectWeapon, (sender) =>
         {
             MessagingCenter.Send(this, MessageSendComboData, _comboGroups);
