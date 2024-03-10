@@ -5,6 +5,7 @@ using UnityEngine.Events;
 
 public class EnemyManager : MonoBehaviour, IDamageable
 {
+    public const string MessageOnEnemyAppeared = "On Enemy Appeared";
     public const string MessageOnUpdateHp = "On Update Hp";
     public const string MessageOnEnemyDead = "On Enemy Dead";
 
@@ -43,6 +44,7 @@ public class EnemyManager : MonoBehaviour, IDamageable
     {
         _hp = _maxHp;
         MessagingCenter.Send(this, MessageOnUpdateHp);
+        MessagingCenter.Send(this, MessageOnEnemyAppeared);
     }
 
     private void Update()

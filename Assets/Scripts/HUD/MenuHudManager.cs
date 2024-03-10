@@ -82,17 +82,40 @@ public class MenuHudManager : MonoBehaviour
         _anim.enabled = false;
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            switch (_currentPage)
+            {
+                case Page.TITLE:
+                    break;
+                case Page.SAVE:
+                    ChangePage(Page.TITLE);
+                    break;
+                case Page.OPTIONS:
+                    ChangePage(Page.TITLE);
+                    break;
+                case Page.CREDIT:
+                    ChangePage(Page.TITLE);
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+
     private void ChangePage(Page page)
     {
         if (page == _currentPage) return;
         foreach (CanvasGroup canvas in _huds)
         {
-            canvas.LeanAlpha(0, 0.5f);
+            canvas.LeanAlpha(0, 0.3f);
             canvas.interactable = false;
             canvas.blocksRaycasts = false;
         }
 
-        _huds[(int)page].LeanAlpha(1, 0.5f);
+        _huds[(int)page].LeanAlpha(1, 0.3f).setDelay(0.3f);
         _huds[(int)page].interactable = true;
         _huds[(int)page].blocksRaycasts = true;
 
