@@ -9,6 +9,7 @@ public class DialogueManager : Singleton<DialogueManager>
     public const string MessageOnDialogueEnded = "Dialogue Ended";
 
     private Queue<string> _sentences = new Queue<string>();
+    private Dialogue _currentDialogue;
 
     private void Awake()
     {
@@ -25,6 +26,7 @@ public class DialogueManager : Singleton<DialogueManager>
 
     public void ActivateDialogue(Dialogue dialogue)
     {
+        _currentDialogue = dialogue;
         _sentences.Clear();
         foreach (string sentence in dialogue.messages)
         {
@@ -49,6 +51,7 @@ public class DialogueManager : Singleton<DialogueManager>
 
     private void EndDialogue()
     {
-        MessagingCenter.Send(this, MessageOnDialogueEnded);
+        MessagingCenter.Send(this, MessageOnDialogueEnded, _currentDialogue);
+        _currentDialogue = null;
     }
 }

@@ -57,12 +57,17 @@ public class EnemyManager : MonoBehaviour, IDamageable
         }
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(float damage, GameObject effect = null)
     {
         if (isDie) return;
 
         _hp -= damage;
         _anim.SetTrigger("Hit");
+
+        if (effect != null)
+        {
+            Instantiate(effect, transform.position, Quaternion.identity);
+        }
 
         onTakeDamage?.Invoke();
         MessagingCenter.Send(this, MessageOnUpdateHp);

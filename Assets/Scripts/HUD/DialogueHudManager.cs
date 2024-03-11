@@ -14,8 +14,6 @@ public class DialogueHudManager : MonoBehaviour
     private TMP_Text _messageText;
     [SerializeField]
     private CanvasGroup _canvasGroup;
-    [SerializeField]
-    private Button _nextButton;
 
     private bool _isActivated;
 
@@ -31,9 +29,13 @@ public class DialogueHudManager : MonoBehaviour
         MessagingCenter.Subscribe<DialogueManager, string>(this, DialogueManager.MessageOnDisplayMessage, (sender, message) =>
         {
             _messageText.text = message;
+            LeanTween.value(0, 1, 0.2f).setOnUpdate(x =>
+            {
+                _messageText.color = new Color(1, 1, 1, x);
+            });
         });
 
-        MessagingCenter.Subscribe<DialogueManager>(this, DialogueManager.MessageOnDialogueEnded, (sender) =>
+        MessagingCenter.Subscribe<DialogueManager, Dialogue>(this, DialogueManager.MessageOnDialogueEnded, (sender, dialogue) =>
         {
             _canvasGroup.LeanAlpha(0, 0.5f);
             _isActivated = false;
@@ -44,19 +46,14 @@ public class DialogueHudManager : MonoBehaviour
     {
         MessagingCenter.Unsubscribe<DialogueManager, Dialogue>(this, DialogueManager.MessageOnActivatedDialogue);
         MessagingCenter.Unsubscribe<DialogueManager, string>(this, DialogueManager.MessageOnDisplayMessage);
-        MessagingCenter.Unsubscribe<DialogueManager>(this, DialogueManager.MessageOnDialogueEnded);
-    }
-
-    private void Start()
-    {
-        _nextButton.onClick.AddListener(() => MessagingCenter.Send(this, MessageWantToDisplayNext));
+        MessagingCenter.Unsubscribe<DialogueManager, Dialogue>(this, DialogueManager.MessageOnDialogueEnded);
     }
 
     private void Update()
     {
         if (_isActivated)
         {
-            if (Input.GetKeyDown(KeyCode.Return))
+            if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
             {
                 MessagingCenter.Send(this, MessageWantToDisplayNext);
             }

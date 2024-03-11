@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
     private InputActionReference _pauseInput;
 
     private GameState _currentGameState;
+    public GameState currentGameState => _currentGameState;
 
     private void Awake()
     {
@@ -62,8 +63,18 @@ public class GameManager : MonoBehaviour
             ExitLevel();
         });
 
+        MessagingCenter.Subscribe<DialogueManager, Dialogue>(this, DialogueManager.MessageOnActivatedDialogue, (sender, dialogue) =>
+        {
+            ChangeGameState(GameState.CUTSCENE);
+        });
+
+        MessagingCenter.Subscribe<DialogueManager, Dialogue>(this, DialogueManager.MessageOnDialogueEnded, (sender, dialogue) =>
+        {
+            ChangeGameState(GameState.GAMEPLAY);
+        });
+
         #region STAGE CLEAR EVENT
-        MessagingCenter.Subscribe<SoulTutorial>(this, SoulTutorial.MessageOnTutorialComplete, (sender) =>
+        MessagingCenter.Subscribe<TutorialManager>(this, TutorialManager.MessageOnTutorialComplete, (sender) =>
         {
             PlayerData.Instance.GetPlayerData().tutorial = true;
             LevelComplete();
@@ -92,7 +103,10 @@ public class GameManager : MonoBehaviour
         MessagingCenter.Unsubscribe<PauseHudManager>(this, PauseHudManager.MessageWantToResume);
         MessagingCenter.Unsubscribe<GameplayHudManager>(this, GameplayHudManager.MessageWantToRestart);
         MessagingCenter.Unsubscribe<GameplayHudManager>(this, GameplayHudManager.MessageWantToExitLevel);
-        MessagingCenter.Unsubscribe<SoulTutorial>(this, SoulTutorial.MessageOnTutorialComplete);
+        MessagingCenter.Unsubscribe<DialogueManager, Dialogue>(this, DialogueManager.MessageOnActivatedDialogue);
+        MessagingCenter.Unsubscribe<DialogueManager, Dialogue>(this, DialogueManager.MessageOnDialogueEnded);
+
+        MessagingCenter.Unsubscribe<TutorialManager>(this, TutorialManager.MessageOnTutorialComplete);
         MessagingCenter.Unsubscribe<Genbu>(this, Genbu.MessageClearGenbuStage);
         MessagingCenter.Unsubscribe<Seiryu>(this, Seiryu.MessageClearSeiryuStage);
 

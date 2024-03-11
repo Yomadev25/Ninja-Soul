@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TutorialManager : MonoBehaviour
 {
+    public const string MessageOnTutorialComplete = "On Tutorial Complete";
+
     [SerializeField]
     private StageCriteria _stageCriteria;
     [SerializeField]
@@ -17,6 +19,30 @@ public class TutorialManager : MonoBehaviour
 
     private void Awake()
     {
+        MessagingCenter.Subscribe<DialogueManager, Dialogue>(this, DialogueManager.MessageOnDialogueEnded, (sender, dialogue) =>
+        {
+            if (dialogue == _dialogues[0])
+            {
+                _controllerTutorial.gameObject.SetActive(true);
+                StageManager.Instance.ResetCreteria();
+                StageManager.Instance.InitCriteria(_stageCriteria);
+            }
+            else if (dialogue == _dialogues[1])
+            {
+                _controllerTutorial.gameObject.SetActive(false);
+                _combatTutorial.gameObject.SetActive(true);
+            }
+            else if (dialogue == _dialogues[2])
+            {
+                _combatTutorial.gameObject.SetActive(false);
+                _soulTutorial.gameObject.SetActive(true);
+            }
+            else if (dialogue == _dialogues[3])
+            {
+                MessagingCenter.Send(this, MessageOnTutorialComplete);
+            }
+        });
+
         MessagingCenter.Subscribe<ControllerTutorial>(this, ControllerTutorial.MessageOnTutorialComplete, (sender) =>
         {
             Invoke(nameof(ActivateCombatTutorial), 3f);
@@ -29,6 +55,7 @@ public class TutorialManager : MonoBehaviour
 
         MessagingCenter.Subscribe<SoulTutorial>(this, SoulTutorial.MessageOnTutorialComplete, (sender) =>
         {
+            DialogueManager.Instance.ActivateDialogue(_dialogues[3]);
             _soulTutorial.gameObject.SetActive(false);
         });
     }
@@ -43,20 +70,15 @@ public class TutorialManager : MonoBehaviour
     private void Start()
     {
         DialogueManager.Instance.ActivateDialogue(_dialogues[0]);
-        _controllerTutorial.gameObject.SetActive(true);
-        StageManager.Instance.ResetCreteria();
-        StageManager.Instance.InitCriteria(_stageCriteria);
     }
 
     private void ActivateCombatTutorial()
     {
-        _controllerTutorial.gameObject.SetActive(false);
-        _combatTutorial.gameObject.SetActive(true);
+        DialogueManager.Instance.ActivateDialogue(_dialogues[1]);
     }
 
     private void ActivateSoulTutorial()
     {
-        _combatTutorial.gameObject.SetActive(false);
-        _soulTutorial.gameObject.SetActive(true);
+        DialogueManager.Instance.ActivateDialogue(_dialogues[2]);      
     }
 }

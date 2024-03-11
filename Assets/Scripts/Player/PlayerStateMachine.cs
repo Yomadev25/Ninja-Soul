@@ -76,99 +76,6 @@ public class PlayerStateMachine : MonoBehaviour
     public Coroutine DashCoroutine { get; set; }
     #endregion
 
-    private void OnDestroy()
-    {
-        if (_movementInput != null)
-        {
-            _movementInput.action.performed -= (ctx) =>
-            {
-                Vector2 input = ctx.ReadValue<Vector2>();
-                AxisInput = new Vector3(input.x, 0f, input.y);
-
-                PressedMove = true;
-            };
-
-            _movementInput.action.canceled -= (ctx) =>
-            {
-                AxisInput = Vector3.zero;
-                PressedMove = false;
-            };
-        }
-        else
-        {
-            Debug.LogErrorFormat("{0} isn't exist in {1}.", nameof(InputActionReference), this.name);
-        }
-
-        if (_sprintInput != null)
-        {
-            _sprintInput.action.performed -= (ctx) =>
-            {
-                PressedSprint = true;
-            };
-
-            _sprintInput.action.canceled -= (ctx) =>
-            {
-                PressedSprint = false;
-            };
-        }
-        else
-        {
-            Debug.LogErrorFormat("{0} isn't exist in {1}.", nameof(InputActionReference), this.name);
-        }
-
-        if (_dashInput != null)
-        {
-            _dashInput.action.started -= (ctx) =>
-            {
-                PressedDash = true;
-            };
-
-            _dashInput.action.canceled -= (ctx) =>
-            {
-                PressedDash = false;
-            };
-        }
-        else
-        {
-            Debug.LogErrorFormat("{0} isn't exist in {1}.", nameof(InputActionReference), this.name);
-        }
-
-        if (_combatInput != null)
-        {
-            _combatInput.action.started -= (ctx) =>
-            {
-                if (UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject()) return;
-                PressedCombat = true;
-            };
-
-            _combatInput.action.canceled -= (ctx) =>
-            {
-                PressedCombat = false;
-            };
-        }
-        else
-        {
-            Debug.LogErrorFormat("{0} isn't exist in {1}.", nameof(InputActionReference), this.name);
-        }
-
-        if (_soulInput != null)
-        {
-            _soulInput.action.started -= (ctx) =>
-            {
-                PressedSoul = true;
-            };
-
-            _soulInput.action.canceled -= (ctx) =>
-            {
-                PressedSoul = false;
-            };
-        }
-        else
-        {
-            Debug.LogErrorFormat("{0} isn't exist in {1}.", nameof(InputActionReference), this.name);
-        }
-    }
-
     private void Start()
     {
         State = new PlayerStateFactory(this);
@@ -209,6 +116,8 @@ public class PlayerStateMachine : MonoBehaviour
         {
             _movementInput.action.performed += (ctx) =>
             {
+                if (GameManager.instance.currentGameState != GameManager.GameState.GAMEPLAY) return;
+
                 Vector2 input = ctx.ReadValue<Vector2>();
                 AxisInput = new Vector3(input.x, 0f, input.y);
 
@@ -230,6 +139,7 @@ public class PlayerStateMachine : MonoBehaviour
         {
             _sprintInput.action.performed += (ctx) =>
             {
+                if (GameManager.instance.currentGameState != GameManager.GameState.GAMEPLAY) return;
                 PressedSprint = true;
             };
 
@@ -247,6 +157,7 @@ public class PlayerStateMachine : MonoBehaviour
         {
             _dashInput.action.started += (ctx) =>
             {
+                if (GameManager.instance.currentGameState != GameManager.GameState.GAMEPLAY) return;
                 PressedDash = true;
             };
 
@@ -264,6 +175,7 @@ public class PlayerStateMachine : MonoBehaviour
         {
             _combatInput.action.started += (ctx) =>
             {
+                if (GameManager.instance.currentGameState != GameManager.GameState.GAMEPLAY) return;
                 if (UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject()) return;
                 PressedCombat = true;
             };
@@ -280,6 +192,7 @@ public class PlayerStateMachine : MonoBehaviour
 
         if (_soulInput != null)
         {
+            if (GameManager.instance.currentGameState != GameManager.GameState.GAMEPLAY) return;
             _soulInput.action.started += (ctx) =>
             {
                 PressedSoul = true;

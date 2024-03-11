@@ -27,11 +27,7 @@ public class CombatTutorial : MonoBehaviour
 
     private void Start()
     {
-        _combatInput.action.started += (ctx) =>
-        {
-            _attackText.color = Color.green;
-            ActivateEvent();
-        };
+        ActivateEvent();
     }
 
     private void Awake()

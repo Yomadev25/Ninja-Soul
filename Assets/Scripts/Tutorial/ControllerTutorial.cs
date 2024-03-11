@@ -36,39 +36,14 @@ public class ControllerTutorial : MonoBehaviour
     private bool _isActivated;
     private bool _isCompleted;
 
-    private bool _isMoved;
-    private bool _isSprinted;
-    private bool _isDashed;
-
     private void Start()
     {
         _playerPos = GameObject.FindGameObjectWithTag("Player").transform;
-
-        _movementInput.action.started += (ctx) =>
-        {
-            _isMoved = true;
-            _moveText.color = Color.green;
-            ActivateEvent();
-        };
-
-        _sprintInput.action.started += (ctx) =>
-        {
-            _isSprinted = true;
-            _sprintText.color = Color.green;
-            ActivateEvent();
-        };
-
-        _dashInput.action.started += (ctx) =>
-        {
-            _isDashed = true;
-            _dashText.color = Color.green;
-            ActivateEvent();
-        };
+        ActivateEvent();
     }
 
     private void ActivateEvent()
     {
-        if (!_isMoved || !_isSprinted || !_isDashed) return;
         if (_isActivated) return;
         if (_isCompleted) return;
 

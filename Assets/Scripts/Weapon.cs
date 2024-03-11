@@ -15,6 +15,8 @@ public class Weapon : MonoBehaviour, IDamageDealer
     [Header("References")]
     [SerializeField]
     private LayerMask _targetLayer;
+    [SerializeField]
+    private GameObject _effect;
 
     bool canDealDamage;
     List<IDamageable> dealtTargets = new List<IDamageable>();
@@ -54,7 +56,7 @@ public class Weapon : MonoBehaviour, IDamageDealer
     public void DealDamage(IDamageable target, float damage)
     {
         Debug.Log($"Dealing {damage} damages.");
-        target.TakeDamage(damage);
+        target.TakeDamage(damage, _effect);
     }
 
     public void StartDealDamage(float damageAdjust = 0f)

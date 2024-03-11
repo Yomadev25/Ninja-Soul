@@ -11,6 +11,8 @@ public class SeiryuWave : MonoBehaviour
     private GameObject[] _enemies;
     [SerializeField]
     private GameObject _door;
+    [SerializeField]
+    private GameObject _healFlower;
 
     private int wave;
 
@@ -53,6 +55,7 @@ public class SeiryuWave : MonoBehaviour
         else
         {
             _door.SetActive(false);
+            _healFlower.SetActive(true);
         }        
     }
 }

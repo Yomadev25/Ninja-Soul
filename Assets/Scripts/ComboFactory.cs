@@ -17,7 +17,9 @@ public class ComboFactory : MonoBehaviour
     [SerializeField]
     private GameObject _chokutoSlashFx;
     [SerializeField]
-    private GameObject _knucklePunchFx;
+    private ParticleSystem _knucklePunchFxR;
+    [SerializeField]
+    private ParticleSystem _knucklePunchFxL;
     [SerializeField]
     private GameObject _knuckleStompFx;
     [SerializeField]
@@ -37,6 +39,19 @@ public class ComboFactory : MonoBehaviour
         }
         _comboGroups[0].isUnlocked = true;
 
+        MessagingCenter.Subscribe<GameManager>(this, GameManager.MessageWantToSelectWeapon, (sender) =>
+        {
+            MessagingCenter.Send(this, MessageSendComboData, _comboGroups);
+        });
+    }
+
+    private void OnDestroy()
+    {
+        MessagingCenter.Unsubscribe<GameManager>(this, GameManager.MessageWantToSelectWeapon);
+    }
+
+    private void Start()
+    {
         Player player = PlayerData.Instance.GetPlayerData();
         if (player.knuckles)
         {
@@ -55,19 +70,6 @@ public class ComboFactory : MonoBehaviour
             UnlockWeapon("Sickles");
         }
 
-        MessagingCenter.Subscribe<GameManager>(this, GameManager.MessageWantToSelectWeapon, (sender) =>
-        {
-            MessagingCenter.Send(this, MessageSendComboData, _comboGroups);
-        });
-    }
-
-    private void OnDestroy()
-    {
-        MessagingCenter.Unsubscribe<GameManager>(this, GameManager.MessageWantToSelectWeapon);
-    }
-
-    private void Start()
-    {
         MessagingCenter.Send(this, MessageSendComboData, _comboGroups);
     }
 
@@ -106,6 +108,23 @@ public class ComboFactory : MonoBehaviour
     #endregion
 
     #region KNUCKLES
+    public void KnucklePunch(int side)
+    {
+        if (side == 1)
+        {
+            _knucklePunchFxR.Play();
+        }
+        else if (side == 2)
+        {
+            _knucklePunchFxL.Play();
+        }
+        else
+        {
+            _knucklePunchFxR.Play();
+            _knucklePunchFxL.Play();
+        }
+    }
+
     public void KnuckleStomp()
     {
         Instantiate(_knuckleStompFx, transform.position, Quaternion.Euler(90, 0, 0));
@@ -124,7 +143,7 @@ public class ComboFactory : MonoBehaviour
                 if (collider.CompareTag("Enemy"))
                 {
                     EnemyManager enemy = collider.GetComponent<EnemyManager>();
-                    enemy.TakeDamage(25);
+                    enemy.TakeDamage(30);
                 }
             }
             yield return new WaitForSeconds(0.5f);
@@ -193,16 +212,16 @@ public class ComboFactory : MonoBehaviour
         switch (combo)
         {
             case 1:
-                eulerAngle = new Vector3(-180f, transform.eulerAngles.y, -60f);
+                eulerAngle = new Vector3(-180f, transform.eulerAngles.y, -45f);
                 break;
             case 2:
-                eulerAngle = new Vector3(-180f, transform.eulerAngles.y, -45f);
+                eulerAngle = new Vector3(-194.6f, transform.eulerAngles.y, -57.4f);
                 break;
             case 3:
                 eulerAngle = new Vector3(-180f, transform.eulerAngles.y, -20f);
                 break;
             case 4:
-                eulerAngle = new Vector3(-180f, transform.eulerAngles.y, -135f);
+                eulerAngle = new Vector3(-180f, transform.eulerAngles.y, -163f);
                 break;
             default:
                 break;
