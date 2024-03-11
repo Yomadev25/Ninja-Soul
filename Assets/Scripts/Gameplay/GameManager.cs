@@ -73,6 +73,16 @@ public class GameManager : MonoBehaviour
             ChangeGameState(GameState.GAMEPLAY);
         });
 
+        MessagingCenter.Subscribe<StageIntro>(this, StageIntro.MessageWantToPlayIntro, (sender) =>
+        {
+            ChangeGameState(GameState.CUTSCENE);
+        });
+
+        MessagingCenter.Subscribe<StageIntro>(this, StageIntro.MessageIntroEnded, (sender) =>
+        {
+            ChangeGameState(GameState.GAMEPLAY);
+        });
+
         #region STAGE CLEAR EVENT
         MessagingCenter.Subscribe<TutorialManager>(this, TutorialManager.MessageOnTutorialComplete, (sender) =>
         {
@@ -105,6 +115,8 @@ public class GameManager : MonoBehaviour
         MessagingCenter.Unsubscribe<GameplayHudManager>(this, GameplayHudManager.MessageWantToExitLevel);
         MessagingCenter.Unsubscribe<DialogueManager, Dialogue>(this, DialogueManager.MessageOnActivatedDialogue);
         MessagingCenter.Unsubscribe<DialogueManager, Dialogue>(this, DialogueManager.MessageOnDialogueEnded);
+        MessagingCenter.Unsubscribe<StageIntro>(this, StageIntro.MessageWantToPlayIntro);
+        MessagingCenter.Unsubscribe<StageIntro>(this, StageIntro.MessageIntroEnded);
 
         MessagingCenter.Unsubscribe<TutorialManager>(this, TutorialManager.MessageOnTutorialComplete);
         MessagingCenter.Unsubscribe<Genbu>(this, Genbu.MessageClearGenbuStage);

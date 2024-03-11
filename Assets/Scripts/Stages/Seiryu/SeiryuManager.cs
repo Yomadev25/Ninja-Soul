@@ -7,6 +7,8 @@ public class SeiryuManager : Singleton<SeiryuManager>
 {
     [SerializeField]
     private StageCriteria _stageCriteria;
+    [SerializeField]
+    private StageIntro _stageIntro;
 
     public int stage;
     [SerializeField]
@@ -37,6 +39,12 @@ public class SeiryuManager : Singleton<SeiryuManager>
         {
             Destroy(gameObject);
         }
+    }
+
+    private void Start()
+    {
+        _stageIntro.gameObject.SetActive(true);
+        _stageIntro.PlayIntro();
     }
 
     private void InitStage(int stage)

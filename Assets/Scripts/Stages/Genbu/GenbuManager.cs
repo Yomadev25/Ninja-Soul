@@ -11,6 +11,8 @@ public class GenbuManager : Singleton<GenbuManager>
     private Event[] _events;
     [SerializeField]
     private StageCriteria _stageCriteria;
+    [SerializeField]
+    private StageIntro _stageIntro;
 
     [Header("Stage 1")]
     public Hut[] huts;
@@ -48,7 +50,10 @@ public class GenbuManager : Singleton<GenbuManager>
     private void Start()
     {
         StageManager.Instance.InitCriteria(_stageCriteria);
-        Invoke(nameof(InitStage), 1f);
+        Invoke(nameof(InitStage), 12f);
+        
+        _stageIntro.gameObject.SetActive(true);
+        _stageIntro.PlayIntro();
     }
 
     private void InitStage()
