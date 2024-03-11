@@ -30,6 +30,8 @@ public class EnemyManager : MonoBehaviour, IDamageable
     private UnityEvent onTakeDamage;
     [SerializeField]
     private UnityEvent onHeal;
+    [SerializeField]
+    private UnityEvent onDead;
 
     bool isDie;
 
@@ -81,6 +83,7 @@ public class EnemyManager : MonoBehaviour, IDamageable
             EffectManager.Instance.Spawn("Soul", this.transform.position, Quaternion.identity);
         }
 
+        onDead?.Invoke();
         MessagingCenter.Send(this, MessageOnEnemyDead);
         Destroy(this.gameObject, 4f);
     }

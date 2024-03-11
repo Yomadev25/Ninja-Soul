@@ -45,6 +45,7 @@ public class PlayerManager : MonoBehaviour, IDamageable
     #region MESSAGE FOR PUB/SUB
 
     public const string MessageOnHpChanged = "Hp Changed";
+    public const string MessageOnTakeDamage = "On Take Damage";
     public const string MessageOnSoulChanged = "Soul Changed";
     public const string MessageOnPlayerDied = "Player Died";
 
@@ -92,6 +93,11 @@ public class PlayerManager : MonoBehaviour, IDamageable
         {
             _soul = 100f;
         });
+
+        MessagingCenter.Subscribe<HealFlower>(this, HealFlower.MessageWantToRecoverPlayer, (sender) =>
+        {
+            Heal(_maxHp);
+        });
     }
 
     private void OnDestroy()
@@ -100,6 +106,7 @@ public class PlayerManager : MonoBehaviour, IDamageable
         MessagingCenter.Unsubscribe<PlayerDashState>(this, PlayerDashState.MessageOnDashStart);
         MessagingCenter.Unsubscribe<PlayerDashState>(this, PlayerDashState.MessageOnDashEnd);
         MessagingCenter.Unsubscribe<CombatTutorial>(this, CombatTutorial.MessageOnTutorialComplete);
+        MessagingCenter.Unsubscribe<HealFlower>(this, HealFlower.MessageWantToRecoverPlayer);
     }
 
     private void InitPlayerHUD()
@@ -124,6 +131,16 @@ public class PlayerManager : MonoBehaviour, IDamageable
         _anim.SetTrigger("Hit");
 
         onTakeDamage?.Invoke();
+        MessagingCenter.Send(this, MessageOnHpChanged);
+        MessagingCenter.Send(this, MessageOnTakeDamage);
+    }
+
+    public void Heal(float value)
+    {
+        _hp += value;
+        if (_hp > _maxHp) _hp = _maxHp;
+
+        onHeal?.Invoke();
         MessagingCenter.Send(this, MessageOnHpChanged);
     }
 

@@ -124,7 +124,6 @@ public class MenuHudManager : MonoBehaviour
             case Page.TITLE:
                 break;
             case Page.SAVE:
-                _saveRoot.GetChild(0).gameObject.GetComponent<Button>().Select();
                 break;
             case Page.OPTIONS:
                 break;
