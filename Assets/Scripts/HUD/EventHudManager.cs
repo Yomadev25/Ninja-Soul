@@ -68,7 +68,7 @@ public class EventHudManager : MonoBehaviour
                     var eliminateEvents = eventManager.EliminateEvents.Where(x => x.Event == @event).ToArray();
                     foreach (EliminateEvent eliminateEvent in eliminateEvents)
                     {
-                        _eventObjective.text += $"{eliminateEvent.count}/{eliminateEvent.targetCount} {eliminateEvent.enemy.name}";
+                        _eventObjective.text += $"Defeat {eliminateEvent.count} {eliminateEvent.enemy.name}";
                         _eventObjective.text += "\n";
                     }
                     break;
