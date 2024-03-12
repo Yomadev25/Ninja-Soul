@@ -167,6 +167,7 @@ MonoBehaviour:
   _targetLayer:
     serializedVersion: 2
     m_Bits: 64
+  _effect: {fileID: 0}
 --- !u!1 &3607990515467370184
 GameObject:
   m_ObjectHideFlags: 0
@@ -1955,7 +1956,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemy: {fileID: 11400000, guid: 65eb7532e6226a749a686245ef5089af, type: 2}
   _enemyStateMachine: {fileID: 3607990516667113918}
-  _maxHp: 100
+  _maxHp: 200
   _hp: 0
   _anim: {fileID: 3607990516667113858}
   onTakeDamage:

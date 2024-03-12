@@ -8958,7 +8958,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemy: {fileID: 11400000, guid: dd197ffb2e9e2de48bdeaa9b504b90a4, type: 2}
   _enemyStateMachine: {fileID: 8807633351780038443}
-  _maxHp: 10000
+  _maxHp: 8000
   _hp: 0
   _anim: {fileID: 8807633351780038447}
   onTakeDamage:
@@ -8977,6 +8977,9 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   onHeal:
+    m_PersistentCalls:
+      m_Calls: []
+  onDead:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &8807633351780038443

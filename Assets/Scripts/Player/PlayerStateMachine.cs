@@ -191,10 +191,10 @@ public class PlayerStateMachine : MonoBehaviour
         }
 
         if (_soulInput != null)
-        {
-            if (GameManager.instance.currentGameState != GameManager.GameState.GAMEPLAY) return;
+        {          
             _soulInput.action.started += (ctx) =>
             {
+                if (GameManager.instance.currentGameState != GameManager.GameState.GAMEPLAY) return;
                 PressedSoul = true;
             };
 

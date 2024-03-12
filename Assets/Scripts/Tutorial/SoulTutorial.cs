@@ -19,17 +19,16 @@ public class SoulTutorial : MonoBehaviour
 
     private bool _isActivated;
 
-    private void Start()
-    {
-        _soulInput.action.started += (ctx) =>
-        {
-            _soulText.color = Color.green;
-            ActivateEvent();
-        };
-    }
-
     private void Awake()
     {
+        MessagingCenter.Subscribe<PlayerManager>(this, PlayerManager.MessageOnSoulChanged, (sender) =>
+        {
+            if (sender.soulBerserk)
+            {
+                ActivateEvent();
+            }
+        });
+
         MessagingCenter.Subscribe<EventManager, Event>(this, EventManager.MessageOnArchievedEvent, (sender, @event) =>
         {
             if (@event == _event)
@@ -41,6 +40,7 @@ public class SoulTutorial : MonoBehaviour
 
     private void OnDestroy()
     {
+        MessagingCenter.Unsubscribe<PlayerManager>(this, PlayerManager.MessageOnSoulChanged);
         MessagingCenter.Unsubscribe<EventManager, Event>(this, EventManager.MessageOnArchievedEvent);
     }
 

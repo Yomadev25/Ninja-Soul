@@ -175,6 +175,7 @@ public class MenuHudManager : MonoBehaviour
 
         SaveManager.Instance.Save(player);
         PlayerData.Instance.PlayerSetup(SaveManager.Instance.Load(player.id));
+
         TransitionManager.Instance.SceneFadeIn(0.5f, () =>
             SceneManager.LoadScene("Intro"));
     }
@@ -193,6 +194,6 @@ public class MenuHudManager : MonoBehaviour
 
     private void Exit()
     {
-        TransitionManager.Instance.SceneFadeIn(0.5f, () => Application.Quit());
+        TransitionManager.Instance.NormalFadeIn(0.5f, () => Application.Quit());
     }
 }

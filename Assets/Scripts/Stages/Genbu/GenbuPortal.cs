@@ -12,6 +12,11 @@ public class GenbuPortal : MonoBehaviour
 
     private void Start()
     {
+        Invoke(nameof(SetSpawn), 1f);
+    }
+
+    private void SetSpawn()
+    {
         PlayerData.Instance.SetSpawnPoint(default);
     }
 }

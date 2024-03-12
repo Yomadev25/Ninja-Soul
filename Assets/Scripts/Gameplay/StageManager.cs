@@ -76,9 +76,9 @@ public class StageManager : Singleton<StageManager>
         TimeSpan totalTime = DateTime.Now - _startTime;
         _currentProgress.time = (int)(totalTime.TotalMinutes);
 
-        _finalProgress.enemyCount = _stageCriteria.enemyCount / _currentProgress.enemyCount;
-        _finalProgress.deathCount = _stageCriteria.deathCount / (_stageCriteria.deathCount - _currentProgress.deathCount);
-        _finalProgress.time = _stageCriteria.time / (_stageCriteria.time - _currentProgress.time);
+        _finalProgress.enemyCount = _currentProgress.enemyCount / _stageCriteria.enemyCount;
+        _finalProgress.deathCount = (_stageCriteria.deathCount - _currentProgress.deathCount) / _stageCriteria.deathCount;
+        _finalProgress.time = (_stageCriteria.time - _currentProgress.time) / _stageCriteria.time;
 
         MessagingCenter.Send(this, MessageShowStageCriteria, _finalProgress);
         MessagingCenter.Send(this, MessageShowPlayTime, totalTime);

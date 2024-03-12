@@ -91,7 +91,7 @@ public class PlayerManager : MonoBehaviour, IDamageable
 
         MessagingCenter.Subscribe<CombatTutorial>(this, CombatTutorial.MessageOnTutorialComplete, (sender) =>
         {
-            _soul = 100f;
+            GetSoul(100f);
         });
 
         MessagingCenter.Subscribe<HealFlower>(this, HealFlower.MessageWantToRecoverPlayer, (sender) =>

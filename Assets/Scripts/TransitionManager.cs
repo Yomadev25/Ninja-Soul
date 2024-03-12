@@ -47,6 +47,7 @@ public class TransitionManager : Singleton<TransitionManager>
         _sceneTransition.LeanAlpha(0, duration).setDelay(0.5f).setOnComplete(() => callback?.Invoke());
     }
 
+    #region NORMAL TRANSITION
     public void NormalFadeIn(float duration = 0.5f, UnityAction callback = null)
     {
         _transition.alpha = 0f;
@@ -77,4 +78,5 @@ public class TransitionManager : Singleton<TransitionManager>
         }
         _transition.LeanAlpha(0, duration).setDelay(0.5f).setOnComplete(() => callback?.Invoke());
     }
+    #endregion
 }
