@@ -477,7 +477,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _weaponName: Fist
-  _weaponLength: 0.43
+  _weaponLength: 0.5
   _weaponDamage: 0
   _targetLayer:
     serializedVersion: 2
@@ -2226,6 +2226,7 @@ GameObject:
   - component: {fileID: 1806957712868597374}
   - component: {fileID: 1806957712868597373}
   - component: {fileID: 1806957712868597372}
+  - component: {fileID: 5695384855772948645}
   m_Layer: 7
   m_Name: Genbu Knuckle III
   m_TagString: Enemy
@@ -2384,6 +2385,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5695384855772948645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1806957712868597371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 909cbaeca1d4946418b670a26146b970, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stompPrefab: {fileID: 5417287350354240692, guid: cf393bfbe867da34fb46d6ba899a8ec0,
+    type: 3}
 --- !u!1 &1806957712884412523
 GameObject:
   m_ObjectHideFlags: 0

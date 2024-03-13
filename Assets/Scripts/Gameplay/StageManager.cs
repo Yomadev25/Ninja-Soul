@@ -74,11 +74,11 @@ public class StageManager : Singleton<StageManager>
     private void StageClear()
     {
         TimeSpan totalTime = DateTime.Now - _startTime;
-        _currentProgress.time = (int)(totalTime.TotalMinutes);
+        _currentProgress.time = (float)totalTime.TotalMinutes;
 
         _finalProgress.enemyCount = _currentProgress.enemyCount / _stageCriteria.enemyCount;
         _finalProgress.deathCount = (_stageCriteria.deathCount - _currentProgress.deathCount) / _stageCriteria.deathCount;
-        _finalProgress.time = (_stageCriteria.time - _currentProgress.time) / _stageCriteria.time;
+        _finalProgress.time = 1f - ((_currentProgress.time - _stageCriteria.time) * 0.3f);
 
         MessagingCenter.Send(this, MessageShowStageCriteria, _finalProgress);
         MessagingCenter.Send(this, MessageShowPlayTime, totalTime);
@@ -88,7 +88,7 @@ public class StageManager : Singleton<StageManager>
 [System.Serializable]
 public class StageCriteria
 {
-    public int enemyCount;
-    public int deathCount;
-    public int time;
+    public float enemyCount;
+    public float deathCount;
+    public float time;
 }
