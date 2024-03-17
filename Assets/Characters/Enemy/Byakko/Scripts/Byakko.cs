@@ -40,16 +40,13 @@ public class Byakko : MonoBehaviour
         switch (combo)
         {
             case 1:
-                eulerAngle = new Vector3(-180f, transform.eulerAngles.y, -45f);
+                eulerAngle = new Vector3(125f, transform.eulerAngles.y, 0f);
                 break;
             case 2:
-                eulerAngle = new Vector3(-194.6f, transform.eulerAngles.y, -57.4f);
+                eulerAngle = new Vector3(65f, transform.eulerAngles.y, 0f);
                 break;
             case 3:
-                eulerAngle = new Vector3(-180f, transform.eulerAngles.y, -20f);
-                break;
-            case 4:
-                eulerAngle = new Vector3(-180f, transform.eulerAngles.y, -163f);
+                eulerAngle = new Vector3(125f, transform.eulerAngles.y, 0f);
                 break;
             default:
                 break;
