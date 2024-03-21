@@ -46,6 +46,8 @@ public class Interact : MonoBehaviour
             _target.Interact();
         _onInteract?.Invoke();
         _canInteract = false;
+
+        MessagingCenter.Send(this, MessageOnDisableInteract);
     }
 
     private void OnTriggerEnter(Collider other)
