@@ -5,10 +5,55 @@ using UnityEngine.VFX;
 
 public class Byakko : MonoBehaviour
 {
+    public const string MessageClearByakkoStage = "Clear Byakko Stage";
+
+    [SerializeField]
+    private Event _event;
+
     [SerializeField]
     private GameObject _slashFx;
     [SerializeField]
     private GameObject _lastBladePrefab;
+
+    private int _phase = 1;
+
+    private void Awake()
+    {
+        MessagingCenter.Subscribe<EnemyManager>(this, EnemyManager.MessageOnUpdateHp, (sender) =>
+        {
+            if (sender.gameObject != gameObject) return;
+
+            if ((sender.hp / sender.maxHp) <= 0.5f)
+            {
+                if (_phase == 2) return;
+                _phase = 2;
+            }
+            else if ((sender.hp / sender.maxHp) <= 0.2f)
+            {
+                if (_phase == 3) return;
+                _phase = 3;
+            }
+        });
+
+        MessagingCenter.Subscribe<EventManager, Event>(this, EventManager.MessageOnArchievedEvent, (sender, @event) =>
+        {
+            if (@event == _event)
+            {
+                MessagingCenter.Send(this, MessageClearByakkoStage);
+            }
+        });
+    }
+
+    private void OnDestroy()
+    {
+        MessagingCenter.Unsubscribe<EnemyManager>(this, EnemyManager.MessageOnUpdateHp);
+        MessagingCenter.Unsubscribe<EventManager, Event>(this, EventManager.MessageOnArchievedEvent);
+    }
+
+    private void Start()
+    {
+        EventManager.Instance.ActivateEvent(_event);
+    }
 
     public void Slash()
     {
