@@ -110,6 +110,13 @@ public class GameManager : MonoBehaviour
             PlayerData.Instance.GetPlayerData().sword = true;
             LevelComplete();
         });
+
+        MessagingCenter.Subscribe<Suzaku>(this, Suzaku.MessageClearSuzakuStage, (sender) =>
+        {
+            PlayerData.Instance.GetPlayerData().byakko = true;
+            PlayerData.Instance.GetPlayerData().sword = true;
+            LevelComplete();
+        });
         #endregion
     }
 
@@ -129,6 +136,7 @@ public class GameManager : MonoBehaviour
         MessagingCenter.Unsubscribe<Genbu>(this, Genbu.MessageClearGenbuStage);
         MessagingCenter.Unsubscribe<Seiryu>(this, Seiryu.MessageClearSeiryuStage);
         MessagingCenter.Unsubscribe<Byakko>(this, Byakko.MessageClearByakkoStage);
+        MessagingCenter.Unsubscribe<Suzaku>(this, Suzaku.MessageClearSuzakuStage);
 
         _weaponSelectionInput.action.performed -= (ctx) =>
         {
