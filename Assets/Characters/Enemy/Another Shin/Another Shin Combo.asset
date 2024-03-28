@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43a231bdb11207044a31631a2a07269d, type: 3}
+  m_Name: Another Shin Combo
+  m_EditorClassIdentifier: 
+  name: Random Combo
+  description: 
+  cooldown: 3
+  damage: 0
+  combatRange: 3
+  hikariCombos:
+  - {fileID: 11400000, guid: 2019832fdf2a97a44b47fcc622bfeadc, type: 2}
+  genbuCombos:
+  - {fileID: 11400000, guid: aa2d2892bc7675c48a5bd0c735028a9c, type: 2}
+  - {fileID: 11400000, guid: 99397e244aa4c6841badff67b83b80af, type: 2}
+  - {fileID: 11400000, guid: a029ec216a988884281b588276765849, type: 2}
+  suzakuCombos:
+  - {fileID: 11400000, guid: e20907da16459d54689072857b9bf38e, type: 2}
+  - {fileID: 11400000, guid: 7eafcc25321a0ee45a2d8eeb4923042b, type: 2}
+  - {fileID: 11400000, guid: b4f2ea0950d610e4287b988ab449677a, type: 2}
+  - {fileID: 11400000, guid: 55b1a64f4642c4442be12ade739554bb, type: 2}
+  seiryuCombos:
+  - {fileID: 11400000, guid: 13bef6e5c5223eb46ac6743c84333f08, type: 2}
+  - {fileID: 11400000, guid: 8397daf855510ad45b94baf88670fbcc, type: 2}
+  - {fileID: 11400000, guid: 966fecddc3e0b14409d36d64d2c98f57, type: 2}
+  - {fileID: 11400000, guid: 9feddb7fd02d13f439cc1e92215ceaa6, type: 2}
+  byakkoCombos:
+  - {fileID: 11400000, guid: e05410c3219aec340b25db5071e7c5dd, type: 2}
+  - {fileID: 11400000, guid: 31781fb99ea215c40af7667c04cc2cf6, type: 2}
+  - {fileID: 11400000, guid: ca81ee4f314ced24c9ec4b9269b672c6, type: 2}
+  - {fileID: 11400000, guid: 377fa96657a3f8141bf39a9ca4ac58d8, type: 2}

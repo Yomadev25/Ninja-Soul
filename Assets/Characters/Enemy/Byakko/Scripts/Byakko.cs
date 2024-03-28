@@ -52,7 +52,8 @@ public class Byakko : MonoBehaviour
 
     private void Start()
     {
-        EventManager.Instance.ActivateEvent(_event);
+        if (_event != null)
+            EventManager.Instance.ActivateEvent(_event);
     }
 
     public void Slash()

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyCombatState : EnemyBaseState
 {
+    public const string MessageOnExitCombatState = "On Exit Combat State";
+
     Enemy enemy;
     public EnemyCombatState(EnemyStateMachine ctx) : base(ctx) { }
 
@@ -45,5 +47,6 @@ public class EnemyCombatState : EnemyBaseState
         enemy = null;
 
         MessagingCenter.Unsubscribe<EnemyManager>(this, EnemyManager.MessageOnEnemyDead);
+        MessagingCenter.Send(this, MessageOnExitCombatState, _context);
     }
 }

@@ -35,8 +35,6 @@ public class EnemyPrepareState : EnemyBaseState
             movedir += finalDirection * moveSpeed * Time.deltaTime;
             _context.NavMesh.Move(movedir);
             _context.transform.LookAt(new Vector3(target.position.x, _context.transform.position.y, target.position.z));
-
-            //_context.transform.rotation = Quaternion.LookRotation(finalDirection);
         }
 
         CheckChangeState();

@@ -54,7 +54,8 @@ public class Suzaku : MonoBehaviour
 
     private void Start()
     {
-        EventManager.Instance.ActivateEvent(_event);
+        if (_event != null)
+         EventManager.Instance.ActivateEvent(_event);
     }
 
     public void Attack1(int combo)
