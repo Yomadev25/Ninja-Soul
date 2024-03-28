@@ -25174,6 +25174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd3a143086af39f46a3193932fd9f0f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _event: {fileID: 11400000, guid: 516b06a5e3649a94480999c6eecaa3c0, type: 2}
   currentClan: 0
   _enemyStateMachine: {fileID: 2507145804742612861}
   _chokutoSlashFx: {fileID: 1921888969301262857, guid: b64fe5238e37c6b4cb0e2d075f346f27,
@@ -25183,28 +25184,33 @@ MonoBehaviour:
     - {fileID: 2882591816377175013}
     - {fileID: 4314156473738868903}
     - {fileID: 1196069798208539114}
+    weapon: {fileID: 2882591815004847883}
     overrideController: {fileID: 22100000, guid: ee1fb588d144e3048b55106cac8c6f06,
       type: 2}
   - weapons:
     - {fileID: 2882591814690173531}
     - {fileID: 2882591814793709052}
     - {fileID: 1277719419}
+    weapon: {fileID: 2882591815709414590}
     overrideController: {fileID: 22100000, guid: 15c318f7d55ec074ca84fb78d5a49674,
       type: 2}
   - weapons:
     - {fileID: 2882591815009214676}
     - {fileID: 2882591815637200685}
     - {fileID: 436200801}
+    weapon: {fileID: 2882591815294578356}
     overrideController: {fileID: 22100000, guid: a81dd0562cfece24fb9ad5054a3bcbe1,
       type: 2}
   - weapons:
     - {fileID: 2882591814502019999}
     - {fileID: 16962874}
+    weapon: {fileID: 2882591815127649903}
     overrideController: {fileID: 22100000, guid: 9a4542da3bdccb84d97d9f91cfdb0b95,
       type: 2}
   - weapons:
     - {fileID: 2882591814604041608}
     - {fileID: 176654020}
+    weapon: {fileID: 2882591814991833184}
     overrideController: {fileID: 22100000, guid: f5051db8c5264d244896f7d47c39a8c0,
       type: 2}
 --- !u!114 &2507145804742612742
@@ -65728,7 +65734,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _weaponName: Knuckles
-  _weaponLength: 0.5
+  _weaponLength: 0.7
   _weaponDamage: 1
   _targetLayer:
     serializedVersion: 2
@@ -81104,7 +81110,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4295578436349827092}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: 0, y: 0.776, z: -1}
+  m_LocalPosition: {x: -0, y: 0.333, z: -1.113}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

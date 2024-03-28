@@ -28,7 +28,7 @@ public class LevelSelection : MonoBehaviour
         _byakkoButton.onClick.AddListener(() => Play("Byakko_1"));
 
         Player data = PlayerData.Instance.GetPlayerData();
-        if (data.genbu)
+        if (data.genbu && !data.completed)
         {
             _genbuButton.interactable = false;
             _genbuButton.image.raycastTarget = false;
@@ -37,7 +37,7 @@ public class LevelSelection : MonoBehaviour
                 item.gameObject.SetActive(false);
             }
         }
-        if (data.seiryu)
+        if (data.seiryu && !data.completed)
         {
             _seiryuButton.interactable = false;
             _seiryuButton.image.raycastTarget = false;
@@ -46,7 +46,7 @@ public class LevelSelection : MonoBehaviour
                 item.gameObject.SetActive(false);
             }
         }
-        if (data.suzaku)
+        if (data.suzaku && !data.completed)
         {
             _suzakuButton.interactable = false;
             _suzakuButton.image.raycastTarget = false;
@@ -55,7 +55,7 @@ public class LevelSelection : MonoBehaviour
                 item.gameObject.SetActive(false);
             }
         }
-        if (data.byakko)
+        if (data.byakko && !data.completed)
         {
             _byakkoButton.interactable = false;
             _byakkoButton.image.raycastTarget = false;

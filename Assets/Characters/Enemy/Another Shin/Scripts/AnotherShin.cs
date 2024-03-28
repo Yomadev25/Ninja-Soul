@@ -5,6 +5,11 @@ using UnityEngine.VFX;
 
 public class AnotherShin : MonoBehaviour
 {
+    public const string MessageClearLastStage = "Clear Last Stage";
+
+    [SerializeField]
+    private Event _event;
+
     public enum Clans
     {
         Hikari,
@@ -30,11 +35,24 @@ public class AnotherShin : MonoBehaviour
             if (state != _enemyStateMachine) return;
             Invoke(nameof(RandomClan), 1f);
         });
+
+        MessagingCenter.Subscribe<EventManager, Event>(this, EventManager.MessageOnArchievedEvent, (sender, @event) =>
+        {
+            if (@event != _event) return;
+            MessagingCenter.Send(this, MessageClearLastStage);
+        });
     }
 
     private void OnDestroy()
     {
         MessagingCenter.Unsubscribe<EnemyCombatState, EnemyStateMachine>(this, EnemyCombatState.MessageOnExitCombatState);
+        MessagingCenter.Unsubscribe<EventManager, Event>(this, EventManager.MessageOnArchievedEvent);
+    }
+
+    private void Start()
+    {
+        if (_event != null)
+            EventManager.Instance.ActivateEvent(_event);
     }
 
     public void RandomClan()
@@ -54,6 +72,8 @@ public class AnotherShin : MonoBehaviour
         {
             weapon.SetActive(true);
         }
+
+        _enemyStateMachine.SetWeapon(_weaponGroups[(int)currentClan].weapon);
     }
 
     public void ChokutoSlash(int combo)
@@ -86,6 +106,7 @@ public class AnotherShin : MonoBehaviour
     public class WeaponGroup
     {
         public GameObject[] weapons;
+        public Weapon weapon;
         public AnimatorOverrideController overrideController;
     }
 }

@@ -171,7 +171,7 @@ public class MenuHudManager : MonoBehaviour
 
     private void NewGame()
     {
-        Player player = new Player(0, false, false, false, false, false, false, false, false, false, DateTime.Now, DateTime.Now);
+        Player player = new Player(0, false, false, false, false, false, false, false, false, false, false, DateTime.Now, DateTime.Now);
 
         SaveManager.Instance.Save(player);
         PlayerData.Instance.PlayerSetup(SaveManager.Instance.Load(player.id));

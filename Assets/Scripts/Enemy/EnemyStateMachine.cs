@@ -202,6 +202,11 @@ public class EnemyStateMachine : MonoBehaviour
         IsReadyToCombat = false;
     }
 
+    public void SetWeapon(Weapon weapon)
+    {
+        _weapon = weapon;
+    }
+
     #endregion
 
     #region DEBUGING

@@ -51,6 +51,11 @@ public class PlayerData : Singleton<PlayerData>
     }
 
     public Player GetPlayerData() => _player;
+
+    public bool IsCompleteAllState()
+    {
+        return _player.genbu && _player.suzaku && _player.seiryu && _player.byakko && !_player.completed;
+    }
 }
 
 [Serializable]
@@ -69,10 +74,12 @@ public class Player
     public bool jevalin;
     public bool sword;
 
+    public bool completed;
+
     public DateTime startDate;
     public DateTime lastDate;
 
-    public Player(int id, bool tutorial, bool genbu, bool suzaku, bool seiryu, bool byakko, bool knuckles, bool sickles, bool jevalin, bool sword, DateTime startDate, DateTime lastDate)
+    public Player(int id, bool tutorial, bool genbu, bool suzaku, bool seiryu, bool byakko, bool knuckles, bool sickles, bool jevalin, bool sword, bool completed, DateTime startDate, DateTime lastDate)
     {
         this.id = id;
         this.tutorial = tutorial;
@@ -84,6 +91,7 @@ public class Player
         this.sickles = sickles;
         this.jevalin = jevalin;
         this.sword = sword;
+        this.completed = completed;
         this.startDate = startDate;
         this.lastDate = lastDate;
     }
@@ -100,6 +108,7 @@ public class Player
         sickles = player.sickles;
         jevalin = player.jevalin;
         sword = player.sword;
+        completed = player.completed;
         startDate = player.startDate;
         lastDate = player.lastDate;
     }

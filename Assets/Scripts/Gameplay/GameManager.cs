@@ -117,6 +117,11 @@ public class GameManager : MonoBehaviour
             PlayerData.Instance.GetPlayerData().sword = true;
             LevelComplete();
         });
+
+        MessagingCenter.Subscribe<AnotherShin>(this, AnotherShin.MessageClearLastStage, (sender) =>
+        {
+            LevelComplete();
+        });
         #endregion
     }
 

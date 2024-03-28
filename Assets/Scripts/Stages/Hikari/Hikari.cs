@@ -10,6 +10,15 @@ public class Hikari : MonoBehaviour
         PlayerData.Instance.SetSpawnPoint(default);
     }
 
+    private void Start()
+    {
+        if (PlayerData.Instance.IsCompleteAllState() && !PlayerData.Instance.GetPlayerData().completed)
+        {
+            TransitionManager.Instance.SceneFadeIn(0.5f, () =>
+                SceneManager.LoadScene("Final"));
+        }
+    }
+
     public void GoToTutorial()
     {
         TransitionManager.Instance.SceneFadeIn(0.5f, () =>
