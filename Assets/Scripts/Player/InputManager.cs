@@ -89,6 +89,15 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""34e87a33-2e3f-45a8-aad5-3c3bd86f4184"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -212,6 +221,17 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
                     ""action"": ""Select Weapon"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""abecbc18-c750-4f80-8894-50b3e2aee167"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -227,6 +247,7 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
         m_Player_Soul = m_Player.FindAction("Soul", throwIfNotFound: true);
         m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
         m_Player_SelectWeapon = m_Player.FindAction("Select Weapon", throwIfNotFound: true);
+        m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -293,6 +314,7 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Soul;
     private readonly InputAction m_Player_Pause;
     private readonly InputAction m_Player_SelectWeapon;
+    private readonly InputAction m_Player_Interact;
     public struct PlayerActions
     {
         private @InputManager m_Wrapper;
@@ -304,6 +326,7 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
         public InputAction @Soul => m_Wrapper.m_Player_Soul;
         public InputAction @Pause => m_Wrapper.m_Player_Pause;
         public InputAction @SelectWeapon => m_Wrapper.m_Player_SelectWeapon;
+        public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -334,6 +357,9 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
                 @SelectWeapon.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectWeapon;
                 @SelectWeapon.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectWeapon;
                 @SelectWeapon.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectWeapon;
+                @Interact.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
+                @Interact.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
+                @Interact.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -359,6 +385,9 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
                 @SelectWeapon.started += instance.OnSelectWeapon;
                 @SelectWeapon.performed += instance.OnSelectWeapon;
                 @SelectWeapon.canceled += instance.OnSelectWeapon;
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
             }
         }
     }
@@ -372,5 +401,6 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
         void OnSoul(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
         void OnSelectWeapon(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
     }
 }

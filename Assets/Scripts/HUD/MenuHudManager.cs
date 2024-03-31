@@ -70,7 +70,7 @@ public class MenuHudManager : MonoBehaviour
         _continueButton.interactable = usedToPlay;
         _continueCanvasGroup.alpha = usedToPlay? 1 : 0.5f;
         _continueButton.onClick.AddListener(() => ChangePage(Page.SAVE));
-        //_optionsButton.onClick.AddListener();
+        _optionsButton.onClick.AddListener(() => ChangePage(Page.OPTIONS));
         //_creditButton.onClick.AddListener();
         _exitButton.onClick.AddListener(Exit);
 
