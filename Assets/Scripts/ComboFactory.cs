@@ -137,6 +137,12 @@ public class ComboFactory : MonoBehaviour
         for (int i = 0; i < 3; i++)
         {
             Collider[] colliders = Physics.OverlapSphere(pos, 5f);
+            if (colliders.Any(x => x.CompareTag("Enemy")))
+            {
+                if (i == 2)
+                    TimeStop.Instance.StopTime(0.05f, 10, 0.1f);
+            }
+
             foreach (Collider collider in colliders)
             {
                 if (collider.CompareTag("Enemy"))

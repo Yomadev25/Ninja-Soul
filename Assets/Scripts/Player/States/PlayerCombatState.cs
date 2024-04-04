@@ -19,7 +19,7 @@ public class PlayerCombatState : PlayerBaseState
 
     public override void Enter()
     {
-        _context.CanRotate = false;
+        //_context.CanRotate = false;
         comboCount = _context.ComboCount;
 
         _context.Anim.applyRootMotion = true;

@@ -13,4 +13,5 @@ public class Combo : ScriptableObject
 
     public AnimatorOverrideController animation;
     public float damage;
+    public bool impact;
 }

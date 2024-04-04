@@ -58,10 +58,11 @@ public class PlayerEquipment : MonoBehaviour
         int currentCombo = _playerStateMachine.ComboCount;
         var comboGroup = _playerStateMachine.ComboFactory.ComboGroups.First(x => x.name == _weapons[0].WeaponName);
         float damageAdjust = comboGroup.combos[currentCombo].damage * (_playerStateMachine.playerManager.soulBerserk? 2f : 1f);
+        bool impact = comboGroup.combos[currentCombo].impact;
 
         foreach (Weapon weapon in _weapons)
         {
-            weapon.StartDealDamage(damageAdjust);
+            weapon.StartDealDamage(damageAdjust, impact);
         }
     }
 

@@ -22,6 +22,7 @@ public class Weapon : MonoBehaviour, IDamageDealer
     List<IDamageable> dealtTargets = new List<IDamageable>();
 
     float damageAdjust;
+    bool impact;
 
     public string WeaponName => _weaponName;
 
@@ -56,14 +57,15 @@ public class Weapon : MonoBehaviour, IDamageDealer
     public void DealDamage(IDamageable target, float damage)
     {
         Debug.Log($"Dealing {damage} damages.");
-        target.TakeDamage(damage, _effect);
+        target.TakeDamage(damage, _effect, impact);
     }
 
-    public void StartDealDamage(float damageAdjust = 0f)
+    public void StartDealDamage(float damageAdjust = 0f, bool impact = false)
     {
         this.damageAdjust = damageAdjust;
 
         canDealDamage = true;
+        this.impact = impact;
         dealtTargets.Clear();
     }
 
@@ -71,6 +73,7 @@ public class Weapon : MonoBehaviour, IDamageDealer
     {
         this.damageAdjust = 0f;
         canDealDamage = false;
+        this.impact = false;
     }
 
     private void OnDrawGizmosSelected()

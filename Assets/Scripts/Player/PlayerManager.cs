@@ -123,9 +123,13 @@ public class PlayerManager : MonoBehaviour, IDamageable
         }
     }
 
-    public void TakeDamage(float damage, GameObject effect = null)
+    public void TakeDamage(float damage, GameObject effect = null, bool impact = false)
     {
-        if (_isDash) return;
+        if (_isDash)
+        {
+            TimeStop.Instance.StopTime(0.3f, 10, 0.1f);
+            return;
+        }
 
         _hp -= damage;
         _anim.SetTrigger("Hit");
@@ -133,6 +137,11 @@ public class PlayerManager : MonoBehaviour, IDamageable
         if (effect != null)
         {
             Instantiate(effect, transform.position, Quaternion.identity);
+        }
+
+        if (impact)
+        {
+            TimeStop.Instance.StopTime(0.05f, 10, 0.1f);
         }
 
         onTakeDamage?.Invoke();

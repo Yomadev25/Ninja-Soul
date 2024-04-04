@@ -57,9 +57,21 @@ public class EnemyManager : MonoBehaviour, IDamageable
         }
     }
 
-    public void TakeDamage(float damage, GameObject effect = null)
+    public void TakeDamage(float damage, GameObject effect = null, bool impact = false)
     {
         if (isDie) return;
+
+        if (impact)
+        {
+            TimeStop.Instance.StopTime(0.05f, 10, 0.1f);
+        }
+        else
+        {
+            if (damage >= _hp)
+            {
+                TimeStop.Instance.StopTime(0.05f, 10, 0.1f);
+            }
+        }
 
         _hp -= damage;
         _anim.SetTrigger("Hit");
@@ -68,6 +80,7 @@ public class EnemyManager : MonoBehaviour, IDamageable
         {
             Instantiate(effect, transform.position, Quaternion.identity);
         }
+        
 
         onTakeDamage?.Invoke();
         MessagingCenter.Send(this, MessageOnUpdateHp);

@@ -13,6 +13,12 @@ public class Bow_nAttack : EnemyCombo
         if (target != null)
         {
             context.Anim.SetTrigger("Attack");
+            
+            if (context.TryGetComponent(out Bow bow))
+            {
+                bow.ShowRay();
+            }
+
             float duration = 4.4f;
             while (duration > 0)
             {
