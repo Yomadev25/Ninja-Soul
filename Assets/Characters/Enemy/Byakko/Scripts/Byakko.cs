@@ -5,6 +5,7 @@ using UnityEngine.VFX;
 
 public class Byakko : MonoBehaviour
 {
+    public const string MessageInitBossPhase = "Init Boss Phase";
     public const string MessageClearByakkoStage = "Clear Byakko Stage";
 
     [SerializeField]
@@ -14,6 +15,10 @@ public class Byakko : MonoBehaviour
     private GameObject _slashFx;
     [SerializeField]
     private GameObject _lastBladePrefab;
+
+    [Header("Enemies Wave")]
+    [SerializeField]
+    private GameObject[] _enemyWaves;
 
     private int _phase = 1;
 
@@ -25,15 +30,51 @@ public class Byakko : MonoBehaviour
 
             if ((sender.hp / sender.maxHp) <= 0.5f)
             {
-                if (_phase == 2) return;
-                _phase = 2;
+                if (_phase < 2)
+                {
+                    if (TryGetComponent(out EnemyStateMachine state))
+                    {
+                        state.Knockdown();
+                    }
+
+                    _phase = 2;
+                }
             }
-            else if ((sender.hp / sender.maxHp) <= 0.2f)
+            if ((sender.hp / sender.maxHp) <= 0.25f)
             {
-                if (_phase == 3) return;
-                _phase = 3;
+                if (_phase < 3)
+                {
+                    if (TryGetComponent(out EnemyStateMachine state))
+                    {
+                        state.Knockdown();
+                    }
+
+                    _phase = 3;
+                }
+            }
+
+            if (_enemyWaves.Length > _phase - 1)
+            {
+                if (_enemyWaves[_phase - 1] != null)
+                    _enemyWaves[_phase - 1].SetActive(true);
             }
         });
+
+        MessagingCenter.Subscribe<EnemyStateMachine>(this, EnemyStateMachine.MessageOnStandUp, (sender) =>
+        {
+            switch (_phase)
+            {
+                case 2:
+                    break;
+                case 3:
+                    break;
+                default:
+                    break;
+            }
+
+            MessagingCenter.Send(this, MessageInitBossPhase, _phase);
+        });
+
 
         MessagingCenter.Subscribe<EventManager, Event>(this, EventManager.MessageOnArchievedEvent, (sender, @event) =>
         {

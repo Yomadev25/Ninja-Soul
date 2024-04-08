@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Genbu : MonoBehaviour
 {
+    public const string MessageInitBossPhase = "Init Boss Phase";
     public const string MessageClearGenbuStage = "Clear Genbu Stage";
 
     [SerializeField]
@@ -42,15 +43,25 @@ public class Genbu : MonoBehaviour
 
             if ((sender.hp / sender.maxHp) <= 0.5f)
             {
-                if (_phase != 2)
+                if (_phase < 2)
                 {
+                    if (TryGetComponent(out EnemyStateMachine state))
+                    {
+                        state.Knockdown();
+                    }
+
                     _phase = 2;
-                }               
+                }
             }
-            if ((sender.hp / sender.maxHp) <= 0.2f)
+            if ((sender.hp / sender.maxHp) <= 0.25f)
             {
-                if (_phase != 3)
+                if (_phase < 3)
                 {
+                    if (TryGetComponent(out EnemyStateMachine state))
+                    {
+                        state.Knockdown();
+                    }
+
                     _phase = 3;
                 }
             }
@@ -60,6 +71,21 @@ public class Genbu : MonoBehaviour
                 if (_enemyWaves[_phase - 1] != null)
                     _enemyWaves[_phase - 1].SetActive(true);
             }
+        });
+
+        MessagingCenter.Subscribe<EnemyStateMachine>(this, EnemyStateMachine.MessageOnStandUp, (sender) =>
+        {
+            switch (_phase)
+            {
+                case 2:
+                    break;
+                case 3:
+                    break;
+                default:
+                    break;
+            }
+
+            MessagingCenter.Send(this, MessageInitBossPhase, _phase);
         });
 
         MessagingCenter.Subscribe<EventManager, Event>(this, EventManager.MessageOnArchievedEvent, (sender, @event) =>
@@ -75,6 +101,7 @@ public class Genbu : MonoBehaviour
     {
         MessagingCenter.Unsubscribe<Genbu_Throw>(this, Genbu_Throw.MessagePrepareRock);
         MessagingCenter.Unsubscribe<EnemyManager>(this, EnemyManager.MessageOnUpdateHp);
+        MessagingCenter.Unsubscribe<EnemyStateMachine>(this, EnemyStateMachine.MessageOnStandUp);
         MessagingCenter.Unsubscribe<EventManager, Event>(this, EventManager.MessageOnArchievedEvent);
     }
 

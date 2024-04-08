@@ -20,6 +20,9 @@ public class Enemy : ScriptableObject
     public float chaseRadius;
     public float viewAngle;
 
+    [Header("Knock Out")]
+    public float knockDuration;
+
     [Header("Combat & Abilities")]
     public float delayPerCombo;
     public EnemyCombo[] combos;

@@ -154,8 +154,6 @@ public class GameplayHudManager : MonoBehaviour
     {
         for (int i = 0; i < _weaponSlots.Length; i++)
         {
-            _weaponSlots[i].alpha = comboGroup[i].isUnlocked? 1 : 0.3f;
-
             GameObject lockIcon = _weaponSlots[i].transform.Find("Lock").gameObject;
             GameObject weaponIcon = _weaponSlots[i].transform.Find("(image) weapon").gameObject;
 
@@ -177,6 +175,18 @@ public class GameplayHudManager : MonoBehaviour
         _weaponSlots[index].transform.SetSiblingIndex(_weaponSlots[index].transform.parent.childCount - 1);
         if (index != 0)
             _weaponSlots[0].transform.SetSiblingIndex(_weaponSlots[index].transform.parent.childCount - 2);
+
+        for (int i = 0; i < _weaponSlots[0].transform.parent.childCount; i++)
+        {
+            if (i == index)
+            {
+                _weaponSlots[i].alpha = 1f;
+            }
+            else
+            {
+                _weaponSlots[i].alpha = 0.3f;
+            }
+        }
     }
 
     private void InitWeaponSelectionDialog()

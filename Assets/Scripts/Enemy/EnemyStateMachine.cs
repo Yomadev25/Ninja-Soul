@@ -6,6 +6,9 @@ using UnityEngine.AI;
 [RequireComponent(typeof(EnemyManager), typeof(NavMeshAgent))]
 public class EnemyStateMachine : MonoBehaviour
 {
+    public const string MessageOnKnockdown = "On Knockdown";
+    public const string MessageOnStandUp = "On Stand Up";
+
     [Header("Properties")]
     [SerializeField]
     private Enemy _enemy;
@@ -14,6 +17,7 @@ public class EnemyStateMachine : MonoBehaviour
     [SerializeField]
     private float _delayPerCombo;
     private float _currentCooldown;
+    private bool _isKO;
 
     [Header("Field Of View")]
     [SerializeField]
@@ -207,6 +211,26 @@ public class EnemyStateMachine : MonoBehaviour
         _weapon = weapon;
     }
 
+    public void Knockdown()
+    {
+        if (!_isKO)
+        {
+            StartCoroutine(KnockdownCoroutine());
+        }
+    }
+
+    IEnumerator KnockdownCoroutine()
+    {
+        Debug.Log("Knocked");
+        _isKO = true;
+        MessagingCenter.Send(this, MessageOnKnockdown);
+
+        yield return new WaitForSeconds(_enemy.knockDuration);
+
+        MessagingCenter.Send(this, MessageOnStandUp);
+        _isKO = false;
+    }
+
     #endregion
 
     #region DEBUGING
@@ -258,5 +282,10 @@ public class EnemyStateFactory
     public EnemyCombatState Combat()
     {
         return new EnemyCombatState(_context);
+    }
+
+    public EnemyKnockState Knock()
+    {
+        return new EnemyKnockState(_context);
     }
 }

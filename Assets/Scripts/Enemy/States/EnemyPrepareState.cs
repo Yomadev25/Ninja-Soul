@@ -14,6 +14,12 @@ public class EnemyPrepareState : EnemyBaseState
 
     public override void Enter()
     {
+        MessagingCenter.Subscribe<EnemyStateMachine>(this, EnemyStateMachine.MessageOnKnockdown, (sender) =>
+        {
+            if (sender != _context) return;
+            ChangeState(_context.State.Knock());
+        });
+
         enemy = _context.Enemy;
 
         int randomDir = Random.Range(0, 2);
@@ -60,6 +66,7 @@ public class EnemyPrepareState : EnemyBaseState
 
     public override void Exit()
     {
+        MessagingCenter.Unsubscribe<EnemyStateMachine>(this, EnemyStateMachine.MessageOnKnockdown);
         enemy = null;
     }
 }

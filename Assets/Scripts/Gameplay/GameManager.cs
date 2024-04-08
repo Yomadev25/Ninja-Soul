@@ -87,40 +87,40 @@ public class GameManager : MonoBehaviour
         MessagingCenter.Subscribe<TutorialManager>(this, TutorialManager.MessageOnTutorialComplete, (sender) =>
         {
             PlayerData.Instance.GetPlayerData().tutorial = true;
-            LevelComplete();
+            Invoke(nameof(LevelComplete), 1f);
         });
 
         MessagingCenter.Subscribe<Genbu>(this, Genbu.MessageClearGenbuStage, (sender) =>
         {
             PlayerData.Instance.GetPlayerData().genbu = true;
             PlayerData.Instance.GetPlayerData().knuckles = true;
-            LevelComplete();
+            Invoke(nameof(LevelComplete), 1f);
         });
 
         MessagingCenter.Subscribe<Seiryu>(this, Seiryu.MessageClearSeiryuStage, (sender) =>
         {
             PlayerData.Instance.GetPlayerData().seiryu = true;
             PlayerData.Instance.GetPlayerData().jevalin = true;
-            LevelComplete();
+            Invoke(nameof(LevelComplete), 1f);
         });
 
         MessagingCenter.Subscribe<Byakko>(this, Byakko.MessageClearByakkoStage, (sender) =>
         {
             PlayerData.Instance.GetPlayerData().byakko = true;
             PlayerData.Instance.GetPlayerData().sword = true;
-            LevelComplete();
+            Invoke(nameof(LevelComplete), 1f);
         });
 
         MessagingCenter.Subscribe<Suzaku>(this, Suzaku.MessageClearSuzakuStage, (sender) =>
         {
             PlayerData.Instance.GetPlayerData().byakko = true;
             PlayerData.Instance.GetPlayerData().sword = true;
-            LevelComplete();
+            Invoke(nameof(LevelComplete), 1f);
         });
 
         MessagingCenter.Subscribe<AnotherShin>(this, AnotherShin.MessageClearLastStage, (sender) =>
         {
-            LevelComplete();
+            Invoke(nameof(LevelComplete), 1f);
         });
         #endregion
     }

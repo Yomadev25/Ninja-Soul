@@ -11,6 +11,12 @@ public class EnemyCombatState : EnemyBaseState
 
     public override void Enter()
     {
+        MessagingCenter.Subscribe<EnemyStateMachine>(this, EnemyStateMachine.MessageOnKnockdown, (sender) =>
+        {
+            if (sender != _context) return;
+            ChangeState(_context.State.Knock());
+        });
+
         MessagingCenter.Subscribe<EnemyManager>(this, EnemyManager.MessageOnEnemyDead, (sender) =>
         {
             if (sender.stateMachine == _context)
@@ -46,6 +52,7 @@ public class EnemyCombatState : EnemyBaseState
         _context.ResetCombatCooldown(enemy.combos[_context.ComboCount].cooldown);
         enemy = null;
 
+        MessagingCenter.Unsubscribe<EnemyStateMachine>(this, EnemyStateMachine.MessageOnKnockdown);
         MessagingCenter.Unsubscribe<EnemyManager>(this, EnemyManager.MessageOnEnemyDead);
         MessagingCenter.Send(this, MessageOnExitCombatState, _context);
     }

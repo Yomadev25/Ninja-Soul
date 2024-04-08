@@ -5,6 +5,7 @@ using UnityEngine.VFX;
 
 public class AnotherShin : MonoBehaviour
 {
+    public const string MessageInitBossPhase = "Init Boss Phase";
     public const string MessageClearLastStage = "Clear Last Stage";
 
     [SerializeField]
@@ -28,12 +29,69 @@ public class AnotherShin : MonoBehaviour
     [SerializeField]
     private WeaponGroup[] _weaponGroups;
 
+    [Header("Enemies Wave")]
+    [SerializeField]
+    private GameObject[] _enemyWaves;
+
+    private int _phase = 1;
+
     private void Awake()
     {
         MessagingCenter.Subscribe<EnemyCombatState, EnemyStateMachine>(this, EnemyCombatState.MessageOnExitCombatState, (sender, state) =>
         {
             if (state != _enemyStateMachine) return;
             Invoke(nameof(RandomClan), 1f);
+        });
+
+        MessagingCenter.Subscribe<EnemyManager>(this, EnemyManager.MessageOnUpdateHp, (sender) =>
+        {
+            if (sender.gameObject != gameObject) return;
+
+            if ((sender.hp / sender.maxHp) <= 0.5f)
+            {
+                if (_phase < 2)
+                {
+                    if (TryGetComponent(out EnemyStateMachine state))
+                    {
+                        state.Knockdown();
+                    }
+
+                    _phase = 2;
+                }
+            }
+            if ((sender.hp / sender.maxHp) <= 0.25f)
+            {
+                if (_phase < 3)
+                {
+                    if (TryGetComponent(out EnemyStateMachine state))
+                    {
+                        state.Knockdown();
+                    }
+
+                    _phase = 3;
+                }
+            }
+
+            if (_enemyWaves.Length > _phase - 1)
+            {
+                if (_enemyWaves[_phase - 1] != null)
+                    _enemyWaves[_phase - 1].SetActive(true);
+            }
+        });
+
+        MessagingCenter.Subscribe<EnemyStateMachine>(this, EnemyStateMachine.MessageOnStandUp, (sender) =>
+        {
+            switch (_phase)
+            {
+                case 2:
+                    break;
+                case 3:
+                    break;
+                default:
+                    break;
+            }
+
+            MessagingCenter.Send(this, MessageInitBossPhase, _phase);
         });
 
         MessagingCenter.Subscribe<EventManager, Event>(this, EventManager.MessageOnArchievedEvent, (sender, @event) =>
