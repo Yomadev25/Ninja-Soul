@@ -23,6 +23,10 @@ public class Genbu : MonoBehaviour
     [SerializeField]
     private GameObject _stompPrefab;
 
+    [Header("Enemies Wave")]
+    [SerializeField]
+    private GameObject[] _enemyWaves;
+
     private int _phase = 1;
 
     private void Awake()
@@ -38,13 +42,23 @@ public class Genbu : MonoBehaviour
 
             if ((sender.hp / sender.maxHp) <= 0.5f)
             {
-                if (_phase == 2) return;
-                _phase = 2;
+                if (_phase != 2)
+                {
+                    _phase = 2;
+                }               
             }
-            else if ((sender.hp / sender.maxHp) <= 0.2f)
+            if ((sender.hp / sender.maxHp) <= 0.2f)
             {
-                if (_phase == 3) return;
-                _phase = 3;
+                if (_phase != 3)
+                {
+                    _phase = 3;
+                }
+            }
+
+            if (_enemyWaves.Length > _phase - 1)
+            {
+                if (_enemyWaves[_phase - 1] != null)
+                    _enemyWaves[_phase - 1].SetActive(true);
             }
         });
 
