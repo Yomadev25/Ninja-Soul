@@ -71,7 +71,7 @@ public class MenuHudManager : MonoBehaviour
         _continueCanvasGroup.alpha = usedToPlay? 1 : 0.5f;
         _continueButton.onClick.AddListener(() => ChangePage(Page.SAVE));
         _optionsButton.onClick.AddListener(() => ChangePage(Page.OPTIONS));
-        //_creditButton.onClick.AddListener();
+        _creditButton.onClick.AddListener(() => ChangePage(Page.CREDIT, true));
         _exitButton.onClick.AddListener(Exit);
 
         ChangePage(_currentPage);
@@ -97,7 +97,7 @@ public class MenuHudManager : MonoBehaviour
                     ChangePage(Page.TITLE);
                     break;
                 case Page.CREDIT:
-                    ChangePage(Page.TITLE);
+                    ChangePage(Page.TITLE, true);
                     break;
                 default:
                     break;
@@ -105,32 +105,39 @@ public class MenuHudManager : MonoBehaviour
         }
     }
 
-    private void ChangePage(Page page)
+    private void ChangePage(Page page, bool instant = false)
     {
         if (page == _currentPage) return;
-        foreach (CanvasGroup canvas in _huds)
-        {
-            canvas.LeanAlpha(0, 0.3f);
-            canvas.interactable = false;
-            canvas.blocksRaycasts = false;
-        }
-
-        _huds[(int)page].LeanAlpha(1, 0.3f).setDelay(0.3f);
-        _huds[(int)page].interactable = true;
-        _huds[(int)page].blocksRaycasts = true;
 
         switch (page)
         {
             case Page.TITLE:
+                _huds[3].gameObject.SetActive(false);
                 break;
             case Page.SAVE:
+                _huds[3].gameObject.SetActive(false);
                 break;
             case Page.OPTIONS:
+                _huds[3].gameObject.SetActive(false);
                 break;
             case Page.CREDIT:
+                _huds[3].gameObject.SetActive(true);
+                _huds[3].GetComponent<CreditHud>().StartCredit();
                 break;
             default:
                 break;
+        }
+
+        foreach (CanvasGroup canvas in _huds)
+        {
+            canvas.LeanAlpha(0, instant? 0f : 0.3f).setOnComplete(() =>
+            {
+                _huds[(int)page].LeanAlpha(1, instant ? 0f : 0.3f).setDelay(instant ? 0f : 0.3f);
+                _huds[(int)page].interactable = true;
+                _huds[(int)page].blocksRaycasts = true;
+            });
+            canvas.interactable = false;
+            canvas.blocksRaycasts = false;
         }
 
         _currentPage = page;
@@ -167,6 +174,11 @@ public class MenuHudManager : MonoBehaviour
                 GO.SetActive(true);
             }
         }
+    }
+
+    public void CreditEnded()
+    {
+        ChangePage(Page.TITLE, true);
     }
 
     private void NewGame()
