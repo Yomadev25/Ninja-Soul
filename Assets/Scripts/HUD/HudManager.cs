@@ -33,7 +33,9 @@ public class HudManager : MonoBehaviour
 
     private void Start()
     {
-        _gameplayHud.alpha = 1f;
+        bool isCutscene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name.Contains("Cutscene");
+
+        _gameplayHud.alpha = !isCutscene? 1f : 0f;
         _gameplayHud.interactable = true;
         _gameplayHud.blocksRaycasts = true;
 

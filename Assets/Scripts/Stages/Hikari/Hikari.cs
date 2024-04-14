@@ -15,7 +15,7 @@ public class Hikari : MonoBehaviour
         if (PlayerData.Instance.IsCompleteAllState() && !PlayerData.Instance.GetPlayerData().completed)
         {
             TransitionManager.Instance.SceneFadeIn(0.5f, () =>
-                SceneManager.LoadScene("Final"));
+                SceneManager.LoadScene("F_Cutscene 1"));
         }
     }
 
