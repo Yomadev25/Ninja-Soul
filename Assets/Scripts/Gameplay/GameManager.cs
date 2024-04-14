@@ -232,7 +232,8 @@ public class GameManager : MonoBehaviour
     {
         PlayerData.Instance.hp = 10;
         PlayerData.Instance.soul = 0;
-        TransitionManager.Instance.SceneFadeIn(0.5f, () => SceneManager.LoadScene("Hikari"));
+        string scene = SceneManager.GetActiveScene().name == "Final" ? "End_Cutscene" : "Hikari";
+        TransitionManager.Instance.SceneFadeIn(0.5f, () => SceneManager.LoadScene(scene));
     }
 
     private void LevelComplete()

@@ -6,6 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class Ending : MonoBehaviour
 {
+    private void Start()
+    {
+        TransitionManager.Instance.SceneFadeOut();
+    }
+
     public void Complete()
     {
         PlayerData.Instance.GetPlayerData().completed = true;
