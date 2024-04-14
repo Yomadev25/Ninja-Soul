@@ -14,6 +14,9 @@ public class ByakkoManager : Singleton<ByakkoManager>
     public bool leftClear;
     public bool rightClear;
 
+    [SerializeField]
+    private List<int> _cacheInstanceID = new List<int>();
+
 
     protected override void Awake()
     {
@@ -40,6 +43,17 @@ public class ByakkoManager : Singleton<ByakkoManager>
         if (!s.name.Contains("Byakko"))
         {
             Destroy(gameObject);
+        }
+        else
+        {
+            var cacheObjects = FindObjectsOfType<CacheObject>();
+            foreach (CacheObject cacheObject in cacheObjects)
+            {
+                if (!_cacheInstanceID.Contains(cacheObject.id))
+                {
+                    _cacheInstanceID.Add(cacheObject.id);
+                }
+            }
         }
     }
 
