@@ -69,6 +69,7 @@ public class TutorialManager : MonoBehaviour
 
     private void Start()
     {
+        AudioManager.Instance.PlayBGM("Tutorial");
         DialogueManager.Instance.ActivateDialogue(_dialogues[0]);
     }
 

@@ -23,6 +23,8 @@ public class Genbu : MonoBehaviour
     [Header("Stomp Skill")]
     [SerializeField]
     private GameObject _stompPrefab;
+    [SerializeField]
+    private GameObject _stoneWallPrefab;
 
     [Header("Enemies Wave")]
     [SerializeField]
@@ -144,6 +146,55 @@ public class Genbu : MonoBehaviour
                     player.TakeDamage(1);
                     break;
                 }              
+            }
+
+            if (_phase > 1)
+            {
+                int count = 0;
+
+                switch (_phase)
+                {
+                    case 1:
+                        count = 0;
+                        break;
+                    case 2:
+                        count = 3;
+                        break;
+                    case 3:
+                        count = 4;
+                        break;
+                    default:
+                        count = 0;
+                        break;
+                }
+
+                for (int x = 0; x < count; x++)
+                {
+                    Vector3 position = transform.position;
+
+                    float minX = Random.Range(position.x - 5f, position.x - 7f);
+                    float maxX = Random.Range(position.x + 5f, position.x + 7f);
+                    position.x = Random.Range(minX, maxX);
+
+                    float minZ = Random.Range(position.z - 5f, position.z - 7f);
+                    float maxZ = Random.Range(position.z + 5f, position.z + 7f);
+                    position.z = Random.Range(minZ, maxZ);
+
+                    GameObject stoneWall = Instantiate(_stoneWallPrefab, position, Quaternion.identity);
+
+                    Collider[] stoneColliders = Physics.OverlapSphere(stoneWall.transform.position, 1f);
+                    foreach (Collider collider in stoneColliders)
+                    {
+                        if (collider.CompareTag("Player"))
+                        {
+                            PlayerManager player = collider.GetComponent<PlayerManager>();
+                            player.TakeDamage(1);
+                            break;
+                        }
+                    }
+
+                    Destroy(stoneWall, 5f);
+                }
             }
             yield return new WaitForSeconds(0.5f);
         }

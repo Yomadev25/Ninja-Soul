@@ -239,6 +239,7 @@ public class GameManager : MonoBehaviour
     private void LevelComplete()
     {
         ChangeGameState(GameState.CLEAR);
+        AudioManager.Instance.PlayBGM("Result");
         PlayerData.Instance.hp = 10;
         PlayerData.Instance.soul = 0;
 
