@@ -33,6 +33,8 @@ public class TransitionManager : Singleton<TransitionManager>
                 callback?.Invoke();
             });            
         });
+
+        AudioManager.Instance.StopBGM();
     }
 
     public void SceneFadeOut(float duration = 0.5f, UnityAction callback = null)

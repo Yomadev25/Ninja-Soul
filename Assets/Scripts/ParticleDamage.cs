@@ -7,13 +7,6 @@ public class ParticleDamage : MonoBehaviour
     public string targetTag;
     public float damage;
 
-    private ParticleSystem particle;
-
-    private void Start()
-    {
-        particle = GetComponent<ParticleSystem>();
-    }
-
     private void OnParticleCollision(GameObject other)
     {
         if (other.CompareTag(targetTag))
@@ -23,6 +16,7 @@ public class ParticleDamage : MonoBehaviour
                 if (other.TryGetComponent<PlayerManager>(out PlayerManager player))
                 {
                     player.TakeDamage(1);
+                    Destroy(gameObject);
                 }
             }
             else if (targetTag == "Enemy")
@@ -30,10 +24,9 @@ public class ParticleDamage : MonoBehaviour
                 if (other.TryGetComponent<EnemyManager>(out EnemyManager enemy))
                 {
                     enemy.TakeDamage(damage);
+                    Destroy(gameObject);
                 }
-            }
-
-            Destroy(gameObject);
+            }          
         }
     }
 }

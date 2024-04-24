@@ -137,5 +137,46 @@ public class Seiryu : MonoBehaviour
                 break;
             }
         }
+
+        if (_phase > 1)
+        {
+            int count = 0;
+
+            switch (_phase)
+            {
+                case 1:
+                    count = 0;
+                    break;
+                case 2:
+                    count = 2;
+                    break;
+                case 3:
+                    count = 4;
+                    break;
+                default:
+                    count = 0;
+                    break;
+            }
+
+            for (int i = 0; i < count; i++)
+            {
+                Vector3 position = transform.position;
+                position.x = Random.Range(position.x - 5f, position.x + 5f);
+                position.z = Random.Range(position.z - 5f, position.z + 5f);
+
+                Instantiate(_stormPrefab, position, Quaternion.Euler(-90f, 0f, 0f));
+
+                Collider[] stormCollider = Physics.OverlapSphere(position, 4f);
+                foreach (Collider collider in stormCollider)
+                {
+                    if (collider.CompareTag("Player"))
+                    {
+                        PlayerManager player = collider.GetComponent<PlayerManager>();
+                        player.TakeDamage(1);
+                        break;
+                    }
+                }
+            }
+        }
     }
 }

@@ -1,12 +1,10 @@
 using System;
-using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
-using UnityEngine.Animations;
 using UnityEngine.EventSystems;
 
 public class MenuHudManager : MonoBehaviour
@@ -63,6 +61,7 @@ public class MenuHudManager : MonoBehaviour
 
     IEnumerator Start()
     {
+        AudioManager.Instance.PlayBGM("Menu");
         _versionText.text = $"v {Application.version}";
 
         _newGameButton.onClick.AddListener(NewGame);
@@ -70,6 +69,7 @@ public class MenuHudManager : MonoBehaviour
         _continueButton.interactable = usedToPlay;
         _continueCanvasGroup.alpha = usedToPlay? 1 : 0.5f;
         _continueButton.onClick.AddListener(() => ChangePage(Page.SAVE));
+        _backToTitleButton.onClick.AddListener(() => ChangePage(Page.TITLE));
         _optionsButton.onClick.AddListener(() => ChangePage(Page.OPTIONS));
         _creditButton.onClick.AddListener(() => ChangePage(Page.CREDIT, true));
         _exitButton.onClick.AddListener(Exit);
@@ -123,6 +123,7 @@ public class MenuHudManager : MonoBehaviour
             case Page.CREDIT:
                 _huds[3].gameObject.SetActive(true);
                 _huds[3].GetComponent<CreditHud>().StartCredit();
+                AudioManager.Instance.PlayBGM("Credit");
                 break;
             default:
                 break;
@@ -178,6 +179,7 @@ public class MenuHudManager : MonoBehaviour
 
     public void CreditEnded()
     {
+        AudioManager.Instance.PlayBGM("Menu");
         ChangePage(Page.TITLE, true);
     }
 
