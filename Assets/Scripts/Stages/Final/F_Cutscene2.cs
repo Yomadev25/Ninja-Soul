@@ -14,7 +14,7 @@ public class F_Cutscene2 : MonoBehaviour
         {
             if (dialogue == _dialogue)
             {
-                TransitionManager.Instance.SceneFadeIn(0.5f, () =>
+                TransitionManager.Instance.NormalFadeIn(0.5f, () =>
                 {
                     SceneManager.LoadScene("Final");
                 });

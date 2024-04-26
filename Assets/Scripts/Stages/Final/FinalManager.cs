@@ -31,5 +31,6 @@ public class FinalManager : Singleton<FinalManager>
     private void Start()
     {
         StageManager.Instance.InitCriteria(_stageCriteria);
+        TransitionManager.Instance.NormalFadeOut();
     }
 }

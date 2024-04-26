@@ -123,7 +123,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: 3146e198900cda044b9e22e33e1d2067, type: 2}
 --- !u!1 &14008004
 GameObject:
   m_ObjectHideFlags: 0
@@ -320,6 +320,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wooden Floor_120
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: de3e5edb431be3c49a961f51632ffa05,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de3e5edb431be3c49a961f51632ffa05, type: 3}
 --- !u!4 &49008519 stripped
@@ -394,6 +399,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Wooden Floor_100
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: de3e5edb431be3c49a961f51632ffa05,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de3e5edb431be3c49a961f51632ffa05, type: 3}
@@ -757,6 +767,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Wooden Floor_98
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: de3e5edb431be3c49a961f51632ffa05,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de3e5edb431be3c49a961f51632ffa05, type: 3}
@@ -1237,6 +1252,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wooden Floor_94
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: de3e5edb431be3c49a961f51632ffa05,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de3e5edb431be3c49a961f51632ffa05, type: 3}
 --- !u!4 &176278001 stripped
@@ -1245,6 +1265,75 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 176278000}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &233866441
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5509774279975698509, guid: 770f0e77d4bf9fa4997dc1c8cb4cf9d6,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 5509774279975698509, guid: 770f0e77d4bf9fa4997dc1c8cb4cf9d6,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -472.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5509774279975698509, guid: 770f0e77d4bf9fa4997dc1c8cb4cf9d6,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.1988945
+      objectReference: {fileID: 0}
+    - target: {fileID: 5509774279975698509, guid: 770f0e77d4bf9fa4997dc1c8cb4cf9d6,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 21.23
+      objectReference: {fileID: 0}
+    - target: {fileID: 5509774279975698509, guid: 770f0e77d4bf9fa4997dc1c8cb4cf9d6,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.92751044
+      objectReference: {fileID: 0}
+    - target: {fileID: 5509774279975698509, guid: 770f0e77d4bf9fa4997dc1c8cb4cf9d6,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5509774279975698509, guid: 770f0e77d4bf9fa4997dc1c8cb4cf9d6,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.37379727
+      objectReference: {fileID: 0}
+    - target: {fileID: 5509774279975698509, guid: 770f0e77d4bf9fa4997dc1c8cb4cf9d6,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5509774279975698509, guid: 770f0e77d4bf9fa4997dc1c8cb4cf9d6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5509774279975698509, guid: 770f0e77d4bf9fa4997dc1c8cb4cf9d6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -43.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5509774279975698509, guid: 770f0e77d4bf9fa4997dc1c8cb4cf9d6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5509774279975698548, guid: 770f0e77d4bf9fa4997dc1c8cb4cf9d6,
+        type: 3}
+      propertyPath: m_Name
+      value: Byakko Bow
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 770f0e77d4bf9fa4997dc1c8cb4cf9d6, type: 3}
 --- !u!1001 &244756033
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1311,6 +1400,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Wooden Floor_113
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: de3e5edb431be3c49a961f51632ffa05,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de3e5edb431be3c49a961f51632ffa05, type: 3}
@@ -1387,6 +1481,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wooden Floor_109
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: de3e5edb431be3c49a961f51632ffa05,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de3e5edb431be3c49a961f51632ffa05, type: 3}
 --- !u!4 &261707866 stripped
@@ -1461,6 +1560,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Wooden Floor_106
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: de3e5edb431be3c49a961f51632ffa05,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de3e5edb431be3c49a961f51632ffa05, type: 3}
@@ -1722,6 +1826,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wooden Floor_107
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: de3e5edb431be3c49a961f51632ffa05,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de3e5edb431be3c49a961f51632ffa05, type: 3}
 --- !u!4 &386336385 stripped
@@ -1796,6 +1905,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Wooden Floor_111
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: de3e5edb431be3c49a961f51632ffa05,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de3e5edb431be3c49a961f51632ffa05, type: 3}
@@ -1876,6 +1990,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Wooden Floor_123
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: de3e5edb431be3c49a961f51632ffa05,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de3e5edb431be3c49a961f51632ffa05, type: 3}
@@ -2186,6 +2305,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wooden Floor_96
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: de3e5edb431be3c49a961f51632ffa05,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de3e5edb431be3c49a961f51632ffa05, type: 3}
 --- !u!4 &496211471 stripped
@@ -2472,6 +2596,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wooden Floor_108
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: de3e5edb431be3c49a961f51632ffa05,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de3e5edb431be3c49a961f51632ffa05, type: 3}
 --- !u!4 &617618226 stripped
@@ -2575,6 +2704,75 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -7670247711816762793, guid: 8ae7836ff9f584c4690b7fde4a9506d0, type: 3}
+--- !u!1001 &648274278
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4289490255534176080, guid: bd2b973957060244ca5986a0c4d9baa0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 4289490255534176080, guid: bd2b973957060244ca5986a0c4d9baa0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -478.4978
+      objectReference: {fileID: 0}
+    - target: {fileID: 4289490255534176080, guid: bd2b973957060244ca5986a0c4d9baa0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.1988945
+      objectReference: {fileID: 0}
+    - target: {fileID: 4289490255534176080, guid: bd2b973957060244ca5986a0c4d9baa0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 23.948751
+      objectReference: {fileID: 0}
+    - target: {fileID: 4289490255534176080, guid: bd2b973957060244ca5986a0c4d9baa0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.8636156
+      objectReference: {fileID: 0}
+    - target: {fileID: 4289490255534176080, guid: bd2b973957060244ca5986a0c4d9baa0,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4289490255534176080, guid: bd2b973957060244ca5986a0c4d9baa0,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.50415105
+      objectReference: {fileID: 0}
+    - target: {fileID: 4289490255534176080, guid: bd2b973957060244ca5986a0c4d9baa0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4289490255534176080, guid: bd2b973957060244ca5986a0c4d9baa0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4289490255534176080, guid: bd2b973957060244ca5986a0c4d9baa0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -299.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 4289490255534176080, guid: bd2b973957060244ca5986a0c4d9baa0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4289490255534176105, guid: bd2b973957060244ca5986a0c4d9baa0,
+        type: 3}
+      propertyPath: m_Name
+      value: Byakko Chokuto_3
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bd2b973957060244ca5986a0c4d9baa0, type: 3}
 --- !u!1001 &655391883
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2657,6 +2855,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall1_2
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7dddaf0d5b093f645a12e2a22d49a467,
+        type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7dddaf0d5b093f645a12e2a22d49a467,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7dddaf0d5b093f645a12e2a22d49a467, type: 3}
 --- !u!4 &655391884 stripped
@@ -2731,6 +2939,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Wooden Floor_99
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: de3e5edb431be3c49a961f51632ffa05,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de3e5edb431be3c49a961f51632ffa05, type: 3}
@@ -2807,6 +3020,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wooden Floor_85
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: de3e5edb431be3c49a961f51632ffa05,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de3e5edb431be3c49a961f51632ffa05, type: 3}
 --- !u!4 &673997572 stripped
@@ -2882,6 +3100,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wooden Floor_93
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: de3e5edb431be3c49a961f51632ffa05,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de3e5edb431be3c49a961f51632ffa05, type: 3}
 --- !u!4 &705441446 stripped
@@ -2956,6 +3179,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Wooden Floor_92
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: de3e5edb431be3c49a961f51632ffa05,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de3e5edb431be3c49a961f51632ffa05, type: 3}
@@ -3036,6 +3264,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Wooden Floor_115
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: de3e5edb431be3c49a961f51632ffa05,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de3e5edb431be3c49a961f51632ffa05, type: 3}
@@ -3240,6 +3473,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wooden Floor_126
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: de3e5edb431be3c49a961f51632ffa05,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de3e5edb431be3c49a961f51632ffa05, type: 3}
 --- !u!4 &905407088 stripped
@@ -3314,6 +3552,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Wooden Floor_89
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: de3e5edb431be3c49a961f51632ffa05,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de3e5edb431be3c49a961f51632ffa05, type: 3}
@@ -3395,6 +3638,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wooden Floor_102
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: de3e5edb431be3c49a961f51632ffa05,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de3e5edb431be3c49a961f51632ffa05, type: 3}
 --- !u!4 &963849183 stripped
@@ -3469,6 +3717,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Wooden Floor_86
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: de3e5edb431be3c49a961f51632ffa05,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de3e5edb431be3c49a961f51632ffa05, type: 3}
@@ -3549,6 +3802,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Wooden Floor_124
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: de3e5edb431be3c49a961f51632ffa05,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de3e5edb431be3c49a961f51632ffa05, type: 3}
@@ -3773,6 +4031,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wooden Floor_112
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: de3e5edb431be3c49a961f51632ffa05,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de3e5edb431be3c49a961f51632ffa05, type: 3}
 --- !u!4 &1258847466 stripped
@@ -3847,6 +4110,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Wooden Floor_116
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: de3e5edb431be3c49a961f51632ffa05,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de3e5edb431be3c49a961f51632ffa05, type: 3}
@@ -3928,6 +4196,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wooden Floor_122
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: de3e5edb431be3c49a961f51632ffa05,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de3e5edb431be3c49a961f51632ffa05, type: 3}
 --- !u!4 &1376217798 stripped
@@ -4003,6 +4276,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wooden Floor_101
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: de3e5edb431be3c49a961f51632ffa05,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de3e5edb431be3c49a961f51632ffa05, type: 3}
 --- !u!4 &1407520612 stripped
@@ -4077,6 +4355,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Wooden Floor_97
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: de3e5edb431be3c49a961f51632ffa05,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de3e5edb431be3c49a961f51632ffa05, type: 3}
@@ -4158,6 +4441,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wooden Floor_103
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: de3e5edb431be3c49a961f51632ffa05,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de3e5edb431be3c49a961f51632ffa05, type: 3}
 --- !u!4 &1457158717 stripped
@@ -4166,6 +4454,75 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1457158716}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1488839196
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4289490255534176080, guid: bd2b973957060244ca5986a0c4d9baa0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4289490255534176080, guid: bd2b973957060244ca5986a0c4d9baa0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -473.11447
+      objectReference: {fileID: 0}
+    - target: {fileID: 4289490255534176080, guid: bd2b973957060244ca5986a0c4d9baa0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.1988945
+      objectReference: {fileID: 0}
+    - target: {fileID: 4289490255534176080, guid: bd2b973957060244ca5986a0c4d9baa0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 29.137941
+      objectReference: {fileID: 0}
+    - target: {fileID: 4289490255534176080, guid: bd2b973957060244ca5986a0c4d9baa0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.475701
+      objectReference: {fileID: 0}
+    - target: {fileID: 4289490255534176080, guid: bd2b973957060244ca5986a0c4d9baa0,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4289490255534176080, guid: bd2b973957060244ca5986a0c4d9baa0,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.8796071
+      objectReference: {fileID: 0}
+    - target: {fileID: 4289490255534176080, guid: bd2b973957060244ca5986a0c4d9baa0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4289490255534176080, guid: bd2b973957060244ca5986a0c4d9baa0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4289490255534176080, guid: bd2b973957060244ca5986a0c4d9baa0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -123.19
+      objectReference: {fileID: 0}
+    - target: {fileID: 4289490255534176080, guid: bd2b973957060244ca5986a0c4d9baa0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4289490255534176105, guid: bd2b973957060244ca5986a0c4d9baa0,
+        type: 3}
+      propertyPath: m_Name
+      value: Byakko Chokuto_2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bd2b973957060244ca5986a0c4d9baa0, type: 3}
 --- !u!1001 &1497482425
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4232,6 +4589,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Wooden Floor_110
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: de3e5edb431be3c49a961f51632ffa05,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de3e5edb431be3c49a961f51632ffa05, type: 3}
@@ -4312,6 +4674,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Wooden Floor_114
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: de3e5edb431be3c49a961f51632ffa05,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de3e5edb431be3c49a961f51632ffa05, type: 3}
@@ -4424,6 +4791,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Wooden Floor_125
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: de3e5edb431be3c49a961f51632ffa05,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de3e5edb431be3c49a961f51632ffa05, type: 3}
@@ -4719,6 +5091,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wooden Floor_104
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: de3e5edb431be3c49a961f51632ffa05,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de3e5edb431be3c49a961f51632ffa05, type: 3}
 --- !u!4 &1589492539 stripped
@@ -4979,6 +5356,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wooden Floor_121
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: de3e5edb431be3c49a961f51632ffa05,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de3e5edb431be3c49a961f51632ffa05, type: 3}
 --- !u!4 &1629502081 stripped
@@ -5068,6 +5450,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Wall1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7dddaf0d5b093f645a12e2a22d49a467,
+        type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7dddaf0d5b093f645a12e2a22d49a467,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7dddaf0d5b093f645a12e2a22d49a467, type: 3}
@@ -5257,6 +5649,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wooden Floor_105
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: de3e5edb431be3c49a961f51632ffa05,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de3e5edb431be3c49a961f51632ffa05, type: 3}
 --- !u!4 &1709371915 stripped
@@ -5332,6 +5729,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wooden Floor_118
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: de3e5edb431be3c49a961f51632ffa05,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de3e5edb431be3c49a961f51632ffa05, type: 3}
 --- !u!4 &1712722689 stripped
@@ -5406,6 +5808,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Wooden Floor_117
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: de3e5edb431be3c49a961f51632ffa05,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de3e5edb431be3c49a961f51632ffa05, type: 3}
@@ -5516,6 +5923,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wooden Floor_88
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: de3e5edb431be3c49a961f51632ffa05,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de3e5edb431be3c49a961f51632ffa05, type: 3}
 --- !u!4 &1805048365 stripped
@@ -5605,6 +6017,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Wall1_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7dddaf0d5b093f645a12e2a22d49a467,
+        type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7dddaf0d5b093f645a12e2a22d49a467,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7dddaf0d5b093f645a12e2a22d49a467, type: 3}
@@ -5715,6 +6137,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wooden Floor_87
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: de3e5edb431be3c49a961f51632ffa05,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de3e5edb431be3c49a961f51632ffa05, type: 3}
 --- !u!4 &1892127134 stripped
@@ -5789,6 +6216,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Wooden Floor_95
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: de3e5edb431be3c49a961f51632ffa05,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de3e5edb431be3c49a961f51632ffa05, type: 3}
@@ -5865,6 +6297,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wooden Floor_119
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: de3e5edb431be3c49a961f51632ffa05,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de3e5edb431be3c49a961f51632ffa05, type: 3}
 --- !u!4 &1969710461 stripped
@@ -5887,7 +6324,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1974897553
 Transform:
@@ -6012,6 +6449,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Wooden Floor_91
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: de3e5edb431be3c49a961f51632ffa05,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de3e5edb431be3c49a961f51632ffa05, type: 3}
@@ -6440,6 +6882,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Wooden Floor_90
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: de3e5edb431be3c49a961f51632ffa05,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de3e5edb431be3c49a961f51632ffa05, type: 3}

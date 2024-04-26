@@ -14,7 +14,7 @@ public class Byakko : MonoBehaviour
     [SerializeField]
     private GameObject _slashFx;
     [SerializeField]
-    private GameObject _lastBladePrefab;
+    private GameObject[] _lastBladePrefabs;
 
     [Header("Enemies Wave")]
     [SerializeField]
@@ -127,13 +127,13 @@ public class Byakko : MonoBehaviour
         switch (combo)
         {
             case 1:
-                eulerAngle = new Vector3(125f, transform.eulerAngles.y, 0f);
+                eulerAngle = new Vector3(163f, transform.eulerAngles.y, -33f);
                 break;
             case 2:
-                eulerAngle = new Vector3(65f, transform.eulerAngles.y, 0f);
+                eulerAngle = new Vector3(-1f, transform.eulerAngles.y, -45f);
                 break;
             case 3:
-                eulerAngle = new Vector3(125f, transform.eulerAngles.y, 0f);
+                eulerAngle = new Vector3(-1f, transform.eulerAngles.y, 217f);
                 break;
             default:
                 break;
@@ -147,7 +147,17 @@ public class Byakko : MonoBehaviour
 
     public void LastBlade()
     {
-        Instantiate(_lastBladePrefab,
+        GameObject lastBlade = null;
+        if (_phase > 1)
+        {
+            lastBlade = _lastBladePrefabs[1];
+        }
+        else
+        {
+            lastBlade = _lastBladePrefabs[0];
+        }
+
+        Instantiate(lastBlade,
             new Vector3(transform.position.x, transform.position.y + 1, transform.position.z) + transform.forward,
             Quaternion.Euler(new Vector3(0f, transform.eulerAngles.y - 90f, 0f)));
     }

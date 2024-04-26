@@ -1,6 +1,7 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.VFX;
 
@@ -25,6 +26,10 @@ public class ComboFactory : MonoBehaviour
     private GameObject _sickleSlashFx;
     [SerializeField]
     private GameObject _swordSlashFx;
+    [SerializeField]
+    private GameObject _lastBladeWaveFx;
+    [SerializeField]
+    private GameObject _biteFx;
     [SerializeField]
     private GameObject _javelinSlashFx;
     [SerializeField]
@@ -217,16 +222,27 @@ public class ComboFactory : MonoBehaviour
         switch (combo)
         {
             case 1:
-                eulerAngle = new Vector3(-180f, transform.eulerAngles.y, -45f);
+                eulerAngle = new Vector3(0f, transform.eulerAngles.y, -145f);
                 break;
             case 2:
-                eulerAngle = new Vector3(-194.6f, transform.eulerAngles.y, -57.4f);
+                eulerAngle = new Vector3(0f, transform.eulerAngles.y, -145f);
                 break;
             case 3:
-                eulerAngle = new Vector3(-180f, transform.eulerAngles.y, -20f);
+                eulerAngle = new Vector3(0f, transform.eulerAngles.y, -180f);
                 break;
             case 4:
-                eulerAngle = new Vector3(-180f, transform.eulerAngles.y, -163f);
+                eulerAngle = new Vector3(0f, transform.eulerAngles.y, -45f);
+                Instantiate(_lastBladeWaveFx, transform.position, Quaternion.identity);
+                Collider[] colliders = Physics.OverlapSphere(transform.position, 3f);
+                foreach (Collider collider in colliders)
+                {
+                    if (collider.TryGetComponent(out EnemyManager enemy))
+                    {
+                        VisualEffect bite = Instantiate(_biteFx, enemy.transform.position + Vector3.up, Quaternion.identity).GetComponent<VisualEffect>();
+                        bite.Play();
+                        enemy.TakeDamage(20f);
+                    }
+                }
                 break;
             default:
                 break;

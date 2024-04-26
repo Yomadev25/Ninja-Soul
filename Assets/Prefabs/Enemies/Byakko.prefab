@@ -628,7 +628,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1272905210448904966}
   m_LocalRotation: {x: -0.7073536, y: 0, z: 0, w: 0.70685995}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0, z: -0.0611}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -648,7 +648,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _weaponName: Sword
-  _weaponLength: 1.84
+  _weaponLength: 2.57
   _weaponDamage: 0
   _targetLayer:
     serializedVersion: 2
@@ -4672,8 +4672,13 @@ MonoBehaviour:
   _event: {fileID: 11400000, guid: 75ec2dc3c0ecb914f90146b26aea9711, type: 2}
   _slashFx: {fileID: 6555529987447446609, guid: bdb41eab1f1c91e4e8530113791eb32e,
     type: 3}
-  _lastBladePrefab: {fileID: 4758389821656501070, guid: bffb0f33f3a4fb44caf24124c4ca7788,
-    type: 3}
+  _lastBladePrefabs:
+  - {fileID: 4758389821656501070, guid: 6ae264f5702ba994397d8d1346251725, type: 3}
+  - {fileID: 4758389821656501070, guid: bffb0f33f3a4fb44caf24124c4ca7788, type: 3}
+  _enemyWaves:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!195 &7750900932525590139
 NavMeshAgent:
   m_ObjectHideFlags: 0

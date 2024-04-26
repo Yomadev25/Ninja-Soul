@@ -9636,8 +9636,9 @@ GameObject:
   - component: {fileID: 4758389821656501069}
   - component: {fileID: 4758389821656501068}
   - component: {fileID: 1663120543122801727}
+  - component: {fileID: 291207473961812302}
   m_Layer: 0
-  m_Name: Last Blade
+  m_Name: Last Blade Critical
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9852,7 +9853,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      maxColor: {r: 1, g: 0.6800818, b: 0.390566, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -14543,6 +14544,20 @@ MonoBehaviour:
   onTakeEnemyDamage:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &291207473961812302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4758389821656501070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee9de5464526c984b887742442256f85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bitePrefab: {fileID: 4665568421454562307, guid: a7f50d5aaa7eb0a40a9b9e8b6ed4c8b2,
+    type: 3}
 --- !u!1 &4758389821673482956
 GameObject:
   m_ObjectHideFlags: 0
