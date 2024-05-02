@@ -12,7 +12,7 @@ public class Suzaku_Dash : EnemyCombo
 
         LeanTween.move(context.gameObject, context.transform.position + (context.transform.forward * 5f), 0.5f).setOnComplete(async () =>
         {
-            await Task.Delay(500);
+            await Task.Delay(800);
             state.OnAttacked();
         });
     }

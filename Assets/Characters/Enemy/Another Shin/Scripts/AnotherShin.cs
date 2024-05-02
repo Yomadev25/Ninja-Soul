@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.VFX;
 
 public class AnotherShin : MonoBehaviour
@@ -27,7 +28,23 @@ public class AnotherShin : MonoBehaviour
     [SerializeField]
     private GameObject _chokutoSlashFx;
     [SerializeField]
+    private GameObject _soulBerserkFx;
+    [SerializeField]
     private WeaponGroup[] _weaponGroups;
+
+    [Header("Environment")]
+    [SerializeField]
+    private Gradient _ambientColorLight;
+    [SerializeField]
+    private Gradient _directionalColorLight;
+    [SerializeField]
+    private Light _directionalLight;
+    [SerializeField]
+    private Volume _bossVolume;
+    [SerializeField]
+    private Gradient _soulColor;
+    [SerializeField]
+    private ParticleSystem _soulParticle;
 
     [Header("Enemies Wave")]
     [SerializeField]
@@ -84,8 +101,26 @@ public class AnotherShin : MonoBehaviour
             switch (_phase)
             {
                 case 2:
+                    LeanTween.value(0, 0.5f, 1f).setOnUpdate(x =>
+                    {
+                        RenderSettings.ambientLight = _ambientColorLight.Evaluate(x);
+                        _directionalLight.color = _directionalColorLight.Evaluate(x);
+                        _soulParticle.startColor = _soulColor.Evaluate(x);
+                    });
+                    
                     break;
                 case 3:
+                    _soulBerserkFx.SetActive(true);
+                    LeanTween.value(0f, 1f, 1f).setOnUpdate(x =>
+                    {
+                        _bossVolume.weight = x;
+                        if (x > 0.5f)
+                        {
+                            RenderSettings.ambientLight = _ambientColorLight.Evaluate(x);
+                            _directionalLight.color = _directionalColorLight.Evaluate(x);
+                            _soulParticle.startColor = _soulColor.Evaluate(x);
+                        }                       
+                    });
                     break;
                 default:
                     break;

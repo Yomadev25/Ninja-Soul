@@ -37,6 +37,7 @@ public class ByakkoManager : Singleton<ByakkoManager>
     private void SceneLoaded(Scene s, LoadSceneMode e)
     {
         if (s.name == "HUD") return;
+        AudioManager.Instance.PlayBGM("Byakko");
         if (!s.name.Contains("Byakko"))
         {
             Destroy(gameObject);

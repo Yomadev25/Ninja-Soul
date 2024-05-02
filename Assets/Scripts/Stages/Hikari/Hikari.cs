@@ -17,6 +17,10 @@ public class Hikari : MonoBehaviour
             TransitionManager.Instance.SceneFadeIn(0.5f, () =>
                 SceneManager.LoadScene("F_Cutscene 1"));
         }
+        else
+        {
+            AudioManager.Instance.PlayBGM("Hikari");
+        }
     }
 
     public void GoToTutorial()

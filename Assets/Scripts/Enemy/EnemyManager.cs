@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Tilemaps;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -24,6 +25,10 @@ public class EnemyManager : MonoBehaviour, IDamageable
     [Header("References")]
     [SerializeField]
     private Animator _anim;
+
+    [Header("Sound Effects")]
+    [SerializeField]
+    private string _hitSfx;
 
     [Header("Events")]
     [SerializeField]
@@ -70,11 +75,18 @@ public class EnemyManager : MonoBehaviour, IDamageable
             if (damage >= _hp)
             {
                 TimeStop.Instance.StopTime(0.05f, 10, 0.1f);
+                AudioManager.Instance.PlaySFX("Kill");
+                GameObject blood = EffectManager.Instance.Spawn("Kill", transform.position, Quaternion.identity);
+                blood.transform.parent = transform;
+                blood.transform.localPosition = Vector3.zero + Vector3.up;
+                blood.transform.localEulerAngles = Vector3.zero;
+                Destroy(blood, 1.5f);
             }
         }
 
         _hp -= damage;
         _anim.SetTrigger("Hit");
+        AudioManager.Instance.PlaySFX(_hitSfx);
 
         if (effect != null)
         {

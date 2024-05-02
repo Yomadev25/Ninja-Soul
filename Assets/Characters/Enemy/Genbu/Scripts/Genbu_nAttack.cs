@@ -10,7 +10,8 @@ public class Genbu_nAttack : EnemyCombo
     {
         Transform target = context.GetCombatTarget();
         context.Anim.SetTrigger("nAttack");
-        
+        AudioManager.Instance.PlaySFX("Punch");
+
         if (target != null)
         {
             LeanTween.move(context.gameObject, context.transform.position + (target.position - context.transform.position) / 2f, 0.5f).setOnComplete(() =>

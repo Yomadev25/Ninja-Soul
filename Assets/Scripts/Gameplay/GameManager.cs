@@ -45,6 +45,8 @@ public class GameManager : MonoBehaviour
 
         MessagingCenter.Subscribe<PlayerManager>(this, PlayerManager.MessageOnPlayerDied, (sender) =>
         {
+            AudioManager.Instance.StopBGM();
+            AudioManager.Instance.PlaySFX("Eliminated");
             Invoke(nameof(RestartLevel), 4f);
         });
 

@@ -6311,7 +6311,7 @@ MonoBehaviour:
   _targetLayer:
     serializedVersion: 2
     m_Bits: 64
-  _slashFx: {fileID: 0}
+  _effect: {fileID: 0}
 --- !u!1 &1963803113008122812
 GameObject:
   m_ObjectHideFlags: 0
@@ -14210,6 +14210,7 @@ GameObject:
   - component: {fileID: 8525080872506300440}
   - component: {fileID: 8525080872506300443}
   - component: {fileID: 8525080872506300442}
+  - component: {fileID: 8054198737926298622}
   m_Layer: 7
   m_Name: Seiryu
   m_TagString: Enemy
@@ -14252,6 +14253,7 @@ MonoBehaviour:
   _maxHp: 8000
   _hp: 0
   _anim: {fileID: 8525080872506300442}
+  _hitSfx: Slash Hit
   onTakeDamage:
     m_PersistentCalls:
       m_Calls:
@@ -14268,6 +14270,9 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   onHeal:
+    m_PersistentCalls:
+      m_Calls: []
+  onDead:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &8525080872506300446
@@ -14312,6 +14317,7 @@ MonoBehaviour:
     type: 3}
   _stormPrefab: {fileID: 4415591245986246695, guid: 64b6d6fa367245946af9bafda135ab62,
     type: 3}
+  _enemyWaves: []
 --- !u!195 &8525080872506300441
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -14384,6 +14390,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8054198737926298622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8525080872506300437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec80ce76b00d79f43a291a22354d0410, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8640083418042561058
 GameObject:
   m_ObjectHideFlags: 0

@@ -1194,6 +1194,7 @@ MonoBehaviour:
   _maxHp: 100
   _hp: 0
   _anim: {fileID: 7031076844095555273}
+  _hitSfx: Slash Hit
   onTakeDamage:
     m_PersistentCalls:
       m_Calls:
@@ -3665,6 +3666,7 @@ MonoBehaviour:
   _targetLayer:
     serializedVersion: 2
     m_Bits: 64
+  _effect: {fileID: 0}
 --- !u!1001 &7031076844565516278
 PrefabInstance:
   m_ObjectHideFlags: 0

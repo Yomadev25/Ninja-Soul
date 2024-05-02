@@ -7,6 +7,7 @@ public class PlayerDashState : PlayerBaseState
 {
     public const string MessageOnDashStart = "Dash Start";
     public const string MessageOnDashEnd = "Dash End";
+    bool isDash;
 
     public PlayerDashState(PlayerStateMachine ctx) : base(ctx) { }
 
@@ -26,23 +27,29 @@ public class PlayerDashState : PlayerBaseState
 
     public override void FixedUpdate()
     {
+        if (!isDash) return;
 
+        Vector3 dashDirection = _context.transform.forward.normalized;
+        //_context.rigidBody.velocity = dashDirection.normalized * _context.DashSpeed;
+        _context.rigidBody.AddForce(dashDirection.normalized * _context.DashSpeed, ForceMode.Impulse);
     }
 
     private async Task DashAsync()
-    {
-        Vector3 dashDirection = _context.transform.forward.normalized;
+    {       
         float duration = 0.8f;       
         _context.Anim.SetTrigger("Dash");
         _context.Anim.SetBool("isDash", true);
 
         while (duration > 0f)
         {
-            _context.rigidBody.MovePosition(_context.transform.position + (dashDirection) * _context.DashSpeed * Time.deltaTime);
+            //_context.rigidBody.MovePosition(_context.transform.position + (dashDirection) * _context.DashSpeed * Time.deltaTime);
+            isDash = true;
             duration -= Time.deltaTime;
 
             await Task.Yield();
         }
+
+        _context.rigidBody.velocity = Vector3.zero;
 
         _context.Anim.SetBool("isDash", false);
         CheckChangeState();

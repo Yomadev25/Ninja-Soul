@@ -20,6 +20,7 @@ public class LevelSelection : MonoBehaviour
     private void Start()
     {
         TransitionManager.Instance.SceneFadeOut();
+        AudioManager.Instance.PlayBGM("Level Selection");
 
         _hikariButton.onClick.AddListener(() => Play("Hikari"));
         _genbuButton.onClick.AddListener(() => Play("Genbu_1"));

@@ -127,6 +127,8 @@ public class ComboFactory : MonoBehaviour
             _knucklePunchFxR.Play();
             _knucklePunchFxL.Play();
         }
+
+        AudioManager.Instance.PlaySFX("Punch");
     }
 
     public void KnuckleStomp()

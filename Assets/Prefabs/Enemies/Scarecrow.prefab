@@ -521,6 +521,7 @@ MonoBehaviour:
   _maxHp: 99999
   _hp: 0
   _anim: {fileID: 410740676494533155}
+  _hitSfx: Wooden Hit
   onTakeDamage:
     m_PersistentCalls:
       m_Calls:
@@ -3330,7 +3331,7 @@ VFXRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6613138977246230824}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1

@@ -14,9 +14,11 @@ public class Suzaku : MonoBehaviour
     [SerializeField]
     private GameObject _slashFx;
     [SerializeField]
-    private ParticleSystem _dashFx;
+    private VisualEffect _dashFx;
     [SerializeField]
     private GameObject _kickFx;
+    [SerializeField]
+    private GameObject _fireBallPrefab;
 
     [Header("Enemies Wave")]
     [SerializeField]
@@ -214,14 +216,22 @@ public class Suzaku : MonoBehaviour
 
     public void Dash()
     {
-        StartCoroutine(DashCoroutine());
+        _dashFx.Play();
+        if (_phase > 1)
+        {
+            SpawnFireball();
+
+            for (int i = 0; i < _phase - 1; i++)
+            {
+                Invoke(nameof(SpawnFireball), 1f);
+            }
+        }
     }
 
-    IEnumerator DashCoroutine()
+    private void SpawnFireball()
     {
-        _dashFx.Play();
-        yield return new WaitForSeconds(0.5f);
-        _dashFx.Stop();
+        Instantiate(_fireBallPrefab, transform.position + Vector3.up, Quaternion.identity)
+            .GetComponent<Fireball>().owner = transform;
     }
 
     public void Kick()
@@ -234,5 +244,7 @@ public class Suzaku : MonoBehaviour
                 player.TakeDamage(1);
             }
         }
+
+        AudioManager.Instance.PlaySFX("Punch");
     }
 }
