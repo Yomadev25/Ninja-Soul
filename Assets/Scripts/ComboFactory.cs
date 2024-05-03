@@ -35,6 +35,8 @@ public class ComboFactory : MonoBehaviour
     [SerializeField]
     private ParticleSystem _javelinDashFx;
 
+    private Rigidbody _rigidBody;
+
     private void Awake()
     {
         foreach (ComboGroup comboGroup in _comboGroups)
@@ -74,6 +76,7 @@ public class ComboFactory : MonoBehaviour
             UnlockWeapon("Sickles");
         }
 
+        _rigidBody = GetComponent<Rigidbody>();
         MessagingCenter.Send(this, MessageSendComboData, _comboGroups);
     }
 
@@ -286,10 +289,22 @@ public class ComboFactory : MonoBehaviour
     public void JavelinDash()
     {
         _javelinDashFx.Play();
-        LeanTween.move(gameObject, transform.position + (transform.forward * 3f), 0.2f).setOnComplete(() =>
+        StartCoroutine(JavelinDashCoroutine());
+    }
+
+    private IEnumerator JavelinDashCoroutine()
+    {
+        float duration = 0.2f;
+        Vector3 dashDirection = transform.forward.normalized;
+
+        while (duration > 0f)
         {
-            _javelinDashFx.Stop();
-        });
+            _rigidBody.AddForce(dashDirection.normalized * 10f, ForceMode.Impulse);
+            duration -= Time.deltaTime;
+            yield return null;
+        }
+
+        _javelinDashFx.Stop();
     }
     #endregion
 }

@@ -78,7 +78,7 @@ public class MenuHudManager : MonoBehaviour
         FetchSaveList();
 
         TransitionManager.Instance.SceneFadeOut();
-        yield return new WaitForSeconds(6.4f);
+        yield return new WaitForSeconds(6.3f);
         _anim.enabled = false;
     }
 
