@@ -144,6 +144,7 @@ public class GameManager : MonoBehaviour
         MessagingCenter.Unsubscribe<Seiryu>(this, Seiryu.MessageClearSeiryuStage);
         MessagingCenter.Unsubscribe<Byakko>(this, Byakko.MessageClearByakkoStage);
         MessagingCenter.Unsubscribe<Suzaku>(this, Suzaku.MessageClearSuzakuStage);
+        MessagingCenter.Unsubscribe<AnotherShin>(this, AnotherShin.MessageClearLastStage);
 
         _weaponSelectionInput.action.performed -= (ctx) =>
         {

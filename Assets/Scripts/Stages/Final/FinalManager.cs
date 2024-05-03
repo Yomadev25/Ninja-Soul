@@ -29,7 +29,12 @@ public class FinalManager : Singleton<FinalManager>
     private void SceneLoaded(Scene s, LoadSceneMode e)
     {
         if (s.name == "HUD") return;
-        AudioManager.Instance.PlayBGM("Final Boss");
+
+        if (AudioManager.Instance.currentBgm != "Final Boss")
+        {
+            AudioManager.Instance.PlayBGM("Final Boss");
+        }
+        
         if (s.name != "Final")
         {
             Destroy(gameObject);

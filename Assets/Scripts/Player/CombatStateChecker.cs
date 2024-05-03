@@ -33,7 +33,7 @@ public class CombatStateChecker : MonoBehaviour
         {
             if (_isCombat) return;
             if (other.TryGetComponent(out Boss boss)) return;
-            if (AudioManager.Instance.currentBgm == "Boss") return;
+            if (AudioManager.Instance.currentBgm == "Boss" || AudioManager.Instance.currentBgm == "Final Boss") return;
 
             AudioManager.Instance.PlayOverrideBGM("Combat");
             _isCombat = true;

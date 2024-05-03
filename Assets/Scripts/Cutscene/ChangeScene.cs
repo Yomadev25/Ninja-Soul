@@ -11,13 +11,14 @@ namespace Cutscene
         public string scene;
 
         private void Start()
-        {
+        {           
             Invoke(nameof(LoadScene), delay);
         }
 
         void LoadScene()
         {
             SceneManager.LoadScene(scene);
+            AudioManager.Instance.PlayBGM("Final Boss");
         }
     }
 }
