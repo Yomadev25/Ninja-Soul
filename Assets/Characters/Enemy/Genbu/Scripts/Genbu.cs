@@ -111,6 +111,9 @@ public class Genbu : MonoBehaviour
     {
         if (_event != null)
             EventManager.Instance.ActivateEvent(_event);
+
+        if (AudioManager.Instance.currentBgm != "Final Boss")
+            AudioManager.Instance.PlayBGM("Genbu");
     }
 
     public void Punch()

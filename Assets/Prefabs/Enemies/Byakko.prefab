@@ -4571,7 +4571,6 @@ GameObject:
   - component: {fileID: 7750900932525590138}
   - component: {fileID: 7750900932525590137}
   - component: {fileID: 7750900932525590136}
-  - component: {fileID: 3591872328992775649}
   m_Layer: 7
   m_Name: Byakko
   m_TagString: Enemy
@@ -4753,18 +4752,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &3591872328992775649
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7750900932525590135}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec80ce76b00d79f43a291a22354d0410, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &7778632446940529709
 GameObject:
   m_ObjectHideFlags: 0

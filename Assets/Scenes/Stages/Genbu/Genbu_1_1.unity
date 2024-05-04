@@ -1020,7 +1020,7 @@ Transform:
   m_Children:
   - {fileID: 1089524174}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 30, y: 45, z: 0}
 --- !u!1 &423625399
 GameObject:
@@ -5624,6 +5624,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6711091054900778653, guid: ffaf9087334dbdf458a1b29865497603,
+        type: 3}
+      propertyPath: weight
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ffaf9087334dbdf458a1b29865497603, type: 3}

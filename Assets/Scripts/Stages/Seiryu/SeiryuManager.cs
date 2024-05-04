@@ -34,7 +34,6 @@ public class SeiryuManager : Singleton<SeiryuManager>
     private void SceneLoaded(Scene s, LoadSceneMode e)
     {
         if (s.name == "HUD") return;
-        AudioManager.Instance.PlayBGM("Seiryu");
         if (s.name != "Seiryu_1")
         {
             Destroy(gameObject);

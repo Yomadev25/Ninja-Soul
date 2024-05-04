@@ -34,7 +34,6 @@ public class SuzakuManager : Singleton<SuzakuManager>
     private void SceneLoaded(Scene s, LoadSceneMode e)
     {
         if (s.name == "HUD") return;
-        AudioManager.Instance.PlayBGM("Suzaku");
         if (s.name != "Suzaku_1")
         {
             Destroy(gameObject);

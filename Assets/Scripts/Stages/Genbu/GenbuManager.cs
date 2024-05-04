@@ -32,7 +32,6 @@ public class GenbuManager : Singleton<GenbuManager>
     private void SceneLoaded(Scene s, LoadSceneMode e)
     {
         if (s.name == "HUD") return;
-        AudioManager.Instance.PlayBGM("Genbu");
         if (s.name == "Genbu_1")
         {
             if (clearAllHuts)
