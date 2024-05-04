@@ -9,6 +9,7 @@ public class EnemyPrepareState : EnemyBaseState
     float moveSpeed = 1f;
 
     Transform target;
+    GameObject alertIcon;
 
     public EnemyPrepareState(EnemyStateMachine ctx) : base(ctx) { }
 
@@ -43,6 +44,17 @@ public class EnemyPrepareState : EnemyBaseState
             _context.transform.LookAt(new Vector3(target.position.x, _context.transform.position.y, target.position.z));
         }
 
+        if (alertIcon == null)
+        {
+            if (_context.CurrentCooldown < 1)
+            {
+                alertIcon = EffectManager.Instance.Spawn("Attack Alert", _context.transform.position + (Vector3.up * 2), Quaternion.identity);
+                alertIcon.transform.parent = _context.transform;
+                alertIcon.transform.localScale = Vector3.zero;
+                alertIcon.LeanScale(Vector3.one, 0.5f).setEaseInBack();
+            }
+        }
+
         CheckChangeState();
     }
 
@@ -67,6 +79,7 @@ public class EnemyPrepareState : EnemyBaseState
     public override void Exit()
     {
         MessagingCenter.Unsubscribe<EnemyStateMachine>(this, EnemyStateMachine.MessageOnKnockdown);
+        _context.DestroyGameObject(alertIcon);
         enemy = null;
     }
 }

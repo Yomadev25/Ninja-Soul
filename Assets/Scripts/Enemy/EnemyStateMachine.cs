@@ -46,6 +46,7 @@ public class EnemyStateMachine : MonoBehaviour
     public NavMeshAgent NavMesh => _navMesh;
     public Animator Anim => _anim;
 
+    public float CurrentCooldown => _currentCooldown;
     public bool IsReadyToCombat { get; set; }
     public int ComboCount { get; set; }
     #endregion
@@ -92,6 +93,11 @@ public class EnemyStateMachine : MonoBehaviour
         {
             CurrentState.FixedUpdate();
         }
+    }
+
+    public void DestroyGameObject(GameObject gameObject)
+    {
+        Destroy(gameObject);
     }
 
     #region ENEMY VISUALIZATION

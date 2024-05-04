@@ -76,6 +76,9 @@ public class EnemyManager : MonoBehaviour, IDamageable
             {
                 TimeStop.Instance.StopTime(0.05f, 10, 0.1f);
                 AudioManager.Instance.PlaySFX("Kill");
+
+                Destroy(EffectManager.Instance.Spawn("Kill Impact", transform.position + Vector3.up, Quaternion.identity), 1f);
+
                 GameObject blood = EffectManager.Instance.Spawn("Kill", transform.position, Quaternion.identity);
                 blood.transform.parent = transform;
                 blood.transform.localPosition = Vector3.zero + Vector3.up;
