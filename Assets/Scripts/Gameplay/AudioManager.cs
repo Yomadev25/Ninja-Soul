@@ -42,7 +42,7 @@ public class AudioManager : Singleton<AudioManager>
                 {
                     _bgmSource.clip = bgm.clip;
                     _bgmSource.Play();
-                    LeanTween.value(0f, 1f, 1f).setOnUpdate(x =>
+                    LeanTween.value(0f, bgm.volume, 1f).setOnUpdate(x =>
                     {
                         _bgmSource.volume = x;
                     });
@@ -51,6 +51,7 @@ public class AudioManager : Singleton<AudioManager>
             else
             {
                 _bgmSource.clip = bgm.clip;
+                _bgmSource.volume = bgm.volume;
                 _bgmSource.Play();
             }
 
@@ -106,7 +107,7 @@ public class AudioManager : Singleton<AudioManager>
                 {
                     _bgmSource.clip = bgm.clip;
                     _bgmSource.Play();
-                    LeanTween.value(0f, 1f, 1f).setOnUpdate(x =>
+                    LeanTween.value(0f, bgm.volume, 1f).setOnUpdate(x =>
                     {
                         _bgmSource.volume = x;
                     });
@@ -115,6 +116,7 @@ public class AudioManager : Singleton<AudioManager>
             else
             {
                 _bgmSource.clip = bgm.clip;
+                _bgmSource.volume = bgm.volume;
                 _bgmSource.Play();
             }
             _currentOverrideBgm = name;
@@ -175,4 +177,6 @@ public class Audio
 {
     public string name;
     public AudioClip clip;
+    [Range(0f, 1f)]
+    public float volume = 1f;
 }

@@ -50,42 +50,60 @@ MonoBehaviour:
   _bgm:
   - name: Menu
     clip: {fileID: 8300000, guid: c69553071263b654a82a0b0f615194cd, type: 3}
+    volume: 1
   - name: Result
     clip: {fileID: 8300000, guid: a6d33af7b1a9f2c4a8cbe41f93ffcd7b, type: 3}
+    volume: 1
   - name: Combat
     clip: {fileID: 8300000, guid: 467789c11d06f4f44b5ecc8ed773346f, type: 3}
+    volume: 1
   - name: Boss
     clip: {fileID: 8300000, guid: 541e162a70eef8a4d96b05a7bf263592, type: 3}
+    volume: 1
   - name: Level Selection
     clip: {fileID: 8300000, guid: 914f4cf6e7a811d4db57094d6af45ac2, type: 3}
+    volume: 1
   - name: Tutorial
     clip: {fileID: 8300000, guid: 8a118ce4e339ac84bb815a7bb58bb7dc, type: 3}
+    volume: 1
   - name: Hikari
     clip: {fileID: 8300000, guid: 95f565247a2223649a08bf5840900d0c, type: 3}
+    volume: 0.5
   - name: Genbu
     clip: {fileID: 8300000, guid: 9129952f914537f44b28661e8b5f843a, type: 3}
+    volume: 1
   - name: Seiryu
     clip: {fileID: 8300000, guid: abcf54f8786df3a4190c64955ff3d107, type: 3}
+    volume: 1
   - name: Suzaku
     clip: {fileID: 8300000, guid: 8b0b92e6d9b099146a7b89dc00e570af, type: 3}
+    volume: 1
   - name: Byakko
     clip: {fileID: 8300000, guid: 0b08d981e07f74449bab638be73642d2, type: 3}
+    volume: 1
   - name: Final Boss
     clip: {fileID: 8300000, guid: c3a0e91b069a0034584d7ae87a4e7286, type: 3}
+    volume: 1
   _sfxSource: {fileID: 101254225789075459}
   _sfx:
   - name: Eliminated
     clip: {fileID: 8300000, guid: d977926020f40d646ba556d073bc8eff, type: 3}
+    volume: 1
   - name: Slash Hit
     clip: {fileID: 8300000, guid: 5bc3e3f629da21843979ee1b0d36197e, type: 3}
+    volume: 1
   - name: Wooden Hit
     clip: {fileID: 8300000, guid: c2fa2de4b713b8a4d8f1d9ee9c453535, type: 3}
+    volume: 1
   - name: Kill
     clip: {fileID: 8300000, guid: 649403873c5dbd5419b16d5f42116c14, type: 3}
+    volume: 1
   - name: Punch
     clip: {fileID: 8300000, guid: 6d764f62bc1999c43889d21b704c8011, type: 3}
+    volume: 1
   - name: Fireball
     clip: {fileID: 8300000, guid: f384bcf1b722a1e4ca5704be5b5d13cd, type: 3}
+    volume: 1
 --- !u!1 &101254225789075485
 GameObject:
   m_ObjectHideFlags: 0

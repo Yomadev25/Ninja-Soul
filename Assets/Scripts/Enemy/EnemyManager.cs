@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Tilemaps;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -79,11 +78,15 @@ public class EnemyManager : MonoBehaviour, IDamageable
 
                 Destroy(EffectManager.Instance.Spawn("Kill Impact", transform.position + Vector3.up, Quaternion.identity), 1f);
 
-                GameObject blood = EffectManager.Instance.Spawn("Kill", transform.position, Quaternion.identity);
-                blood.transform.parent = transform;
-                blood.transform.localPosition = Vector3.zero + Vector3.up;
-                blood.transform.localEulerAngles = Vector3.zero;
-                Destroy(blood, 1.5f);
+                if (_enemy.name != "Scarecrow")
+                {
+                    GameObject blood = EffectManager.Instance.Spawn("Kill", transform.position, Quaternion.identity);
+                    blood.transform.parent = transform;
+                    blood.transform.localPosition = Vector3.zero + Vector3.up;
+                    blood.transform.localEulerAngles = Vector3.zero;
+                    Destroy(blood, 1.5f);
+                }
+                
             }
         }
 
