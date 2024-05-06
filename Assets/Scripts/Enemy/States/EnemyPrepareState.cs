@@ -56,7 +56,26 @@ public class EnemyPrepareState : EnemyBaseState
         {
             if (_context.currentCooldown < 1)
             {
-                alertIcon = EffectManager.Instance.Spawn("Attack Alert", _context.transform.position + (Vector3.up * 2), Quaternion.identity);
+                Vector3 pos = Vector3.up * 2;
+                if (_context.Enemy.level == Enemy.Level.BOSS)
+                {
+                    switch (_context.Enemy.name)
+                    {
+                        case "Genbu Leader":
+                            pos.y += 0.7f;
+                            break;
+                        case "Byakko Leader":
+                            pos.y += 0.5f;
+                            break;
+                        case "Seiryu Leader":
+                            pos.y += 0.5f;
+                            break;
+                        default:
+                            break;
+                    }
+                }
+
+                alertIcon = EffectManager.Instance.Spawn("Attack Alert", _context.transform.position + pos, Quaternion.identity);
                 alertIcon.transform.parent = _context.transform;
                 alertIcon.transform.localScale = Vector3.zero;
                 alertIcon.LeanScale(Vector3.one, 0.5f).setEaseInBack();
