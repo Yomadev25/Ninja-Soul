@@ -10593,8 +10593,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 999660864}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 1.57, z: 0.86}
-  m_LocalScale: {x: 0.3, y: 0.48, z: 0.3}
+  m_LocalPosition: {x: 0, y: 1.57, z: 0.537}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2038208444}
@@ -10641,8 +10641,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2330e74443f79ec4c9138cc05a6d5f55, type: 3}
-  m_Color: {r: 0, g: 1, b: 0.9672346, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 6d0aabf607df36541aa6dac050a5dd91, type: 3}
+  m_Color: {r: 0.6509434, g: 0, b: 0.14529574, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -50608,7 +50608,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 3116895017301692265}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -50865,7 +50865,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 112
-  m_CollisionDetection: 1
+  m_CollisionDetection: 3
 --- !u!136 &6711091053219272810
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -50873,7 +50873,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6711091053219272823}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: f2277f57b73fdd14cb11f5aae192b6f7, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.35

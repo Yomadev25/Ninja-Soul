@@ -1192,7 +1192,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemy: {fileID: 11400000, guid: dddfcb00528c7fe458576cd2596f08a5, type: 2}
   _enemyStateMachine: {fileID: 4289490255534176082}
-  _maxHp: 200
+  _maxHp: 100
   _hp: 0
   _anim: {fileID: 4289490255534176110}
   _hitSfx: Slash Hit
@@ -1241,6 +1241,7 @@ MonoBehaviour:
     m_Bits: 64
   _navMesh: {fileID: 4289490255534176109}
   _anim: {fileID: 4289490255534176110}
+  currentCooldown: 0
 --- !u!195 &4289490255534176109
 NavMeshAgent:
   m_ObjectHideFlags: 0

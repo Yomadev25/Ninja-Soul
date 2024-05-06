@@ -27,6 +27,14 @@ public class EnemyPrepareState : EnemyBaseState
             _context.DestroyGameObject(alertIcon);
         });
 
+        MessagingCenter.Subscribe<GameManager, GameManager.GameState>(this, GameManager.MessageOnChangedGameState, (sender, state) =>
+        {
+            if (state == GameManager.GameState.GAMEPLAY)
+            {
+
+            }
+        });
+
         enemy = _context.Enemy;
 
         int randomDir = Random.Range(0, 2);

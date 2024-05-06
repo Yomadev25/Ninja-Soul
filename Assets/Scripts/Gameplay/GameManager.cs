@@ -115,8 +115,8 @@ public class GameManager : MonoBehaviour
 
         MessagingCenter.Subscribe<Suzaku>(this, Suzaku.MessageClearSuzakuStage, (sender) =>
         {
-            PlayerData.Instance.GetPlayerData().byakko = true;
-            PlayerData.Instance.GetPlayerData().sword = true;
+            PlayerData.Instance.GetPlayerData().suzaku = true;
+            PlayerData.Instance.GetPlayerData().sickles = true;
             Invoke(nameof(LevelComplete), 1f);
         });
 

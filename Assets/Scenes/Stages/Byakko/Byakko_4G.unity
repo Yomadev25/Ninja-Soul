@@ -171,6 +171,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactType: 1
+  actionName: 
+  hideFromMinimap: 0
   _onInteract:
     m_PersistentCalls:
       m_Calls: []
@@ -3712,6 +3714,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _stageCriteria:
+    stageName: 
     enemyCount: 40
     deathCount: 5
     time: 30
@@ -4934,7 +4937,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b4d00186f5884a4bb8dffc77d258ef7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _scene: Byakko_F
+  _scene: Byakko_4F
 --- !u!114 &1338531443
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4948,6 +4951,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactType: 1
+  actionName: 
+  hideFromMinimap: 0
   _onInteract:
     m_PersistentCalls:
       m_Calls: []
