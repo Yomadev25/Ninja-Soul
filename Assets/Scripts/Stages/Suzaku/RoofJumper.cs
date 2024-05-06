@@ -29,7 +29,9 @@ public class RoofJumper : MonoBehaviour, IInteract
         _playerTransform.position = _dollyCart.transform.position;
         _playerTransform.rotation = transform.rotation;
         PlayerStateMachine playerStateMachine = _playerTransform.GetComponent<PlayerStateMachine>();
+        PlayerManager playerManager = _playerTransform.GetComponent<PlayerManager>();
         playerStateMachine.Anim.SetTrigger("Jump");
+        playerManager.IsJump = true;
 
         LeanTween.value(0, 1, 2f).setDelay(0.3f)
         .setOnUpdate(x =>
@@ -40,6 +42,7 @@ public class RoofJumper : MonoBehaviour, IInteract
         {
             _dollyCart.m_Position = 0;
             playerStateMachine.Anim.SetTrigger("Landing");
+            playerManager.IsJump = false;
         });
     }
 }

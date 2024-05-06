@@ -129,6 +129,20 @@ public class EventManager : Singleton<EventManager>
         UpdateEvent();
     }
 
+    public void RemoveEvent(Event _event)
+    {
+        if (_events.Contains(_event))
+        {
+            EliminateEvent[] eliminateEvents = _eliminateEvents.Where(x => x.Event == _event).ToArray();
+            foreach (EliminateEvent eliminateEvent in eliminateEvents)
+            {
+                _eliminateEvents.Remove(eliminateEvent);
+            }
+
+            _events.Remove(_event);
+        }
+    }
+
     public void ClearAllEvents()
     {
         _events.Clear();

@@ -23,12 +23,18 @@ public class SeiryuManager : Singleton<SeiryuManager>
         {
             InitStage(stage);
         });
+
+        MessagingCenter.Subscribe<PlayerManager>(this, PlayerManager.MessageOnPlayerDied, (sender) =>
+        {
+            EventManager.Instance.ClearAllEvents();
+        });
     }
 
     private void OnDestroy()
     {
         SceneManager.sceneLoaded -= SceneLoaded;
         MessagingCenter.Unsubscribe<SeiryuTrigger, int>(this, SeiryuTrigger.MessageTriggerStage);
+        MessagingCenter.Unsubscribe<PlayerManager>(this, PlayerManager.MessageOnPlayerDied);
     }
 
     private void SceneLoaded(Scene s, LoadSceneMode e)

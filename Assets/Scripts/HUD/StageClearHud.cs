@@ -7,6 +7,8 @@ using UnityEngine.UI;
 public class StageClearHud : MonoBehaviour
 {
     [SerializeField]
+    private TMP_Text _stageText;
+    [SerializeField]
     private Image _defeatEnemyFill;
     [SerializeField]
     private Image _deathAvoidingFill;
@@ -21,6 +23,7 @@ public class StageClearHud : MonoBehaviour
     {
         MessagingCenter.Subscribe<StageManager, StageCriteria>(this, StageManager.MessageShowStageCriteria, (sender, criteria) =>
         {
+            _stageText.text = criteria.stageName + " cleared";
             _defeatEnemyFill.fillAmount = criteria.enemyCount;
             _deathAvoidingFill.fillAmount = criteria.deathCount;
             _playTimeFill.fillAmount = criteria.time;

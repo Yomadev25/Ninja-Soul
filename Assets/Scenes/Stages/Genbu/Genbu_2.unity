@@ -7096,6 +7096,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: 7045030354117346258, guid: 82aa9268fd7482248bdc31f7dc1d44c7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82aa9268fd7482248bdc31f7dc1d44c7, type: 3}
 --- !u!1 &568266063 stripped
@@ -19919,6 +19924,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactType: 1
+  hideFromMinimap: 0
   _onInteract:
     m_PersistentCalls:
       m_Calls: []

@@ -24,6 +24,7 @@ public class EnemyManager : MonoBehaviour, IDamageable
     [Header("References")]
     [SerializeField]
     private Animator _anim;
+    private Collider _collider;
 
     [Header("Sound Effects")]
     [SerializeField]
@@ -49,6 +50,7 @@ public class EnemyManager : MonoBehaviour, IDamageable
     private void Start()
     {
         _hp = _maxHp;
+        _collider = GetComponent<Collider>();
         MessagingCenter.Send(this, MessageOnUpdateHp);
         MessagingCenter.Send(this, MessageOnEnemyAppeared);
     }
@@ -113,6 +115,7 @@ public class EnemyManager : MonoBehaviour, IDamageable
         _anim.applyRootMotion = false;
         _anim.SetLayerWeight(1, 0);
         _anim.SetTrigger("Die");
+        _collider.enabled = false;
 
         if (EffectManager.Instance != null)
         {

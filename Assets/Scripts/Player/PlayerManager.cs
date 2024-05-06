@@ -52,6 +52,7 @@ public class PlayerManager : MonoBehaviour, IDamageable
     #endregion
 
     public bool IsDie { get; set; }
+    public bool IsJump { get; set; }
     private bool _isDash;
 
     private void Awake()
@@ -125,6 +126,8 @@ public class PlayerManager : MonoBehaviour, IDamageable
 
     public void TakeDamage(float damage, GameObject effect = null, bool impact = false)
     {
+        if (IsJump) return;
+
         if (_isDash)
         {
             TimeStop.Instance.StopTime(0.3f, 10, 0.1f);

@@ -6354,6 +6354,7 @@ MonoBehaviour:
   _events:
   - {fileID: 11400000, guid: b2a1fb5b23771ab458876e32f978b420, type: 2}
   _stageCriteria:
+    stageName: Genbu
     enemyCount: 40
     deathCount: 5
     time: 20
@@ -6703,6 +6704,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactType: 1
+  hideFromMinimap: 0
   _onInteract:
     m_PersistentCalls:
       m_Calls: []

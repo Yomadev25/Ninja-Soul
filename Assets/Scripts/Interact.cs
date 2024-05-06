@@ -16,6 +16,7 @@ public class Interact : MonoBehaviour
 
     [SerializeField]
     private InteractType _interactType;
+    public bool hideFromMinimap;
     [SerializeField]
     private UnityEvent _onInteract;
 

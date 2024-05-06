@@ -34,11 +34,17 @@ public class GenbuHut : MonoBehaviour
             PlayerData.Instance.SetSpawnPoint(destination);
             _exitPortal.SetActive(true);
         });
+
+        MessagingCenter.Subscribe<PlayerManager>(this, PlayerManager.MessageOnPlayerDied, (sender) =>
+        {
+            EventManager.Instance.RemoveEvent(_event);
+        });
     }
 
     private void OnDestroy()
     {
         MessagingCenter.Unsubscribe<EventManager, Event>(this, EventManager.MessageOnArchievedEvent);
+        MessagingCenter.Unsubscribe<PlayerManager>(this, PlayerManager.MessageOnPlayerDied);
     }
 
     private void Start()

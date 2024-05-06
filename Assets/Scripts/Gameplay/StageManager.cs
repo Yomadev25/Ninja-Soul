@@ -76,6 +76,7 @@ public class StageManager : Singleton<StageManager>
         TimeSpan totalTime = DateTime.Now - _startTime;
         _currentProgress.time = (float)totalTime.TotalMinutes;
 
+        _finalProgress.stageName = _stageCriteria.stageName;
         _finalProgress.enemyCount = _currentProgress.enemyCount / _stageCriteria.enemyCount;
         _finalProgress.deathCount = (_stageCriteria.deathCount - _currentProgress.deathCount) / _stageCriteria.deathCount;
         _finalProgress.time = 1f - ((_currentProgress.time - _stageCriteria.time) * 0.3f);
@@ -88,6 +89,7 @@ public class StageManager : Singleton<StageManager>
 [System.Serializable]
 public class StageCriteria
 {
+    public string stageName;
     public float enemyCount;
     public float deathCount;
     public float time;

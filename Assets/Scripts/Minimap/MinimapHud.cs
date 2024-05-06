@@ -98,6 +98,8 @@ public class MinimapHud : MonoBehaviour
         var interactObjs = FindObjectsOfType<Interact>();
         foreach (var interactObj in interactObjs)
         {
+            if (interactObj.hideFromMinimap) return;
+
             //Assign icon follow interactive type
             GameObject icon = _interactMarkerIcon;
             if (interactObj.TryGetComponent(out Portal portal))
