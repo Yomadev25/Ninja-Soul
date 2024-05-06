@@ -13765,6 +13765,7 @@ MonoBehaviour:
   _events:
   - {fileID: 11400000, guid: b2a1fb5b23771ab458876e32f978b420, type: 2}
   _stageCriteria:
+    stageName: 
     enemyCount: 0
     deathCount: 0
     time: 0
@@ -16902,7 +16903,7 @@ PrefabInstance:
     - target: {fileID: 3571767707691462230, guid: b1b6a4a4712a0364bbffc21e45491ba2,
         type: 3}
       propertyPath: shallowColor.b
-      value: 0.3518461
+      value: 0.3518323
       objectReference: {fileID: 0}
     - target: {fileID: 3571767707691462230, guid: b1b6a4a4712a0364bbffc21e45491ba2,
         type: 3}
@@ -19924,6 +19925,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactType: 1
+  actionName: 
   hideFromMinimap: 0
   _onInteract:
     m_PersistentCalls:
