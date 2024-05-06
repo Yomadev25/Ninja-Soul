@@ -27,6 +27,8 @@ public class PlayerManager : MonoBehaviour, IDamageable
     [SerializeField]
     private UnityEvent onHeal;
     [SerializeField]
+    private UnityEvent onEvade;
+    [SerializeField]
     private UnityEvent onGetSoul;
     [SerializeField]
     private UnityEvent onStartSoulBerserk;
@@ -130,6 +132,7 @@ public class PlayerManager : MonoBehaviour, IDamageable
 
         if (_isDash)
         {
+            onEvade?.Invoke();
             TimeStop.Instance.StopTime(0.3f, 10, 0.1f);
             return;
         }

@@ -19,12 +19,34 @@ public class NotificationHudManager : MonoBehaviour
 
     private void Awake()
     {
-        
+        MessagingCenter.Subscribe<SaveHudManager, UnityAction>(this, SaveHudManager.MessageWantToSave, (sender, action) =>
+        {
+            ActivateAlert("You can save stage unlocking only, you can't save your stage progress. Are you sure to save?", action);
+        });
+
+        MessagingCenter.Subscribe<SaveHudManager, UnityAction>(this, SaveHudManager.MessageWantToLoad, (sender, action) =>
+        {
+            ActivateAlert("Are you sure to load this save? Your progress will be saved in autosave tempolary.", action);
+        });
+
+        MessagingCenter.Subscribe<SaveHudManager, UnityAction>(this, SaveHudManager.MessageWantToGoHikari, (sender, action) =>
+        {
+            ActivateAlert("Are you sure to go back to Hikari? Your progress will be lost.", action);
+        });
+
+        MessagingCenter.Subscribe<SaveHudManager, UnityAction>(this, SaveHudManager.MessageWantToGoMenu, (sender, action) =>
+        {
+            ActivateAlert("Are you sure to go back to title? Your progress will be lost.", action);
+        });
+
     }
 
     private void OnDestroy()
     {
-        
+        MessagingCenter.Unsubscribe<SaveHudManager, UnityAction>(this, SaveHudManager.MessageWantToSave);
+        MessagingCenter.Unsubscribe<SaveHudManager, UnityAction>(this, SaveHudManager.MessageWantToLoad);
+        MessagingCenter.Unsubscribe<SaveHudManager, UnityAction>(this, SaveHudManager.MessageWantToGoHikari);
+        MessagingCenter.Unsubscribe<SaveHudManager, UnityAction>(this, SaveHudManager.MessageWantToGoMenu);
     }
 
     private void Start()

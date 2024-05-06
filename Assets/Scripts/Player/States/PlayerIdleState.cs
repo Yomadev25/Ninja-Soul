@@ -28,7 +28,7 @@ public class PlayerIdleState : PlayerBaseState
     {
         if (_context.PressedMove)
         {
-            ChangeState(_context.State.Walk());
+            ChangeState(_context.State.Run());
         }
         else if (_context.PressedDash)
         {

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,12 +9,15 @@ public class InteractHud : MonoBehaviour
     [SerializeField]
     private CanvasGroup _canvasGroup;
     [SerializeField]
+    private TMP_Text _actionText;
+    [SerializeField]
     private Image _circle;
 
     private void Awake()
     {
         MessagingCenter.Subscribe<Interact>(this, Interact.MessageOnActiveInteract, (sender) =>
         {
+            _actionText.text = sender.actionName;
             EnableInteract();
         });
 

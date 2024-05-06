@@ -15,8 +15,7 @@ public class EnemyStateMachine : MonoBehaviour
     [SerializeField]
     private Weapon _weapon;
     [SerializeField]
-    private float _delayPerCombo;
-    private float _currentCooldown;
+    private float _delayPerCombo;   
     private bool _isKO;
 
     [Header("Field Of View")]
@@ -46,9 +45,8 @@ public class EnemyStateMachine : MonoBehaviour
     public NavMeshAgent NavMesh => _navMesh;
     public Animator Anim => _anim;
 
-    public float CurrentCooldown => _currentCooldown;
-    public bool IsReadyToCombat { get; set; }
     public int ComboCount { get; set; }
+    public float currentCooldown;
     #endregion
 
 
@@ -70,7 +68,7 @@ public class EnemyStateMachine : MonoBehaviour
         }
 
         _delayPerCombo = _enemy.delayPerCombo;
-        _currentCooldown = _delayPerCombo;
+        currentCooldown = _delayPerCombo;
 
         _viewRadius = _enemy.viewRadius;
         _chaseRadius = _enemy.chaseRadius;
@@ -83,8 +81,6 @@ public class EnemyStateMachine : MonoBehaviour
         {
             CurrentState.Update();
         }
-
-        CombatCooldownHandler();
     }
 
     private void FixedUpdate()
@@ -184,18 +180,6 @@ public class EnemyStateMachine : MonoBehaviour
         _weapon.EndDealDamage();
     }
 
-    private void CombatCooldownHandler()
-    {
-        if (_currentCooldown <= 0 && !IsReadyToCombat)
-        {
-            IsReadyToCombat = true;
-        }
-        else
-        {
-            _currentCooldown -= Time.deltaTime;
-        }
-    }
-
     public void SetCombatRadius(float range)
     {
         _combatRadius = range;
@@ -208,8 +192,7 @@ public class EnemyStateMachine : MonoBehaviour
             _delayPerCombo = cooldown;
         }
 
-        _currentCooldown = _delayPerCombo;
-        IsReadyToCombat = false;
+        currentCooldown = _delayPerCombo;
     }
 
     public void SetWeapon(Weapon weapon)

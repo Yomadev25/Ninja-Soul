@@ -20,6 +20,11 @@ public class ByakkoSwitch : MonoBehaviour, IInteract
     public void Interact()
     {
         MessagingCenter.Send(this, MessageWantToActivateSwitch);
+        Invoke(nameof(ChangeScene), 1.1f);
+    }
+
+    private void ChangeScene()
+    {
         TransitionManager.Instance.SceneFadeIn(0.5f, () => UnityEngine.SceneManagement.SceneManager.LoadScene("Byakko_2"));
     }
 }

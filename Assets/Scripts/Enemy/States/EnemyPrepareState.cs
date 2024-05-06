@@ -44,9 +44,11 @@ public class EnemyPrepareState : EnemyBaseState
             _context.transform.LookAt(new Vector3(target.position.x, _context.transform.position.y, target.position.z));
         }
 
+        _context.currentCooldown -= Time.deltaTime;
+
         if (alertIcon == null)
         {
-            if (_context.CurrentCooldown < 1)
+            if (_context.currentCooldown < 1)
             {
                 alertIcon = EffectManager.Instance.Spawn("Attack Alert", _context.transform.position + (Vector3.up * 2), Quaternion.identity);
                 alertIcon.transform.parent = _context.transform;
@@ -65,7 +67,7 @@ public class EnemyPrepareState : EnemyBaseState
 
     private void CheckChangeState()
     {
-        if (_context.IsReadyToCombat)
+        if (_context.currentCooldown <= 0)
         {
             ChangeState(_context.State.Combat());
         }

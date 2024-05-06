@@ -26,7 +26,7 @@ public class PlayerRunState : PlayerBaseState
 
     private void CheckChangeState()
     {
-        if (_context.PressedMove && !_context.PressedSprint)
+        if (_context.PressedMove && _context.PressedSprint)
         {
             ChangeState(_context.State.Walk());
         }

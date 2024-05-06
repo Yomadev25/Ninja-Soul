@@ -13411,6 +13411,7 @@ MonoBehaviour:
     m_Bits: 64
   _navMesh: {fileID: 266365121}
   _anim: {fileID: 266365118}
+  currentCooldown: 0
 --- !u!114 &266365123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15225,22 +15226,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 999660864, guid: ffaf9087334dbdf458a1b29865497603, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 999660866, guid: ffaf9087334dbdf458a1b29865497603, type: 3}
-      propertyPath: m_Color.b
-      value: 0.9672346
-      objectReference: {fileID: 0}
-    - target: {fileID: 999660866, guid: ffaf9087334dbdf458a1b29865497603, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 999660866, guid: ffaf9087334dbdf458a1b29865497603, type: 3}
-      propertyPath: m_Color.r
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6711091053219272809, guid: ffaf9087334dbdf458a1b29865497603,
         type: 3}
       propertyPath: onStartSoulBerserk.m_PersistentCalls.m_Calls.Array.data[1].m_Target
@@ -28876,6 +28861,7 @@ MonoBehaviour:
     m_Bits: 64
   _navMesh: {fileID: 653972399}
   _anim: {fileID: 653972396}
+  currentCooldown: 0
 --- !u!114 &653972401
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59529,7 +59515,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Sprint
+  m_text: Walk
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7b477496b2ddef647a7fd859d8cc48b0, type: 2}
   m_sharedMaterial: {fileID: 6044630137900306451, guid: 7b477496b2ddef647a7fd859d8cc48b0,
@@ -107771,6 +107757,7 @@ MonoBehaviour:
     m_Bits: 64
   _navMesh: {fileID: 7031076845359481881}
   _anim: {fileID: 7031076845359481882}
+  currentCooldown: 0
 --- !u!114 &7031076845359481887
 MonoBehaviour:
   m_ObjectHideFlags: 0

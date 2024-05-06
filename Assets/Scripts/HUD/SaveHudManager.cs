@@ -5,9 +5,15 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 public class SaveHudManager : MonoBehaviour
 {
+    public const string MessageWantToSave = "Want To Save";
+    public const string MessageWantToLoad = "Want To Load";
+    public const string MessageWantToGoHikari = "Want To Go Hikari";
+    public const string MessageWantToGoMenu = "Want To Go Menu";
+
     public enum State
     {
         NONE,
@@ -44,22 +50,32 @@ public class SaveHudManager : MonoBehaviour
        
         _backToHikari.onClick.AddListener(() =>
         {
-            TransitionManager.Instance.SceneFadeIn(0.5f, () =>
+            UnityAction action = () =>
             {
-                EventManager.Instance.ClearAllEvents();
-                SceneManager.LoadScene("Hikari");
-            });
+                TransitionManager.Instance.SceneFadeIn(0.5f, () =>
+                {
+                    EventManager.Instance.ClearAllEvents();
+                    SceneManager.LoadScene("Hikari");
+                });
+            };
+
+            MessagingCenter.Send(this, MessageWantToGoHikari, action);           
         });
         if (SceneManager.GetActiveScene().name == "Hikari")
             _backToHikari.gameObject.SetActive(false);
 
         _backToMenu.onClick.AddListener(() =>
         {
-            TransitionManager.Instance.SceneFadeIn(0.5f, () =>
+            UnityAction action = () =>
             {
-                EventManager.Instance.ClearAllEvents();
-                SceneManager.LoadScene("Menu");
-            });
+                TransitionManager.Instance.SceneFadeIn(0.5f, () =>
+                {
+                    EventManager.Instance.ClearAllEvents();
+                    SceneManager.LoadScene("Menu");
+                });
+            };
+
+            MessagingCenter.Send(this, MessageWantToGoMenu, action);
         });
     }
 
@@ -140,19 +156,29 @@ public class SaveHudManager : MonoBehaviour
 
     private void Save(Player player, int id)
     {
-        player.id = id;
-        player.lastDate = DateTime.Now;
+        UnityAction action = () =>
+        {
+            player.id = id;
+            player.lastDate = DateTime.Now;
 
-        SaveManager.Instance.Save(player);
-        FetchSaveList();
+            SaveManager.Instance.Save(player);
+            FetchSaveList();
+        };
+
+        MessagingCenter.Send(this, MessageWantToSave, action);
     }
 
     private void Load(Player player, int id)
     {
-        player.id = id;
-        PlayerData.Instance.PlayerSetup(player);
-        TransitionManager.Instance.SceneFadeIn(0.5f, () =>
-            SceneManager.LoadScene("Hikari"));
+        UnityAction action = () =>
+        {
+            player.id = id;
+            PlayerData.Instance.PlayerSetup(player);
+            TransitionManager.Instance.SceneFadeIn(0.5f, () =>
+                SceneManager.LoadScene("Hikari"));
+        };
+
+        MessagingCenter.Send(this, MessageWantToLoad, action);
     }
 
     public void SetState(int state)
