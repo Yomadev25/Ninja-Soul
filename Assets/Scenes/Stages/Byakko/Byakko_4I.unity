@@ -171,6 +171,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactType: 1
+  actionName: 
+  hideFromMinimap: 0
   _onInteract:
     m_PersistentCalls:
       m_Calls: []
@@ -870,6 +872,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactType: 1
+  actionName: 
+  hideFromMinimap: 0
   _onInteract:
     m_PersistentCalls:
       m_Calls: []
@@ -3507,6 +3511,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _stageCriteria:
+    stageName: 
     enemyCount: 40
     deathCount: 5
     time: 30
@@ -4803,6 +4808,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactType: 1
+  actionName: 
+  hideFromMinimap: 0
   _onInteract:
     m_PersistentCalls:
       m_Calls: []
@@ -7023,8 +7030,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1712100571}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -7.05, y: 2.9111, z: -0.4929}
-  m_LocalScale: {x: 0.5258, y: 1, z: 2.0333762}
+  m_LocalPosition: {x: -7.05, y: 2.9111, z: -0.32}
+  m_LocalScale: {x: 0.5258, y: 1, z: 2.0622501}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1709774172}
