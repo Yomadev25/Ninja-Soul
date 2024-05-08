@@ -9,7 +9,8 @@ public class GenbuHut : MonoBehaviour
     public enum Type
     {
         Portal,
-        Manager
+        Manager,
+        Minimap
     }
 
     public int id;
@@ -49,10 +50,10 @@ public class GenbuHut : MonoBehaviour
 
     private void Start()
     {
+        bool isClear = GenbuManager.Instance.huts.First(x => x.id == id).isClear;
         switch (type)
         {
-            case Type.Portal:
-                bool isClear = GenbuManager.Instance.huts.First(x => x.id == id).isClear;
+            case Type.Portal:        
                 if (isClear)
                 {
                     gameObject.SetActive(false);
@@ -61,6 +62,14 @@ public class GenbuHut : MonoBehaviour
             case Type.Manager:
                 TransitionManager.Instance.SceneFadeOut();
                 EventManager.Instance.ActivateEvent(_event);
+                break;
+            case Type.Minimap:
+                if (isClear)
+                {
+                    Renderer renderer = GetComponent<Renderer>();
+                    renderer.material.color = Color.green;
+                    renderer.material.SetColor("_EmissionColor", Color.green);
+                }
                 break;
             default:
                 break;

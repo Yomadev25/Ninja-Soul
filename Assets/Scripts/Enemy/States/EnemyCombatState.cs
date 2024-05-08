@@ -25,6 +25,14 @@ public class EnemyCombatState : EnemyBaseState
             }
         });
 
+        MessagingCenter.Subscribe<GameManager, GameManager.GameState>(this, GameManager.MessageOnChangedGameState, (sender, state) =>
+        {
+            if (state == GameManager.GameState.PAUSE)
+            {
+                ChangeState(_context.State.Idle());
+            }
+        });
+
         enemy = _context.Enemy;
         _context.Anim.SetFloat("Speed", 0);
         enemy.combos[_context.ComboCount].Execute(_context, this);
@@ -54,6 +62,7 @@ public class EnemyCombatState : EnemyBaseState
 
         MessagingCenter.Unsubscribe<EnemyStateMachine>(this, EnemyStateMachine.MessageOnKnockdown);
         MessagingCenter.Unsubscribe<EnemyManager>(this, EnemyManager.MessageOnEnemyDead);
+        MessagingCenter.Unsubscribe<GameManager, GameManager.GameState>(this, GameManager.MessageOnChangedGameState);
         MessagingCenter.Send(this, MessageOnExitCombatState, _context);
     }
 }

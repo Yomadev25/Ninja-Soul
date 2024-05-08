@@ -99,7 +99,7 @@ public class EventHudManager : MonoBehaviour
             switch (@event.type)
             {
                 case Event.EventType.Eliminate:
-                    name = "AMBUSHED";
+                    name = "MISSION";
                     break;
                 case Event.EventType.Collect:
                     name = "MISSION";

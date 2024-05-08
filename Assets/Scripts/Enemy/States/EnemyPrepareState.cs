@@ -29,9 +29,9 @@ public class EnemyPrepareState : EnemyBaseState
 
         MessagingCenter.Subscribe<GameManager, GameManager.GameState>(this, GameManager.MessageOnChangedGameState, (sender, state) =>
         {
-            if (state == GameManager.GameState.GAMEPLAY)
+            if (state == GameManager.GameState.PAUSE)
             {
-
+                ChangeState(_context.State.Idle());
             }
         });
 
@@ -115,6 +115,7 @@ public class EnemyPrepareState : EnemyBaseState
     {
         MessagingCenter.Unsubscribe<EnemyStateMachine>(this, EnemyStateMachine.MessageOnKnockdown);
         MessagingCenter.Unsubscribe<EnemyManager>(this, EnemyManager.MessageOnEnemyDead);
+        MessagingCenter.Unsubscribe<GameManager, GameManager.GameState>(this, GameManager.MessageOnChangedGameState);
         _context.DestroyGameObject(alertIcon);
         enemy = null;
     }

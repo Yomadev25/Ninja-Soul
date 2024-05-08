@@ -32,6 +32,8 @@ public class EnemyIdleState : EnemyBaseState
 
     private void CheckChangeState()
     {
+        if (GameManager.instance.currentGameState != GameManager.GameState.GAMEPLAY) return;
+
         if (_context.GetVisibleTarget() != null)
         {
             ChangeState(_context.State.Chase());

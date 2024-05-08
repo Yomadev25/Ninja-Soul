@@ -36,6 +36,14 @@ public class PlayerStateMachine : MonoBehaviour
     [SerializeField]
     private Volume _soulVolume;
 
+    [Header("Physic Materials")]
+    [SerializeField]
+    private Collider _collider;
+    [SerializeField]
+    private PhysicMaterial _defaultPhysicMaterial;
+    [SerializeField]
+    private PhysicMaterial _slopePhysicsMaterial;
+
     [Header("References")]
     [SerializeField]
     private PlayerManager _playerManager;
@@ -221,6 +229,22 @@ public class PlayerStateMachine : MonoBehaviour
     public bool SoulReady()
     {
         return _playerManager.soul == 100;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.CompareTag("Slope"))
+        {
+            _collider.material = _slopePhysicsMaterial;
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.collider.CompareTag("Slope"))
+        {
+            _collider.material = _defaultPhysicMaterial;
+        }
     }
 }
 

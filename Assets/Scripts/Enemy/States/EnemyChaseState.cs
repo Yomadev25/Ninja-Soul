@@ -18,6 +18,14 @@ public class EnemyChaseState : EnemyBaseState
             ChangeState(_context.State.Knock());
         });
 
+        MessagingCenter.Subscribe<GameManager, GameManager.GameState>(this, GameManager.MessageOnChangedGameState, (sender, state) =>
+        {
+            if (state == GameManager.GameState.PAUSE)
+            {
+                ChangeState(_context.State.Idle());
+            }
+        });
+
         enemy = _context.Enemy;
         _context.NavMesh.isStopped = false;
 
@@ -63,6 +71,7 @@ public class EnemyChaseState : EnemyBaseState
     public override void Exit()
     {
         MessagingCenter.Unsubscribe<EnemyStateMachine>(this, EnemyStateMachine.MessageOnKnockdown);
+        MessagingCenter.Unsubscribe<GameManager, GameManager.GameState>(this, GameManager.MessageOnChangedGameState);
 
         _context.NavMesh.velocity = Vector3.zero;
         _context.NavMesh.Stop();
