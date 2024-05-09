@@ -91,9 +91,9 @@ public class EnemyStateMachine : MonoBehaviour
         }
     }
 
-    public void DestroyGameObject(GameObject gameObject)
+    public void DestroyGameObject(GameObject gameObject, float duration = 0f)
     {
-        Destroy(gameObject);
+        Destroy(gameObject, duration);
     }
 
     #region ENEMY VISUALIZATION

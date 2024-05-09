@@ -19,6 +19,11 @@ public class EnemyKnockState : EnemyBaseState
             if (sender != _context) return;
             ChangeState(_context.State.Idle());
         });
+
+        TimeStop.Instance.StopTime(0.05f, 10, 0.1f);
+        AudioManager.Instance.PlaySFX("Kill");
+        GameObject effect = EffectManager.Instance.Spawn("Kill Impact", _context.transform.position + Vector3.up, Quaternion.identity);
+        _context.DestroyGameObject(effect, 1f);
     }
 
     public override void Update()
