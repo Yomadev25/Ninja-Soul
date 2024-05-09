@@ -16,6 +16,12 @@ public class PlayerStateMachine : MonoBehaviour
     [SerializeField]
     private float _dashSpeed;
 
+    [Header("Slope Detection")]
+    [SerializeField]
+    private float _playerHeight;
+    [SerializeField]
+    private LayerMask _groundLayer;
+
     [Header("Combat Setting")]
     [SerializeField]
     private ComboFactory _comboFactory;
@@ -231,7 +237,20 @@ public class PlayerStateMachine : MonoBehaviour
         return _playerManager.soul == 100;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private bool OnSlope()
+    {
+        RaycastHit slopeHit;
+
+        if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, _playerHeight * 0.5f + 0.3f, _groundLayer))
+        {
+            float angle = Vector3.Angle(Vector3.up, slopeHit.normal);
+            return angle < 50 && angle != 0;
+        }
+
+        return false;
+    }
+
+    /*private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.CompareTag("Slope"))
         {
@@ -245,7 +264,7 @@ public class PlayerStateMachine : MonoBehaviour
         {
             _collider.material = _defaultPhysicMaterial;
         }
-    }
+    }*/
 }
 
 public static class Isometric

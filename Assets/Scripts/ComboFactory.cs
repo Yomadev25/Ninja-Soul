@@ -120,18 +120,18 @@ public class ComboFactory : MonoBehaviour
         if (side == 1)
         {
             _knucklePunchFxR.Play();
+            AudioManager.Instance.PlaySFX("Punch");
         }
         else if (side == 2)
         {
             _knucklePunchFxL.Play();
+            AudioManager.Instance.PlaySFX("Punch");
         }
         else
         {
             _knucklePunchFxR.Play();
             _knucklePunchFxL.Play();
         }
-
-        AudioManager.Instance.PlaySFX("Punch");
     }
 
     public void KnuckleStomp()
@@ -288,6 +288,7 @@ public class ComboFactory : MonoBehaviour
 
     public void JavelinDash()
     {
+        AudioManager.Instance.PlaySFX("Seiryu Dash");
         _javelinDashFx.Play();
         StartCoroutine(JavelinDashCoroutine());
     }

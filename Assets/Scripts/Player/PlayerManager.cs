@@ -36,12 +36,10 @@ public class PlayerManager : MonoBehaviour, IDamageable
     private UnityEvent onEndedSoulBerserk;
 
     #region PUBLIC VARIABLES
-
     public float maxHp => _maxHp;
     public float hp => _hp;
     public float soul => _soul;
     public bool soulBerserk => _soulBerserk;
-
     #endregion
 
     #region MESSAGE FOR PUB/SUB
@@ -160,6 +158,7 @@ public class PlayerManager : MonoBehaviour, IDamageable
         _hp += value;
         if (_hp > _maxHp) _hp = _maxHp;
 
+        AudioManager.Instance.PlaySFX("Heal");
         onHeal?.Invoke();
         MessagingCenter.Send(this, MessageOnHpChanged);
     }

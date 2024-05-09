@@ -102,6 +102,7 @@ public class Seiryu : MonoBehaviour
 
     public void DashAttack()
     {
+        AudioManager.Instance.PlaySFX("Seiryu Dash");
         StartCoroutine(DashCoroutine());
     }
 

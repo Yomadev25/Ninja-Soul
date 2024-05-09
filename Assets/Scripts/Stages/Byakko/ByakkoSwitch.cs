@@ -20,6 +20,7 @@ public class ByakkoSwitch : MonoBehaviour, IInteract
     public void Interact()
     {
         MessagingCenter.Send(this, MessageWantToActivateSwitch);
+        AudioManager.Instance.PlaySFX("Switch");
         Invoke(nameof(ChangeScene), 1.1f);
     }
 

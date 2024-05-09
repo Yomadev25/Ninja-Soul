@@ -31,6 +31,7 @@ public class RoofJumper : MonoBehaviour, IInteract
         PlayerStateMachine playerStateMachine = _playerTransform.GetComponent<PlayerStateMachine>();
         PlayerManager playerManager = _playerTransform.GetComponent<PlayerManager>();
         playerStateMachine.Anim.SetTrigger("Jump");
+        AudioManager.Instance.PlaySFX("Jump");
         playerManager.IsJump = true;
 
         LeanTween.value(0, 1, 2f).setDelay(0.3f)

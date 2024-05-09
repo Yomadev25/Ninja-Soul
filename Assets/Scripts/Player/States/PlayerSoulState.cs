@@ -30,6 +30,8 @@ public class PlayerSoulState : PlayerBaseState
 
         if (timePassed >= 2.1f / clipSpeed)
         {
+            AudioManager.Instance.PlaySFX("Soul Berserk Begin");
+            AudioManager.Instance.PlaySFX("Soul Berserk");
             _context.playerManager.ActivateSoulBerserk();
             ChangeState(_context.State.Idle());
         }

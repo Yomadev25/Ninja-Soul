@@ -19,7 +19,7 @@ public class Bow_nAttack : EnemyCombo
                 bow.ShowRay();
             }
 
-            float duration = 4.4f;
+            float duration = 2f;
             while (duration > 0)
             {
                 Vector3 targetPos = target.position;

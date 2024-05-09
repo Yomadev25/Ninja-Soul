@@ -12,6 +12,7 @@ public class Fireball : MonoBehaviour
 
     private IEnumerator Start()
     {
+        AudioManager.Instance.PlaySFX("Fire Cast");
         target = GameObject.FindGameObjectWithTag("Player").transform;
         transform.position += transform.forward;
         yield return new WaitForSeconds(3f);
@@ -50,8 +51,6 @@ public class Fireball : MonoBehaviour
             GameObject bomb = Instantiate(bombFx, transform.position, Quaternion.identity);
             Destroy(bomb, 1f);
             Destroy(gameObject);
-        }
-
-        
+        }      
     }
 }

@@ -33,6 +33,7 @@ public class PlayerEquipment : MonoBehaviour
             }
 
             _playerStateMachine.Anim.runtimeAnimatorController = comboGroup.combos[0].animation;
+            AudioManager.Instance.PlaySFX("Weapon");
         });
     }
 

@@ -220,6 +220,7 @@ public class Suzaku : MonoBehaviour
     public void Dash()
     {
         _dashFx.Play();
+        AudioManager.Instance.PlaySFX("Fire Dash");
         if (_phase > 1)
         {
             SpawnFireball();

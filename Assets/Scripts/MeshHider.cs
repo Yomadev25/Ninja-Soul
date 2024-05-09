@@ -43,7 +43,7 @@ public class MeshHider : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            LeanTween.value(1, 0, 1f).setOnUpdate((x) =>
+            LeanTween.value(1, 0.1f, 1f).setOnUpdate((x) =>
             {
                 foreach (Renderer renderer in _renderers)
                 {

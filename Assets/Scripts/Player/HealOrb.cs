@@ -4,19 +4,22 @@ using UnityEngine;
 
 public class HealOrb : MonoBehaviour
 {
+    [SerializeField]
+    private int value;
     private Transform _player;
+    bool isReady;
 
-    private void Start()
+    private IEnumerator Start()
     {
         _player = GameObject.FindGameObjectWithTag("Player").transform;
+        yield return new WaitForSeconds(1f);
+        isReady = true;
     }
 
     private void Update()
     {
-        if (Vector3.Distance(transform.position, _player.position) < 2)
-        {
-            this.transform.position = Vector3.MoveTowards(this.transform.position, _player.position + Vector3.up, 7f * Time.deltaTime);
-        }       
+        if (!isReady) return;
+        this.transform.position = Vector3.MoveTowards(this.transform.position, _player.position + Vector3.up, 7f * Time.deltaTime);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -26,7 +29,7 @@ public class HealOrb : MonoBehaviour
             PlayerManager player = other.GetComponent<PlayerManager>();
             if (player != null)
             {
-                player.Heal(1);
+                player.Heal(value);
             }
 
             Destroy(gameObject);
