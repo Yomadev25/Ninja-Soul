@@ -10,7 +10,7 @@ public class SaveManager : Singleton<SaveManager>
     public const string MessageSaveBegin = "Save Begin";
     public const string MessageSaveDone = "Save Done";
     public const string MessageLoadBegin = "Load Begin";
-    public const string MessageLoadDone = "Loade Done";
+    public const string MessageLoadDone = "Load Done";
 
     public void Save(Player player)
     {

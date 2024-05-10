@@ -1,4 +1,3 @@
-using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -55,6 +54,7 @@ public class EventManager : Singleton<EventManager>
                 }
             }
 
+            AudioManager.Instance.PlaySFX("Mission");
             MessagingCenter.Send(this, MessageActivateEvent, _event);
             UpdateEvent();
         }
@@ -123,6 +123,7 @@ public class EventManager : Singleton<EventManager>
             }
             
             _events.Remove(_event);
+            AudioManager.Instance.PlaySFX("Mission");
         }
 
         MessagingCenter.Send(this, MessageOnArchievedEvent, _event);

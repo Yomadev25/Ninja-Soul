@@ -29,6 +29,8 @@ public class EnemyStateMachine : MonoBehaviour
     private float _viewAngle;
     [SerializeField]
     private LayerMask _targetLayer;
+    [SerializeField]
+    private bool _huntMode;
 
     [Header("References")]
     [SerializeField]
@@ -73,6 +75,13 @@ public class EnemyStateMachine : MonoBehaviour
         _viewRadius = _enemy.viewRadius;
         _chaseRadius = _enemy.chaseRadius;
         _viewAngle = _enemy.viewAngle;
+
+        if (_huntMode)
+        {
+            _viewRadius = 99f;
+            _chaseRadius = 99f;
+            _viewAngle = 360f;
+        }
     }
 
     private void Update()

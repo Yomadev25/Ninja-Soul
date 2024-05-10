@@ -50663,6 +50663,10 @@ MonoBehaviour:
   _sprintSpeed: 6
   _rotateSpeed: 600
   _dashSpeed: 7
+  _playerHeight: 0
+  _groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
   _comboFactory: {fileID: 6711091053219272812}
   _movementInput: {fileID: -6898475728514244859, guid: 65fe7d1e6ec985c42a49ca375489fa1f,
     type: 3}
@@ -73006,21 +73010,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3160447501982318550, guid: 50914baefb6a8924686cf906471b0fd3,
         type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3160447501982318550, guid: 50914baefb6a8924686cf906471b0fd3,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3160447501982318550, guid: 50914baefb6a8924686cf906471b0fd3,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3160447501982318550, guid: 50914baefb6a8924686cf906471b0fd3,
-        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -73062,7 +73051,7 @@ PrefabInstance:
     - target: {fileID: 3160447501982318550, guid: 50914baefb6a8924686cf906471b0fd3,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1.725
+      value: 1.863
       objectReference: {fileID: 0}
     - target: {fileID: 3160447501982318550, guid: 50914baefb6a8924686cf906471b0fd3,
         type: 3}
@@ -73078,11 +73067,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7595559566810483411, guid: 50914baefb6a8924686cf906471b0fd3,
-        type: 3}
-      propertyPath: m_fontColor32.rgba
-      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50914baefb6a8924686cf906471b0fd3, type: 3}
