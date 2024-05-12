@@ -396,19 +396,19 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.21291676
-        functionName: StartDealWeaponDamage
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.21554214
+      - time: 0.20931807
         functionName: TripleSlash
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 1
+        messageOptions: 0
+      - time: 0.21706615
+        functionName: StartDealWeaponDamage
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
         messageOptions: 0
       - time: 0.4322167
         functionName: StartDealWeaponDamage
@@ -433,6 +433,27 @@ ModelImporter:
         messageOptions: 0
       - time: 0.6526648
         functionName: TripleSlash
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 3
+        messageOptions: 0
+      - time: 0.31559202
+        functionName: EndDealWeaponDamage
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 3
+        messageOptions: 0
+      - time: 0.5559203
+        functionName: EndDealWeaponDamage
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 3
+        messageOptions: 0
+      - time: 0.7927316
+        functionName: EndDealWeaponDamage
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

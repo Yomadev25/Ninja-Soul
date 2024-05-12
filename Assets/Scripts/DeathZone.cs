@@ -10,7 +10,7 @@ public class DeathZone : MonoBehaviour
         {
             if (other.TryGetComponent(out PlayerManager player))
             {
-                player.TakeDamage(999);
+                player.InstantDead();
             }
         }
     }

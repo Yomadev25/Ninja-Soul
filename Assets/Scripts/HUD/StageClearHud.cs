@@ -28,22 +28,30 @@ public class StageClearHud : MonoBehaviour
             _deathAvoidingFill.fillAmount = criteria.deathCount;
             _playTimeFill.fillAmount = criteria.time;
 
+            criteria.enemyCount = Mathf.Clamp01(criteria.enemyCount);
+            criteria.deathCount = Mathf.Clamp01(criteria.deathCount);
+            criteria.time = Mathf.Clamp01(criteria.time);
+
             float average = (criteria.enemyCount + criteria.deathCount + criteria.time) / 3f;
-            if (average >= 80)
+            if (average >= 0.8f)
             {
                 _rankText.text = "A";
             }
-            else if (average >= 70)
+            else if (average >= 0.7f)
             {
                 _rankText.text = "B";
             }
-            else if (average >= 60)
+            else if (average >= 0.6f)
             {
                 _rankText.text = "C";
             }
-            else if (average >= 50)
+            else if (average >= 0.5f)
             {
                 _rankText.text = "D";
+            }
+            else
+            {
+                _rankText.text = "E";
             }
         });
 

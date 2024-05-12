@@ -168,8 +168,11 @@ public class GameManager : MonoBehaviour
 
         if (PlayerData.Instance.IsCompleteAllState() && !PlayerData.Instance.GetPlayerData().completed)
         {
-            TransitionManager.Instance.SceneFadeIn(0.5f, () =>
+            if (SceneManager.GetActiveScene().name == "Hikari")
+            {
+                TransitionManager.Instance.SceneFadeIn(0.5f, () =>
                 SceneManager.LoadScene("F_Cutscene 1"));
+            }
         }
         else
         {

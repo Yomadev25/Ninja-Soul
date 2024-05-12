@@ -153,6 +153,12 @@ public class PlayerManager : MonoBehaviour, IDamageable
         MessagingCenter.Send(this, MessageOnTakeDamage);
     }
 
+    public void InstantDead()
+    {
+        _hp = 0;
+        MessagingCenter.Send(this, MessageOnHpChanged);
+    }
+
     public void Heal(float value)
     {
         _hp += value;
