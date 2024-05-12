@@ -24,6 +24,8 @@ public class GameplayHudManager : MonoBehaviour
     [SerializeField]
     private Image _soulGaugeFill;
     [SerializeField]
+    private Animator _soulGaugeAnim;
+    [SerializeField]
     private CanvasGroup[] _weaponSlots;
 
     [Header("Boss HP")]
@@ -148,6 +150,7 @@ public class GameplayHudManager : MonoBehaviour
     private void UpdateSoulGauge(float value)
     {
         _soulGaugeFill.fillAmount = value / 100;
+        _soulGaugeAnim.SetBool("isFull", _soulGaugeFill.fillAmount == 1);
     }
 
     private void UpdateWeaponList(ComboGroup[] comboGroup)

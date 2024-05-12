@@ -99,6 +99,11 @@ public class PlayerManager : MonoBehaviour, IDamageable
         {
             Heal(_maxHp);
         });
+
+        MessagingCenter.Subscribe<EnemyManager>(this, EnemyManager.MessageOnEnemyTakeDamage, (sender) =>
+        {
+            GetSoul(0.5f, true);
+        });
     }
 
     private void OnDestroy()
@@ -108,6 +113,7 @@ public class PlayerManager : MonoBehaviour, IDamageable
         MessagingCenter.Unsubscribe<PlayerDashState>(this, PlayerDashState.MessageOnDashEnd);
         MessagingCenter.Unsubscribe<CombatTutorial>(this, CombatTutorial.MessageOnTutorialComplete);
         MessagingCenter.Unsubscribe<HealFlower>(this, HealFlower.MessageWantToRecoverPlayer);
+        MessagingCenter.Unsubscribe<EnemyManager>(this, EnemyManager.MessageOnEnemyTakeDamage);
     }
 
     private void InitPlayerHUD()
@@ -169,7 +175,7 @@ public class PlayerManager : MonoBehaviour, IDamageable
         MessagingCenter.Send(this, MessageOnHpChanged);
     }
 
-    public void GetSoul(float soul)
+    public void GetSoul(float soul, bool noEffect = false)
     {
         if (!_soulBerserk)
         {
@@ -177,7 +183,11 @@ public class PlayerManager : MonoBehaviour, IDamageable
         }    
         if (_soul > 100) _soul = 100;
 
-        onGetSoul?.Invoke();
+        if (!noEffect)
+        {
+            onGetSoul?.Invoke();
+            AudioManager.Instance.PlaySFX("Soul");
+        }
         MessagingCenter.Send(this, MessageOnSoulChanged);
     }
 

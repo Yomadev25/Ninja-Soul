@@ -8,6 +8,7 @@ public class EnemyManager : MonoBehaviour, IDamageable
     public const string MessageOnEnemyAppeared = "On Enemy Appeared";
     public const string MessageOnUpdateHp = "On Update Hp";
     public const string MessageOnEnemyDead = "On Enemy Dead";
+    public const string MessageOnEnemyTakeDamage = "On Enemy Take Damage";
 
     [Header("Enemy Profile")]
     [SerializeField]
@@ -103,6 +104,7 @@ public class EnemyManager : MonoBehaviour, IDamageable
         
 
         onTakeDamage?.Invoke();
+        MessagingCenter.Send(this, MessageOnEnemyTakeDamage);
         MessagingCenter.Send(this, MessageOnUpdateHp);
     }
 

@@ -21,7 +21,7 @@ public class PlayerIdleState : PlayerBaseState
 
     public override void FixedUpdate()
     {
-        
+        //_context.rigidBody.velocity = Vector3.zero;
     }
 
     private void CheckChangeState()

@@ -30,8 +30,8 @@ public class PlayerDashState : PlayerBaseState
         if (!isDash) return;
 
         Vector3 dashDirection = _context.transform.forward.normalized;
-        //_context.rigidBody.velocity = dashDirection.normalized * _context.DashSpeed;
-        _context.rigidBody.AddForce(dashDirection.normalized * _context.DashSpeed, ForceMode.Impulse);
+        Vector3 force = dashDirection * _context.DashSpeed;
+        _context.rigidBody.velocity = new Vector3(force.x, _context.rigidBody.velocity.y, force.z);
     }
 
     private async Task DashAsync()
@@ -42,7 +42,6 @@ public class PlayerDashState : PlayerBaseState
 
         while (duration > 0f)
         {
-            //_context.rigidBody.MovePosition(_context.transform.position + (dashDirection) * _context.DashSpeed * Time.deltaTime);
             isDash = true;
             duration -= Time.deltaTime;
 

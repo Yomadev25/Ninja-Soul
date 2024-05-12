@@ -10498,6 +10498,7 @@ MonoBehaviour:
   _hpIconRoot: {fileID: 1395011581}
   _maxHpIcon: 10
   _soulGaugeFill: {fileID: 1073483874}
+  _soulGaugeAnim: {fileID: 1073483876}
   _weaponSlots:
   - {fileID: 309747478}
   - {fileID: 1360132463}
@@ -16963,6 +16964,7 @@ GameObject:
   - component: {fileID: 1073483873}
   - component: {fileID: 1073483875}
   - component: {fileID: 1073483874}
+  - component: {fileID: 1073483876}
   m_Layer: 5
   m_Name: ' (fill) Ultimage Guage Fill'
   m_TagString: Untagged
@@ -17028,6 +17030,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1073483872}
   m_CullTransparentMesh: 1
+--- !u!95 &1073483876
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1073483872}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 335deb5632d8e004d8da81e763daaff5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1076753550
 GameObject:
   m_ObjectHideFlags: 0

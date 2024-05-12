@@ -21,7 +21,11 @@ public class PlayerWalkState : PlayerBaseState
 
     public override void FixedUpdate()
     {
-        _context.rigidBody.MovePosition(_context.transform.position + (Isometric.ToIso(_context.AxisInput) * _context.AxisInput.normalized.magnitude) * (_context.MoveSpeed * (_context.playerManager.soulBerserk ? 1.2f : 1f)) * Time.deltaTime);
+        Vector3 movementDirection = Isometric.ToIso(_context.AxisInput).normalized;
+        float speedModifier = _context.MoveSpeed * (_context.playerManager.soulBerserk ? 1.2f : 1f);
+        Vector3 movement = movementDirection * speedModifier;
+
+        _context.rigidBody.velocity = new Vector3(movement.x, _context.rigidBody.velocity.y, movement.z);
     }
 
     private void CheckChangeState()
@@ -52,5 +56,6 @@ public class PlayerWalkState : PlayerBaseState
     {
         _context.MoveSpeed = 0;
         _context.Anim.SetFloat("Speed", 0);
+        _context.rigidBody.velocity = new Vector3(0, _context.rigidBody.velocity.y, 0);
     }
 }

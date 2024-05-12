@@ -9088,7 +9088,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemy: {fileID: 11400000, guid: dd197ffb2e9e2de48bdeaa9b504b90a4, type: 2}
   _enemyStateMachine: {fileID: 8807633351780038443}
-  _maxHp: 8000
+  _maxHp: 9000
   _hp: 0
   _anim: {fileID: 8807633351780038447}
   _hitSfx: Slash Hit
@@ -9135,6 +9135,7 @@ MonoBehaviour:
   _targetLayer:
     serializedVersion: 2
     m_Bits: 64
+  _huntMode: 0
   _navMesh: {fileID: 8807633351780038444}
   _anim: {fileID: 8807633351780038447}
   currentCooldown: 0

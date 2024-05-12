@@ -42,14 +42,6 @@ public class PlayerStateMachine : MonoBehaviour
     [SerializeField]
     private Volume _soulVolume;
 
-    [Header("Physic Materials")]
-    [SerializeField]
-    private Collider _collider;
-    [SerializeField]
-    private PhysicMaterial _defaultPhysicMaterial;
-    [SerializeField]
-    private PhysicMaterial _slopePhysicsMaterial;
-
     [Header("References")]
     [SerializeField]
     private PlayerManager _playerManager;
@@ -236,35 +228,6 @@ public class PlayerStateMachine : MonoBehaviour
     {
         return _playerManager.soul == 100;
     }
-
-    private bool OnSlope()
-    {
-        RaycastHit slopeHit;
-
-        if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, _playerHeight * 0.5f + 0.3f, _groundLayer))
-        {
-            float angle = Vector3.Angle(Vector3.up, slopeHit.normal);
-            return angle < 50 && angle != 0;
-        }
-
-        return false;
-    }
-
-    /*private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.collider.CompareTag("Slope"))
-        {
-            _collider.material = _slopePhysicsMaterial;
-        }
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.collider.CompareTag("Slope"))
-        {
-            _collider.material = _defaultPhysicMaterial;
-        }
-    }*/
 }
 
 public static class Isometric
