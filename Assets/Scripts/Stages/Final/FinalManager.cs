@@ -32,6 +32,7 @@ public class FinalManager : Singleton<FinalManager>
 
         if (AudioManager.Instance.currentBgm != "Final Boss")
         {
+            TransitionManager.Instance.SceneFadeOut();
             AudioManager.Instance.PlayBGM("Final Boss");
         }
         
