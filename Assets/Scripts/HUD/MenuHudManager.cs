@@ -77,6 +77,10 @@ public class MenuHudManager : MonoBehaviour
         ChangePage(_currentPage);
         FetchSaveList();
 
+        PlayerData.Instance.hp = 10;
+        PlayerData.Instance.soul = 0;
+        PlayerData.Instance.weapon = 0;
+
         TransitionManager.Instance.SceneFadeOut();
         yield return new WaitForSeconds(6.3f);
         _anim.enabled = false;
