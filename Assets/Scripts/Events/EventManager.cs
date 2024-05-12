@@ -124,9 +124,10 @@ public class EventManager : Singleton<EventManager>
             
             _events.Remove(_event);
             AudioManager.Instance.PlaySFX("Mission");
-        }
 
-        MessagingCenter.Send(this, MessageOnArchievedEvent, _event);
+            MessagingCenter.Send(this, MessageOnArchievedEvent, _event);
+        }
+        
         UpdateEvent();
     }
 

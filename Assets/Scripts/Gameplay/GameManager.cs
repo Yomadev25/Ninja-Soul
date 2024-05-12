@@ -88,7 +88,10 @@ public class GameManager : MonoBehaviour
         #region STAGE CLEAR EVENT
         MessagingCenter.Subscribe<TutorialManager>(this, TutorialManager.MessageOnTutorialComplete, (sender) =>
         {
-            PlayerData.Instance.GetPlayerData().tutorial = true;
+            if (PlayerData.Instance.GetPlayerData().tutorial < 1)
+            {
+                PlayerData.Instance.GetPlayerData().tutorial = 1;
+            }
             Invoke(nameof(LevelComplete), 1f);
         });
 

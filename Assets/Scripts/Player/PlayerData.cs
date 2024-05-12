@@ -62,7 +62,7 @@ public class PlayerData : Singleton<PlayerData>
 public class Player
 {
     public int id;
-    public bool tutorial;
+    public int tutorial;
 
     public bool genbu;
     public bool suzaku;
@@ -79,7 +79,7 @@ public class Player
     public DateTime startDate;
     public DateTime lastDate;
 
-    public Player(int id, bool tutorial, bool genbu, bool suzaku, bool seiryu, bool byakko, bool knuckles, bool sickles, bool jevalin, bool sword, bool completed, DateTime startDate, DateTime lastDate)
+    public Player(int id, int tutorial, bool genbu, bool suzaku, bool seiryu, bool byakko, bool knuckles, bool sickles, bool jevalin, bool sword, bool completed, DateTime startDate, DateTime lastDate)
     {
         this.id = id;
         this.tutorial = tutorial;
