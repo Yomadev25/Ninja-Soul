@@ -68,6 +68,11 @@ public class EnemyManager : MonoBehaviour, IDamageable
     {
         if (isDie) return;
 
+        if (_enemyStateMachine.GetVisibleTarget() == null)
+        {
+            damage += 9999;
+        }
+
         if (impact)
         {
             TimeStop.Instance.StopTime(0.05f, 10, 0.1f);

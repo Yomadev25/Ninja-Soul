@@ -23,11 +23,17 @@ public class ComboDialog : MonoBehaviour
         {
             AddCombo();
         });
+
+        MessagingCenter.Subscribe<PlayerManager>(this, PlayerManager.MessageOnTakeDamage, (sender) =>
+        {
+            ResetCombo();
+        });
     }
 
     private void OnDestroy()
     {
         MessagingCenter.Unsubscribe<EnemyManager>(this, EnemyManager.MessageOnEnemyTakeDamage);
+        MessagingCenter.Unsubscribe<PlayerManager>(this, PlayerManager.MessageOnTakeDamage);
     }
 
     private void Update()
@@ -60,8 +66,14 @@ public class ComboDialog : MonoBehaviour
 
         _comboHud.LeanAlpha(1, 0.1f).setOnComplete(() =>
         {
-            _comboHud.LeanAlpha(0, 3f).setDelay(4.9f);
+            _comboHud.LeanAlpha(0, 3f).setDelay(1.9f);
         });
         _comboText.gameObject.SetActive(true);
+    }
+
+    private void ResetCombo()
+    {
+        _currentCombo = 0;
+        _comboHud.alpha = 0;
     }
 }

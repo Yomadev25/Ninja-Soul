@@ -6,12 +6,15 @@ public class PlayerSoulState : PlayerBaseState
 {
     float timePassed;
     float clipSpeed;
+    public const string MessageOnImmortal = "On Immortal";
     public const string MessageOnEnterSoulBerserk = "On Enter Soul Berserk";
 
     public PlayerSoulState(PlayerStateMachine ctx) : base(ctx) { }
 
     public override void Enter()
     {
+        MessagingCenter.Send(this, MessageOnImmortal);
+
         _context.CanRotate = false;
         _context.Anim.SetTrigger("Soul");
 

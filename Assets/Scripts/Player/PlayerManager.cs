@@ -53,6 +53,7 @@ public class PlayerManager : MonoBehaviour, IDamageable
 
     public bool IsDie { get; set; }
     public bool IsJump { get; set; }
+    public bool IsImmortal { get; set; }
     private bool _isDash;
 
     private void Awake()
@@ -104,6 +105,23 @@ public class PlayerManager : MonoBehaviour, IDamageable
         {
             GetSoul(0.5f, true);
         });
+
+        MessagingCenter.Subscribe<PlayerSoulState>(this, PlayerSoulState.MessageOnImmortal, (sender) =>
+        {
+            IsImmortal = true;
+        });
+
+        MessagingCenter.Subscribe<GameManager, GameManager.GameState>(this, GameManager.MessageOnChangedGameState, (sender, gameState) =>
+        {
+            if (gameState == GameManager.GameState.PAUSE)
+            {
+                IsImmortal = true;
+            }
+            else if (gameState == GameManager.GameState.GAMEPLAY)
+            {
+                IsImmortal = false;
+            }
+        });
     }
 
     private void OnDestroy()
@@ -114,6 +132,8 @@ public class PlayerManager : MonoBehaviour, IDamageable
         MessagingCenter.Unsubscribe<CombatTutorial>(this, CombatTutorial.MessageOnTutorialComplete);
         MessagingCenter.Unsubscribe<HealFlower>(this, HealFlower.MessageWantToRecoverPlayer);
         MessagingCenter.Unsubscribe<EnemyManager>(this, EnemyManager.MessageOnEnemyTakeDamage);
+        MessagingCenter.Unsubscribe<PlayerSoulState>(this, PlayerSoulState.MessageOnImmortal);
+        MessagingCenter.Unsubscribe<GameManager, GameManager.GameState>(this, GameManager.MessageOnChangedGameState);
     }
 
     private void InitPlayerHUD()
@@ -133,6 +153,7 @@ public class PlayerManager : MonoBehaviour, IDamageable
     public void TakeDamage(float damage, GameObject effect = null, bool impact = false)
     {
         if (IsJump) return;
+        if (IsImmortal) return;
 
         if (_isDash)
         {
@@ -193,6 +214,7 @@ public class PlayerManager : MonoBehaviour, IDamageable
 
     public void ActivateSoulBerserk()
     {
+        IsImmortal = false;
         StartCoroutine(SoulBerserkCoroutine());
     }
 

@@ -3922,6 +3922,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactType: 1
+  actionName: 
+  hideFromMinimap: 0
   _onInteract:
     m_PersistentCalls:
       m_Calls: []
@@ -4255,7 +4257,7 @@ PrefabInstance:
     - target: {fileID: 1015214500000938838, guid: 02f07832aeb70c346b661400b2eec09e,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.15
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 1015214500000938838, guid: 02f07832aeb70c346b661400b2eec09e,
         type: 3}
@@ -5292,6 +5294,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _stageCriteria:
+    stageName: 
     enemyCount: 40
     deathCount: 5
     time: 30
@@ -7611,6 +7614,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactType: 1
+  actionName: 
+  hideFromMinimap: 0
   _onInteract:
     m_PersistentCalls:
       m_Calls: []
