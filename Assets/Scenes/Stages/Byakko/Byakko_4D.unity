@@ -15892,7 +15892,7 @@ GameObject:
   - component: {fileID: 1163614536}
   - component: {fileID: 1163614535}
   m_Layer: 0
-  m_Name: Portal F
+  m_Name: Portal H
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15924,6 +15924,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactType: 1
+  actionName: 
+  hideFromMinimap: 0
   _onInteract:
     m_PersistentCalls:
       m_Calls: []
@@ -23144,6 +23146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _stageCriteria:
+    stageName: 
     enemyCount: 40
     deathCount: 5
     time: 30
@@ -24240,6 +24243,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactType: 1
+  actionName: 
+  hideFromMinimap: 0
   _onInteract:
     m_PersistentCalls:
       m_Calls: []
@@ -26518,6 +26523,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactType: 1
+  actionName: 
+  hideFromMinimap: 0
   _onInteract:
     m_PersistentCalls:
       m_Calls: []
@@ -27412,7 +27419,7 @@ PrefabInstance:
     - target: {fileID: 1015214500000938838, guid: 02f07832aeb70c346b661400b2eec09e,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.15
+      value: 0.35
       objectReference: {fileID: 0}
     - target: {fileID: 1015214500000938838, guid: 02f07832aeb70c346b661400b2eec09e,
         type: 3}

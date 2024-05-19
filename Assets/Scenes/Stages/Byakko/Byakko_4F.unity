@@ -144,7 +144,7 @@ PrefabInstance:
     - target: {fileID: 1015214500000938838, guid: 02f07832aeb70c346b661400b2eec09e,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.15
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 1015214500000938838, guid: 02f07832aeb70c346b661400b2eec09e,
         type: 3}
@@ -614,6 +614,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactType: 1
+  actionName: 
+  hideFromMinimap: 0
   _onInteract:
     m_PersistentCalls:
       m_Calls: []
@@ -4288,6 +4290,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _stageCriteria:
+    stageName: 
     enemyCount: 40
     deathCount: 5
     time: 30
@@ -4342,7 +4345,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b4d00186f5884a4bb8dffc77d258ef7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _scene: Byakko_E
+  _scene: Byakko_4E
 --- !u!114 &781650988
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4356,6 +4359,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactType: 1
+  actionName: 
+  hideFromMinimap: 0
   _onInteract:
     m_PersistentCalls:
       m_Calls: []
@@ -5285,6 +5290,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactType: 1
+  actionName: 
+  hideFromMinimap: 0
   _onInteract:
     m_PersistentCalls:
       m_Calls: []
@@ -9090,6 +9097,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactType: 1
+  actionName: 
+  hideFromMinimap: 0
   _onInteract:
     m_PersistentCalls:
       m_Calls: []

@@ -53,6 +53,7 @@ public class Trailer : MonoBehaviour
             if (IdleCheck())
             {
                 isFade = true;
+                AudioManager.Instance.StopBGM();
                 TransitionManager.Instance.NormalFadeIn(0.5f, () =>
                 {
                     SceneManager.LoadScene("Trailer");
