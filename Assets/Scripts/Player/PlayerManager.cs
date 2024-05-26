@@ -221,6 +221,7 @@ public class PlayerManager : MonoBehaviour, IDamageable
     IEnumerator SoulBerserkCoroutine()
     {
         _soulBerserk = true;
+        CameraShake.instance.InstantShake(0.2f);
         onStartSoulBerserk?.Invoke();
 
         while (_soul > 0)

@@ -14,6 +14,7 @@ public class Enemy : ScriptableObject
 
     public string name;
     public Level level;
+    public bool assasinate = true;
 
     [Header("Field Of View")]
     public float viewRadius;

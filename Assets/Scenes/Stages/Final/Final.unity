@@ -736,7 +736,7 @@ Transform:
   - {fileID: 699802278}
   - {fileID: 437153062}
   m_Father: {fileID: 0}
-  m_RootOrder: 26
+  m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &60477188
 PrefabInstance:
@@ -1124,7 +1124,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 22
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &125490125
 GameObject:
@@ -1962,10 +1962,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: Heal Vase
       objectReference: {fileID: 0}
+    - target: {fileID: 8547921868799977143, guid: da6bd3231da12c648bd07247b860791d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9073487754338106381, guid: da6bd3231da12c648bd07247b860791d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 16
+      value: 26
       objectReference: {fileID: 0}
     - target: {fileID: 9073487754338106381, guid: da6bd3231da12c648bd07247b860791d,
         type: 3}
@@ -4550,7 +4555,7 @@ Transform:
   - {fileID: 22439373}
   - {fileID: 1915395899}
   m_Father: {fileID: 0}
-  m_RootOrder: 27
+  m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &626390582
 PrefabInstance:
@@ -5638,7 +5643,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &734987240 stripped
 Transform:
@@ -5841,6 +5846,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5771869743064330941, guid: ffaf9087334dbdf458a1b29865497603,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6711091053219272809, guid: ffaf9087334dbdf458a1b29865497603,
         type: 3}
       propertyPath: onStartSoulBerserk.m_PersistentCalls.m_Calls.Array.data[1].m_Target
@@ -5905,6 +5915,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6711091053219272823, guid: ffaf9087334dbdf458a1b29865497603,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6711091054003924772, guid: ffaf9087334dbdf458a1b29865497603,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7176065392938185999, guid: ffaf9087334dbdf458a1b29865497603,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8181370767282837935, guid: ffaf9087334dbdf458a1b29865497603,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ffaf9087334dbdf458a1b29865497603, type: 3}
@@ -6111,6 +6141,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Heal Vase_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8547921868799977143, guid: da6bd3231da12c648bd07247b860791d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9073487754338106381, guid: da6bd3231da12c648bd07247b860791d,
         type: 3}
@@ -7478,6 +7513,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Heal Vase_5
       objectReference: {fileID: 0}
+    - target: {fileID: 8547921868799977143, guid: da6bd3231da12c648bd07247b860791d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9073487754338106381, guid: da6bd3231da12c648bd07247b860791d,
         type: 3}
       propertyPath: m_RootOrder
@@ -8757,7 +8797,7 @@ PrefabInstance:
     - target: {fileID: 3835159114792082380, guid: 6a27d3cd68f27ec4ab86cd5179ba35fc,
         type: 3}
       propertyPath: m_RootOrder
-      value: 21
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 3835159114792082380, guid: 6a27d3cd68f27ec4ab86cd5179ba35fc,
         type: 3}
@@ -9095,6 +9135,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Heal Vase_4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8547921868799977143, guid: da6bd3231da12c648bd07247b860791d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9073487754338106381, guid: da6bd3231da12c648bd07247b860791d,
         type: 3}
@@ -9470,7 +9515,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 25
+  m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1323503258
 PrefabInstance:
@@ -9574,10 +9619,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: Heal Vase_1
       objectReference: {fileID: 0}
+    - target: {fileID: 8547921868799977143, guid: da6bd3231da12c648bd07247b860791d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9073487754338106381, guid: da6bd3231da12c648bd07247b860791d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 17
+      value: 27
       objectReference: {fileID: 0}
     - target: {fileID: 9073487754338106381, guid: da6bd3231da12c648bd07247b860791d,
         type: 3}
@@ -10119,7 +10169,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -10.5, y: 86.15, z: 0}
 --- !u!114 &1450249643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10216,7 +10266,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1466658538
 PrefabInstance:
@@ -11590,6 +11640,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Heal Vase_3
       objectReference: {fileID: 0}
+    - target: {fileID: 8547921868799977143, guid: da6bd3231da12c648bd07247b860791d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9073487754338106381, guid: da6bd3231da12c648bd07247b860791d,
         type: 3}
       propertyPath: m_RootOrder
@@ -12220,7 +12275,7 @@ PrefabInstance:
     - target: {fileID: 101254225686829970, guid: ed79f98aa277ce845983ac97d951c817,
         type: 3}
       propertyPath: m_RootOrder
-      value: 24
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 101254225686829970, guid: ed79f98aa277ce845983ac97d951c817,
         type: 3}
@@ -14633,7 +14688,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!114 &2144733754
 MonoBehaviour:
@@ -14875,7 +14930,7 @@ Transform:
   m_Children:
   - {fileID: 1000442140713591792}
   m_Father: {fileID: 0}
-  m_RootOrder: 23
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1000442141496629237
 MeshFilter:
@@ -14984,6 +15039,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2072484765902600548, guid: a2b9809d94ba7594f9c5a5ee4d92d588,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2507145804742612738, guid: a2b9809d94ba7594f9c5a5ee4d92d588,
         type: 3}
       propertyPath: _bossVolume
@@ -15039,6 +15099,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hikari Boss
       objectReference: {fileID: 0}
+    - target: {fileID: 2507145804742612854, guid: a2b9809d94ba7594f9c5a5ee4d92d588,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2507145804742612863, guid: a2b9809d94ba7594f9c5a5ee4d92d588,
         type: 3}
       propertyPath: m_RootOrder
@@ -15093,6 +15158,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2682558547183839351, guid: a2b9809d94ba7594f9c5a5ee4d92d588,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6452273594573040244, guid: a2b9809d94ba7594f9c5a5ee4d92d588,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6452273594774183919, guid: a2b9809d94ba7594f9c5a5ee4d92d588,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8535637818741714270, guid: a2b9809d94ba7594f9c5a5ee4d92d588,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8988766456682695793, guid: a2b9809d94ba7594f9c5a5ee4d92d588,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a2b9809d94ba7594f9c5a5ee4d92d588, type: 3}

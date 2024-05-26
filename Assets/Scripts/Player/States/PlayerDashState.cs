@@ -35,7 +35,7 @@ public class PlayerDashState : PlayerBaseState
     }
 
     private async Task DashAsync()
-    {       
+    {
         float duration = 0.8f;       
         _context.Anim.SetTrigger("Dash");
         _context.Anim.SetBool("isDash", true);

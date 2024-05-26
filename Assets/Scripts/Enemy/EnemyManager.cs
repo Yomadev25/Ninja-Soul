@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class EnemyManager : MonoBehaviour, IDamageable
 {
@@ -26,6 +27,15 @@ public class EnemyManager : MonoBehaviour, IDamageable
     [SerializeField]
     private Animator _anim;
     private Collider _collider;
+
+    [Header("HUD")]
+    [SerializeField]
+    private CanvasGroup _canvasGroup;
+    [SerializeField]
+    private Image _hpFill;
+    [SerializeField]
+    private float _canvasDuration = 10;
+    private float _currentCanvasDuration;
 
     [Header("Sound Effects")]
     [SerializeField]
@@ -62,13 +72,25 @@ public class EnemyManager : MonoBehaviour, IDamageable
         {
             Die();
         }
+        else
+        {
+            if (_currentCanvasDuration > 0)
+            {
+                _currentCanvasDuration -= Time.deltaTime;
+            }
+            else
+            {
+                if (_canvasGroup != null)
+                    _canvasGroup.alpha = 0;
+            }
+        }
     }
 
     public void TakeDamage(float damage, GameObject effect = null, bool impact = false)
     {
         if (isDie) return;
 
-        if (_enemyStateMachine.GetVisibleTarget() == null)
+        if (_enemyStateMachine.GetVisibleTarget() == null && _enemy.assasinate)
         {
             damage += 9999;
         }
@@ -106,11 +128,30 @@ public class EnemyManager : MonoBehaviour, IDamageable
         {
             Instantiate(effect, transform.position, Quaternion.identity);
         }
-        
 
+        UpdateHpBar();
         onTakeDamage?.Invoke();
         MessagingCenter.Send(this, MessageOnEnemyTakeDamage);
         MessagingCenter.Send(this, MessageOnUpdateHp);
+    }
+
+    private void UpdateHpBar()
+    {
+        if (_enemy.level == Enemy.Level.BOSS) return;
+        if (_canvasGroup == null) return;
+
+        _currentCanvasDuration = _canvasDuration;
+        _hpFill.fillAmount = _hp / _maxHp;
+
+        if (LeanTween.isTweening(_canvasGroup.gameObject))
+        {
+            LeanTween.cancel(_canvasGroup.gameObject);
+        }
+
+        _canvasGroup.LeanAlpha(1, 0.2f).setOnComplete(() =>
+        {
+            _canvasGroup.LeanAlpha(0, 1f).setDelay(_canvasDuration - 1.2f);
+        });
     }
 
     private void Die()
@@ -123,6 +164,8 @@ public class EnemyManager : MonoBehaviour, IDamageable
         _anim.SetLayerWeight(1, 0);
         _anim.SetTrigger("Die");
         _collider.enabled = false;
+        if (_canvasGroup != null)
+            _canvasGroup.LeanAlpha(0, 1f);
 
         if (EffectManager.Instance != null)
         {
