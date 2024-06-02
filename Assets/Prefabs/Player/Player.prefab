@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc9c4301cb68d334dbc6f5310f0ca09f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weaponName: Knuckles
+  _weaponName: Tortoise Gauntlet
   _weaponLength: 0.5
   _weaponDamage: 20
   _targetLayer:
@@ -268,7 +268,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc9c4301cb68d334dbc6f5310f0ca09f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weaponName: Knuckles
+  _weaponName: Tortoise Gauntlet
   _weaponLength: 0.5
   _weaponDamage: 20
   _targetLayer:
@@ -459,7 +459,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc9c4301cb68d334dbc6f5310f0ca09f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weaponName: Sickles
+  _weaponName: Fire Kama
   _weaponLength: 0.7
   _weaponDamage: 10
   _targetLayer:
@@ -597,7 +597,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc9c4301cb68d334dbc6f5310f0ca09f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weaponName: Javelin
+  _weaponName: Dragon Tail Yari
   _weaponLength: 3
   _weaponDamage: 10
   _targetLayer:
@@ -10836,7 +10836,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc9c4301cb68d334dbc6f5310f0ca09f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weaponName: Sickles
+  _weaponName: Fire Kama
   _weaponLength: 0.7
   _weaponDamage: 10
   _targetLayer:
@@ -15701,7 +15701,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc9c4301cb68d334dbc6f5310f0ca09f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weaponName: Sword
+  _weaponName: Tiger Fang Greatsword
   _weaponLength: 2.2
   _weaponDamage: 10
   _targetLayer:
@@ -15752,7 +15752,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc9c4301cb68d334dbc6f5310f0ca09f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weaponName: Chokuto
+  _weaponName: Shadow Chokuto
   _weaponLength: 1.2
   _weaponDamage: 10
   _targetLayer:
@@ -51002,9 +51002,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _comboGroups:
-  - name: Chokuto
-    description: "A traditional Japanese sword that has\ngarnered legendary status
-      for\nits exquisite craftsmanship,\ndeadly efficiency and cultural \nsignificance."
+  - name: Shadow Chokuto
+    description: It's a straight single-edged Japanese sword. Com-monly used for
+      stabbing and is usually hung at the waist.
     icon: {fileID: 21300000, guid: 5567653ac4da3d74c8ca38ab99ca7d38, type: 3}
     weaponObjects:
     - {fileID: 5531337172451200327}
@@ -51017,9 +51017,8 @@ MonoBehaviour:
     - {fileID: 11400000, guid: a7b780d71e38bc247916af3377c95b06, type: 2}
     - {fileID: 11400000, guid: c309284416a49e74aa43237043402333, type: 2}
     isUnlocked: 1
-  - name: Knuckles
-    description: Sturdy, earth-toned weapons, embodying the resilience of the Black
-      Tortoise, designed for powerful close-quarters combat.
+  - name: Tortoise Gauntlet
+    description: "It\u2019s a form of armor worn to protect the elbow to the fingertips."
     icon: {fileID: 21300000, guid: 7024dfbd5182b4b46b4e7b71ebdc4033, type: 3}
     weaponObjects:
     - {fileID: 568673455}
@@ -51033,9 +51032,9 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 0bc7128bd4c4a4e43b0c4b9bd750087c, type: 2}
     - {fileID: 11400000, guid: 1a7376c0b656c4a4ba737340e0ea0962, type: 2}
     isUnlocked: 1
-  - name: Sickles
-    description: Elegant, fiery blades adorned with engravings, embodying the grace
-      and power of the mythical Vermilion Bird.
+  - name: Fire Kama
+    description: It's a Japanese sickle which is farming equipment that villagers
+      can use. It's sharp and nimble, so it's popular used by ninjas.
     icon: {fileID: 21300000, guid: 065dc8e558f5e0e47a60dd89ba102d89, type: 3}
     weaponObjects:
     - {fileID: 1636166886}
@@ -51050,9 +51049,8 @@ MonoBehaviour:
     - {fileID: 11400000, guid: a0445b70e7d3d6f45aa1a88ace84462c, type: 2}
     - {fileID: 11400000, guid: 10d5b1b4a93f3a7488221e665ce755e2, type: 2}
     isUnlocked: 1
-  - name: Sword
-    description: A swift and lethal blade, embodying the White Tiger's agility and
-      ferocity, perfect for a masterful and precise warrior.
+  - name: Tiger Fang Greatsword
+    description: "It\u2019s a double-edged sword with a large and wide blade."
     icon: {fileID: 21300000, guid: 933abd4e6cd2d9441ad7ca81d3257ae0, type: 3}
     weaponObjects:
     - {fileID: 7292802136985862741}
@@ -51065,9 +51063,10 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 368be72f37895b542ad948b66b3e4043, type: 2}
     - {fileID: 11400000, guid: b0068b673726a984697a344b41232882, type: 2}
     isUnlocked: 1
-  - name: Javelin
-    description: A sleek, azure weapon channeling the spirit of the Blue Dragon,
-      combining elegance with deadly precision in ranged combat.
+  - name: Dragon Tail Yari
+    description: It's a Japanese spear, the highlight is at the tip of the spear
+      it has a cross blade, Inspired by the shadow of the crescent moon. It makes
+      the spear more effec-tive in fighting.
     icon: {fileID: 21300000, guid: f8be679561e1b024a8d62f40f1152589, type: 3}
     weaponObjects:
     - {fileID: 29314908}

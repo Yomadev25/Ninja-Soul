@@ -61,19 +61,19 @@ public class ComboFactory : MonoBehaviour
         Player player = PlayerData.Instance.GetPlayerData();
         if (player.knuckles)
         {
-            UnlockWeapon("Knuckles");
+            UnlockWeapon("Tortoise Gauntlet");
         }
         if (player.sword)
         {
-            UnlockWeapon("Sword");
+            UnlockWeapon("Tiger Fang Greatsword");
         }
         if (player.jevalin)
         {
-            UnlockWeapon("Javelin");
+            UnlockWeapon("Dragon Tail Yari");
         }
         if (player.sickles)
         {
-            UnlockWeapon("Sickles");
+            UnlockWeapon("Fire Kama");
         }
 
         _rigidBody = GetComponent<Rigidbody>();
