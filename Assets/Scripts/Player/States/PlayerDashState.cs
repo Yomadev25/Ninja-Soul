@@ -31,7 +31,7 @@ public class PlayerDashState : PlayerBaseState
 
         Vector3 dashDirection = _context.transform.forward.normalized;
         Vector3 force = dashDirection * _context.DashSpeed;
-        _context.rigidBody.velocity = new Vector3(force.x, _context.rigidBody.velocity.y, force.z);
+        _context.rigidBody.linearVelocity = new Vector3(force.x, _context.rigidBody.linearVelocity.y, force.z);
     }
 
     private async Task DashAsync()
@@ -48,7 +48,7 @@ public class PlayerDashState : PlayerBaseState
             await Task.Yield();
         }
 
-        _context.rigidBody.velocity = Vector3.zero;
+        _context.rigidBody.linearVelocity = Vector3.zero;
 
         _context.Anim.SetBool("isDash", false);
         CheckChangeState();

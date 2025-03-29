@@ -25,7 +25,7 @@ public class PlayerRunState : PlayerBaseState
         float speedModifier = _context.MoveSpeed * (_context.playerManager.soulBerserk ? 1.2f : 1f);
         Vector3 movement = movementDirection * speedModifier;
 
-        _context.rigidBody.velocity = new Vector3(movement.x, _context.rigidBody.velocity.y, movement.z);
+        _context.rigidBody.linearVelocity = new Vector3(movement.x, _context.rigidBody.linearVelocity.y, movement.z);
     }
 
     private void CheckChangeState()
@@ -56,6 +56,6 @@ public class PlayerRunState : PlayerBaseState
     {
         _context.MoveSpeed = 0;
         _context.Anim.SetFloat("Speed", 0);
-        _context.rigidBody.velocity = new Vector3(0, _context.rigidBody.velocity.y, 0);
+        _context.rigidBody.linearVelocity = new Vector3(0, _context.rigidBody.linearVelocity.y, 0);
     }
 }

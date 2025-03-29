@@ -11,7 +11,7 @@ public class Arrow : MonoBehaviour
 
     private void Start()
     {
-        rb.velocity = transform.forward * _speed;
+        rb.linearVelocity = transform.forward * _speed;
         Destroy(gameObject, 1f);
     }
 
