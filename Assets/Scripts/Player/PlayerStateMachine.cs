@@ -220,8 +220,7 @@ public class PlayerStateMachine : MonoBehaviour
         if (AxisInput == Vector3.zero) return;
         if (!CanRotate) return;
 
-        var rot = Quaternion.LookRotation(Isometric.ToIso(AxisInput), Vector3.up);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, rot, _rotateSpeed * Time.deltaTime);
+        transform.rotation = Quaternion.LookRotation(Isometric.ToIso(AxisInput), Vector3.up);
     }
 
     public bool SoulReady()
