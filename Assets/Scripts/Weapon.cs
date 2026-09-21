@@ -58,6 +58,11 @@ public class Weapon : MonoBehaviour, IDamageDealer
     {
         Debug.Log($"Dealing {damage} damages.");
         target.TakeDamage(damage, _effect, impact);
+
+        if (!(target is PlayerManager) && CameraShake.instance != null)
+        {
+            CameraShake.instance.InstantShake(impact ? 0.15f : 0.08f);
+        }
     }
 
     public void StartDealDamage(float damageAdjust = 0f, bool impact = false)
