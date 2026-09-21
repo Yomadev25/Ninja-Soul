@@ -14,6 +14,8 @@ public class PlayerManager : MonoBehaviour, IDamageable
     private float _soul;
     [SerializeField]
     private bool _soulBerserk;
+    [SerializeField]
+    private float _dashInvincibleDuration = 0.2f;
 
     [Header("References")]
     [SerializeField]
@@ -54,7 +56,8 @@ public class PlayerManager : MonoBehaviour, IDamageable
     public bool IsDie { get; set; }
     public bool IsJump { get; set; }
     public bool IsImmortal { get; set; }
-    private bool _isDash;
+    private bool _isDashInvincible;
+    private Coroutine _dashInvincibilityCoroutine;
 
     private void Awake()
     {
@@ -83,12 +86,8 @@ public class PlayerManager : MonoBehaviour, IDamageable
 
         MessagingCenter.Subscribe<PlayerDashState>(this, PlayerDashState.MessageOnDashStart, (sender) =>
         {
-            _isDash = true;
-        });
-
-        MessagingCenter.Subscribe<PlayerDashState>(this, PlayerDashState.MessageOnDashEnd, (sender) =>
-        {
-            _isDash = false;
+            if (_dashInvincibilityCoroutine != null) StopCoroutine(_dashInvincibilityCoroutine);
+            _dashInvincibilityCoroutine = StartCoroutine(DashInvincibilityWindow());
         });
 
         MessagingCenter.Subscribe<CombatTutorial>(this, CombatTutorial.MessageOnTutorialComplete, (sender) =>
@@ -128,7 +127,6 @@ public class PlayerManager : MonoBehaviour, IDamageable
     {
         MessagingCenter.Unsubscribe<HudLoader>(this, HudLoader.MessageOnHudLoaded);
         MessagingCenter.Unsubscribe<PlayerDashState>(this, PlayerDashState.MessageOnDashStart);
-        MessagingCenter.Unsubscribe<PlayerDashState>(this, PlayerDashState.MessageOnDashEnd);
         MessagingCenter.Unsubscribe<CombatTutorial>(this, CombatTutorial.MessageOnTutorialComplete);
         MessagingCenter.Unsubscribe<HealFlower>(this, HealFlower.MessageWantToRecoverPlayer);
         MessagingCenter.Unsubscribe<EnemyManager>(this, EnemyManager.MessageOnEnemyTakeDamage);
@@ -155,7 +153,7 @@ public class PlayerManager : MonoBehaviour, IDamageable
         if (IsJump) return;
         if (IsImmortal) return;
 
-        if (_isDash)
+        if (_isDashInvincible)
         {
             onEvade?.Invoke();
             TimeStop.Instance.StopTime(0.3f, 10, 0.1f);
@@ -178,6 +176,14 @@ public class PlayerManager : MonoBehaviour, IDamageable
         onTakeDamage?.Invoke();
         MessagingCenter.Send(this, MessageOnHpChanged);
         MessagingCenter.Send(this, MessageOnTakeDamage);
+    }
+
+    private IEnumerator DashInvincibilityWindow()
+    {
+        _isDashInvincible = true;
+        yield return new WaitForSeconds(_dashInvincibleDuration);
+        _isDashInvincible = false;
+        _dashInvincibilityCoroutine = null;
     }
 
     public void InstantDead()
