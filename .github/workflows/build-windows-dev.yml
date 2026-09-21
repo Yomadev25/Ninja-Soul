@@ -43,3 +43,34 @@ jobs:
           name: NinjaSoul-Windows-${{ github.sha }}
           path: build/StandaloneWindows64
           retention-days: 10
+
+      - name: Notify Discord
+        if: always()
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+          STATUS: ${{ job.status }}
+          REPO: ${{ github.repository }}
+          BRANCH: ${{ github.ref_name }}
+          SHA: ${{ github.sha }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          if [ "$STATUS" = "success" ]; then
+            COLOR=3066993
+            TITLE="✅ Windows Dev Build สำเร็จ"
+          else
+            COLOR=15158332
+            TITLE="❌ Windows Dev Build ล้มเหลว"
+          fi
+          PAYLOAD=$(jq -n \
+            --arg title "$TITLE" \
+            --argjson color "$COLOR" \
+            --arg repo "$REPO" \
+            --arg branch "$BRANCH" \
+            --arg sha "${SHA:0:7}" \
+            --arg url "$RUN_URL" \
+            '{embeds: [{title: $title, color: $color, url: $url, fields: [
+              {name: "Repo", value: $repo, inline: true},
+              {name: "Branch", value: $branch, inline: true},
+              {name: "Commit", value: $sha, inline: true}
+            ]}]}')
+          curl -sf -H "Content-Type: application/json" -d "$PAYLOAD" "$DISCORD_WEBHOOK"
