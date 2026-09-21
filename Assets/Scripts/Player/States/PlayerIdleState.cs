@@ -34,8 +34,9 @@ public class PlayerIdleState : PlayerBaseState
         {
             ChangeState(_context.State.Dash());
         }
-        else if (_context.PressedCombat)
+        else if (_context.CombatInputBuffered)
         {
+            _context.CombatInputBuffered = false;
             ChangeState(_context.State.Combat());
         }
         else if (_context.PressedSoul && _context.SoulReady())

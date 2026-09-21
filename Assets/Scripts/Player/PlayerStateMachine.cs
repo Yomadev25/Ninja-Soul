@@ -25,6 +25,8 @@ public class PlayerStateMachine : MonoBehaviour
     [Header("Combat Setting")]
     [SerializeField]
     private ComboFactory _comboFactory;
+    [SerializeField, Range(0f, 1f)]
+    private float _comboCancelWindow = 0.6f;
 
     [Header("Input Setting")]
     [SerializeField]
@@ -63,6 +65,7 @@ public class PlayerStateMachine : MonoBehaviour
     public Animator Anim => _anim;
 
     public ComboFactory ComboFactory => _comboFactory;
+    public float ComboCancelWindow => _comboCancelWindow;
     public int ComboCount { get; set; }
 
     public Vector3 AxisInput { get; set; }
@@ -76,6 +79,8 @@ public class PlayerStateMachine : MonoBehaviour
     public bool PressedSprint { get; set; }
     public bool PressedDash { get; set; }
     public bool PressedCombat { get; set; }
+    /// <summary>True for one press (started event) until consumed; does not stay true while the button is held.</summary>
+    public bool CombatInputBuffered { get; set; }
     public bool PressedSoul { get; set; }
 
     public Volume soulVolume => _soulVolume;
@@ -184,6 +189,7 @@ public class PlayerStateMachine : MonoBehaviour
                 if (GameManager.instance.currentGameState != GameManager.GameState.GAMEPLAY) return;
                 if (UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject()) return;
                 PressedCombat = true;
+                CombatInputBuffered = true;
             };
 
             _combatInput.action.canceled += (ctx) =>

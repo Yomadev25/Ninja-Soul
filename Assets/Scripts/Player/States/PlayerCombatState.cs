@@ -1,7 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using UnityEngine;
 
 public class PlayerCombatState : PlayerBaseState
@@ -19,7 +17,7 @@ public class PlayerCombatState : PlayerBaseState
 
     public override void Enter()
     {
-        //_context.CanRotate = false;
+        _context.CanRotate = false;
         comboCount = _context.ComboCount;
 
         _context.Anim.applyRootMotion = true;
@@ -31,28 +29,14 @@ public class PlayerCombatState : PlayerBaseState
         _context.Anim.Play("Attack", 1, 0);
 
         clipLength = comboAnim["nAttack1"].length;
-
-        MoveForward();
-    }
-
-    private async void MoveForward()
-    {
-        Vector3 dir = _context.transform.forward.normalized;
-        float duration = 0.1f;
-        while (duration > 0f)
-        {
-            _context.rigidBody.MovePosition(_context.transform.position + (dir) * Time.deltaTime);
-            duration -= Time.deltaTime;
-
-            await Task.Yield();
-        }
     }
 
     public override void Update()
     {
-        if (_context.PressedCombat)
+        if (_context.CombatInputBuffered)
         {
             lastClicked = Time.time;
+            _context.CombatInputBuffered = false;
         }
 
         timePassed += Time.deltaTime;
@@ -68,9 +52,24 @@ public class PlayerCombatState : PlayerBaseState
 
     private void CheckChangeState()
     {
-        if (timePassed >= clipLength / clipSpeed)
+        float attackEndTime = clipLength / clipSpeed;
+        bool bufferedInput = Time.time - lastClicked <= 0.2f && comboCount < comboGroup.combos.Length - 1;
+
+        // Let a buffered press cancel into the next attack as soon as the
+        // current swing's recovery window opens, instead of waiting for the
+        // whole clip (startup + active + recovery) to finish playing.
+        float cancelTime = attackEndTime * _context.ComboCancelWindow;
+        if (bufferedInput && timePassed >= cancelTime)
         {
-            if (Time.time - lastClicked <= 0.2f && comboCount < comboGroup.combos.Length - 1)
+            _context.ComboCount++;
+            ChangeState(_context.State.Combat());
+
+            return;
+        }
+
+        if (timePassed >= attackEndTime)
+        {
+            if (bufferedInput)
             {
                 _context.ComboCount++;
                 ChangeState(_context.State.Combat());
@@ -79,7 +78,7 @@ public class PlayerCombatState : PlayerBaseState
             }
 
             _context.ComboCount = 0;
-            ChangeState(_context.State.Idle());         
+            ChangeState(_context.State.Idle());
         }
     }
 
